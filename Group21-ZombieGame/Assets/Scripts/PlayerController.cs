@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Transform cameraTransform;
     public float lookSensitivity = 2f;
     public float verticalLookLimit = 90f;
+    public float jumpHeight = 1f;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -39,7 +40,13 @@ public class PlayerController : MonoBehaviour
     {
         lookInput = context.ReadValue<Vector2>();
     }
-
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed && controller.isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(-2f * gravity * jumpHeight);
+        }
+     }
     public void HandleMovement()
     {
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
@@ -54,8 +61,8 @@ public class PlayerController : MonoBehaviour
 
     public void HandleLook()
     {
-        float mouseX = lookInput.x * lookSensitivity;
-        float mouseY = lookInput.y * lookSensitivity;
+        float mouseX = lookInput.x * lookSensitivity / 4f;
+        float mouseY = lookInput.y * lookSensitivity / 4f;
 
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
