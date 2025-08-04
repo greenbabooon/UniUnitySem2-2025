@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity = 2f;
     public float verticalLookLimit = 90f;
     public float jumpHeight = 1f;
-
+    public GameObject projectile;
     private CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
@@ -46,6 +46,21 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(-2f * gravity * jumpHeight);
         }
+     }
+     public void OnAttack(InputAction.CallbackContext context)
+     {
+         if (context.performed)
+         {
+                if (projectile != null)
+                {
+                    GameObject newProjectile = Instantiate(projectile, cameraTransform.position + cameraTransform.forward, cameraTransform.rotation);
+                    Rigidbody rb = newProjectile.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        rb.AddForce(cameraTransform.forward * 20f, ForceMode.Impulse);
+                    }
+                }
+         }
      }
     public void HandleMovement()
     {
