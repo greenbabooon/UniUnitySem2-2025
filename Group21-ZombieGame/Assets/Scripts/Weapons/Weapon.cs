@@ -10,9 +10,8 @@ public class Weapon : MonoBehaviour
     public float force=0f;//only used for projectiles
     public int magazineCapacity=0;//only used for projectiles
     public int currentAmmo=0;//only used for projectiles
-    public int ammoSpare=0;//only used for projectiles
     public float reloadTime=0;//only used for projectiles
-    public Image WeaponIcon;
+    public Sprite WeaponIcon;
     public bool isAutomatic=false;//only used for projectiles
     public int ammoType=0;//0:melee,1,2,3 ect
     public GameObject projectilePrefab;//only used for projectiles
@@ -51,16 +50,11 @@ public class Weapon : MonoBehaviour
         return currentAmmo;
     }
 
-    public int GetAmmoSpare()
-    {
-        return ammoSpare;
-    }
-
     public float GetReloadTime()
     {
         return reloadTime;
     }
-    public Image GetWeaponIcon()
+    public Sprite GetWeaponIcon()
     {
         return WeaponIcon;
     }

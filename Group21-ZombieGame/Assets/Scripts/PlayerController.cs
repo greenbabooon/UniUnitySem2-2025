@@ -33,12 +33,14 @@ public class PlayerController : MonoBehaviour
     public Image[] HotBarImages;
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI reloadText;//temporary until we implement a reload animation
-    int CurMag=0;
+    int CurMag = 0;
     int CurSpare = 0;
     bool isReloading = false;
     Color selected = Color.grey;
     Color unselected = Color.white;
     private int currentIndex = 0;
+    public Sprite slotEmpty;
+    int ammoType;
 
     //inputs handling below
 
@@ -49,6 +51,8 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Equip(inv.GetItem(0)); // Equip the first weapon in the inventory by default
+        UpdateAmmoUI();
+        UpdateHotbarUI();
 
     }
     private void Start()
@@ -92,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started && equippedWeapon.IsAutomatic() == false)
         {
-            StartFiring();
+            fireProjectile();
         }
         if (context.performed && equippedWeapon.IsAutomatic() == true)
         {
@@ -109,29 +113,38 @@ public class PlayerController : MonoBehaviour
         {
             Invoke("ReloadWeapon", equippedWeapon.GetReloadTime());
             isReloading = true;
-            reloadText.enabled = true;  
+            reloadText.enabled = true;
         }
     }
     private void ReloadWeapon()
     {
-        if (equippedWeapon.GetCurrentAmmo() < equippedWeapon.GetMagazineCapacity() && equippedWeapon.GetAmmoSpare() > 0)
+        if (equippedWeapon.GetCurrentAmmo() < equippedWeapon.GetMagazineCapacity() && inv.GetAmmoCount(equippedWeapon.GetAmmoType()) > 0)
         {
             int ammoNeeded = equippedWeapon.GetMagazineCapacity() - equippedWeapon.GetCurrentAmmo();
-            int ammoToReload = Mathf.Min(ammoNeeded, equippedWeapon.GetAmmoSpare());
-
+            int ammoAvailable = inv.GetAmmoCount(equippedWeapon.GetAmmoType());
+            int ammoToReload = Mathf.Min(ammoNeeded, ammoAvailable);
             equippedWeapon.currentAmmo += ammoToReload;
-            equippedWeapon.ammoSpare -= ammoToReload;
+            inv.SetAmmoCount(equippedWeapon.GetAmmoType(), ammoAvailable - ammoToReload);
             UpdateAmmoUI();
             isReloading = false;
             reloadText.enabled = false;
         }
     }
-    private void UpdateAmmoUI()
+    private void CancelReload()
+    {
+        if (isReloading)
+        {
+            CancelInvoke("ReloadWeapon");
+            isReloading = false;
+            reloadText.enabled = false;
+        }
+    }
+    public void UpdateAmmoUI()
     {
         if (equippedWeapon != null)
         {
             CurMag = equippedWeapon.GetCurrentAmmo();
-            CurSpare = equippedWeapon.GetAmmoSpare();
+            CurSpare = inv.GetAmmoCount(equippedWeapon.GetAmmoType());
             ammoText.text = "Ammo: " + CurMag + " | Spare: " + CurSpare;
         }
         else
@@ -169,7 +182,7 @@ public class PlayerController : MonoBehaviour
     public void fireProjectile()
     {
 
-        if (equippedWeapon.GetProjectile() != null && canShoot && equippedWeapon.GetCurrentAmmo() > 0&&isReloading == false)
+        if (equippedWeapon.GetProjectile() != null && canShoot && equippedWeapon.GetCurrentAmmo() > 0 && isReloading == false)
         {
             GameObject newProjectile = Instantiate(equippedWeapon.GetProjectile(), cameraTransform.position + cameraTransform.forward, cameraTransform.rotation);
             Rigidbody rb = newProjectile.GetComponent<Rigidbody>();
@@ -196,8 +209,12 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            int index = Mathf.Clamp((int)context.ReadValue<float>(), 0, inv.weapons.Count - 1);
-            currentIndex = index; 
+            if (isReloading)
+            {
+                CancelReload();
+            }
+            int index = Mathf.Clamp((int)context.ReadValue<float>() + currentIndex, 0, inv.weapons.Count - 1);
+            currentIndex = index;
             if (index >= 0 && index < inv.weapons.Count)
             {
                 GameObject selectedWeapon = inv.GetItem(index);
@@ -224,19 +241,19 @@ public class PlayerController : MonoBehaviour
         equipped.transform.SetParent(hand.transform);
         equipped.transform.localPosition = Vector3.zero;
         equipped.transform.localRotation = Quaternion.Euler(0, 90f, 0f);
-     for (int i = 0; i < HotBarImages.Length; i++)
-                    {
-                        if (i == currentIndex)
-                        {
-                            HotBarImages[i].color = selected; // Highlight selected weapon
-                        }
-                        else
-                        {
-                            HotBarImages[i].color = unselected; // Reset color for unselected weapons
+        for (int i = 0; i < HotBarImages.Length; i++)
+        {
+            if (i == currentIndex)
+            {
+                HotBarImages[i].color = selected; // Highlight selected weapon
+            }
+            else
+            {
+                HotBarImages[i].color = unselected; // Reset color for unselected weapons
 
-                        }
-                    }
-        UpdateAmmoUI(); 
+            }
+        }
+        UpdateAmmoUI();
         Debug.Log("Equipped weapon: " + weaponObj.name);
     }
 
@@ -246,5 +263,30 @@ public class PlayerController : MonoBehaviour
     {
         return inv.GetItem(index);
     }
+    public void UpdateHotbarUI()
+    {
+        for (int i = 0; i < HotBarImages.Length; i++)
+        {
+            if (i < inv.weapons.Count)
+            {
+                HotBarImages[i].sprite = inv.weapons[i].GetComponent<Weapon>().WeaponIcon;
+            }
+            else
+            {
+                HotBarImages[i].sprite = slotEmpty;
+            }
+        }
+    }
+    private void InitializeAmmoType()
+    {
+        if (equippedWeapon != null)
+        {
+            ammoType = equippedWeapon.GetAmmoType();
+        } else
+        {
+            ammoType = 0; 
+        }
+    }
     
+
 }

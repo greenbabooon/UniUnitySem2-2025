@@ -5,9 +5,9 @@ public class Inventory : MonoBehaviour
 {
     private int maxItems = 5;//all items other than ammo
     private int curItems = 0;
-    private int ammoType1Count = 90;
-    private int ammoType2Count = 90;
-    private int ammoType3Count = 90;
+    public int ammoType1Count = 90;
+    public int ammoType2Count = 90;
+    public int ammoType3Count = 90;
     public List<GameObject> weapons = new List<GameObject>();
     private Dictionary<GameObject, int> invSlots = new Dictionary<GameObject, int>();
     private void Start()
