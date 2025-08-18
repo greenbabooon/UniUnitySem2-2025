@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private int currentIndex = 0;
     public Sprite slotEmpty;
     int ammoType;
+    int mkOrKeyboard;
 
     //inputs handling below
 
@@ -72,7 +73,17 @@ public class PlayerController : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        lookInput = context.ReadValue<Vector2>();
+        if (context.control.device is Gamepad)
+        {
+            lookSensitivity = 8;
+            lookInput = context.ReadValue<Vector2>();
+            
+        }
+        if (context.control.device is Mouse)
+        {
+            lookSensitivity = 0.4f;
+            lookInput = context.ReadValue<Vector2>();
+        }
     }
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -169,8 +180,8 @@ public class PlayerController : MonoBehaviour
     }
     public void HandleLook()
     {
-        float mouseX = lookInput.x * lookSensitivity / 4f;
-        float mouseY = lookInput.y * lookSensitivity / 4f;
+        float mouseX = lookInput.x * lookSensitivity/4;
+        float mouseY = lookInput.y * lookSensitivity/4;
 
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
