@@ -150,7 +150,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 51aa71dceb0bdca4480ec0d95a568078, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -181,9 +181,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7296449708764169773}
-  - component: {fileID: 2008619282113957588}
   m_Layer: 0
-  m_Name: gunFastAuto
+  m_Name: gunSemiAuto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,30 +208,6 @@ Transform:
   - {fileID: 5777955342599186551}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2008619282113957588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4401797746055758562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 563dcfc0d7c407640a7a1f97a15bdef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  isRanged: 1
-  fireRate: 0.2
-  force: 5000
-  magazineCapacity: 30
-  currentAmmo: 18
-  ammoSpare: 554
-  reloadTime: 2
-  WeaponIcon: {fileID: 21300000, guid: 92ce73ebe12e5764b9f56cff9cded579, type: 3}
-  isAutomatic: 1
-  ammoType: 1
-  projectilePrefab: {fileID: 3374121350557076204, guid: d6ecc3dee822675409028006daa2d031, type: 3}
 --- !u!1 &7157285927876379055
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +380,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 51aa71dceb0bdca4480ec0d95a568078, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -491,7 +466,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8ab9ae32d8c0b4f4f89b8cdf4a54c331, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

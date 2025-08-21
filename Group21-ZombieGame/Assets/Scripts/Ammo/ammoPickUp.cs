@@ -13,7 +13,7 @@ public class ammoPickUp : MonoBehaviour
     }
     private void OnTriggerEnter(Collider target)
     {
-        if (target.GetComponent<ammoScript>() != null)
+        if (target.GetComponent<AmmoBoxScript>() != null)
         {
             ammoType = target.GetComponent<ammoScript>().ammoType;
             ammoAmount = target.GetComponent<ammoScript>().ammoAmount;

@@ -8,8 +8,8 @@ public class Inventory : MonoBehaviour
     public int ammoType1Count = 90;
     public int ammoType2Count = 90;
     public int ammoType3Count = 90;
-    public List<GameObject> weapons = new List<GameObject>();
-    private Dictionary<GameObject, int> invSlots = new Dictionary<GameObject, int>();
+    public List<Weapon> weapons = new List<Weapon>();
+    private Dictionary<Weapon, int> invSlots = new Dictionary<Weapon, int>();
     private void Start()
     {
         InitializeInv();
@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
         }
 
     }
-    public GameObject GetItem(int index)
+    public Weapon GetItem(int index)
     {
         if (index < 0 || index >= weapons.Count)
         {
