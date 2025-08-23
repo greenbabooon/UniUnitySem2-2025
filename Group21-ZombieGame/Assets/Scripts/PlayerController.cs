@@ -196,6 +196,7 @@ public class PlayerController : MonoBehaviour
         if (equippedWeapon.projectilePrefab != null && canShoot && equippedWeapon.currentAmmo > 0 && isReloading == false)
         {
             GameObject newProjectile = Instantiate(equippedWeapon.projectilePrefab, cameraTransform.position + cameraTransform.forward, cameraTransform.rotation);
+            newProjectile.GetComponent<projectileScript>().SetDamage(equippedWeapon.damage);
             Rigidbody rb = newProjectile.GetComponent<Rigidbody>();
 
             if (rb != null)

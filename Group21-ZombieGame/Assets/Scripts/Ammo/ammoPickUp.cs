@@ -15,8 +15,8 @@ public class ammoPickUp : MonoBehaviour
     {
         if (target.GetComponent<AmmoBoxScript>() != null)
         {
-            ammoType = target.GetComponent<ammoScript>().ammoType;
-            ammoAmount = target.GetComponent<ammoScript>().ammoAmount;
+            ammoType = target.GetComponent<AmmoBoxScript>().ammoScript.ammoType;
+            ammoAmount = target.GetComponent<AmmoBoxScript>().ammoScript.ammoAmount;
             inventory.SetAmmoCount(ammoType, ammoAmount + inventory.GetAmmoCount(ammoType));
             Destroy(target.gameObject);
             playerController.UpdateAmmoUI();
