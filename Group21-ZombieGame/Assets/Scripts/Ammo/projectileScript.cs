@@ -27,7 +27,8 @@ public class projectileScript : MonoBehaviour
     }
     private void KillProjectile()
     {
-        Destroy(gameObject);
+        //play impact effect here later
+        gameObject.SetActive(false);
     }
     public void SetDamage(float damage)
     {

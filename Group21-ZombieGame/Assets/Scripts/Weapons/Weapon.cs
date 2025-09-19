@@ -1,4 +1,5 @@
 
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,4 +19,22 @@ public class Weapon : ScriptableObject
     public int ammoType = 0;//0:melee,1,2,3 ect
     public GameObject projectilePrefab;//only used for projectiles
     public GameObject weaponPrefab;//game Object with weapon model
+    public WeaponType weaponType;//reference to weapon type script
+    public int WeaponTypeIndex;//0:melee,1:ranged hitscan,2:ranged projectile
+    void OnAwake()
+    {
+        if (WeaponTypeIndex == 0)
+        {
+            weaponType = new Melee();
+        }
+        else if (WeaponTypeIndex == 1)
+        {
+            weaponType = new RangedHitScan();
+        }
+        else if (WeaponTypeIndex == 2)
+        {
+            weaponType = new RangedProjectile();
+        }
+        weaponType.SetWeapon(this);
+    }
 }

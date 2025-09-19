@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour
     public int ammoType3Count = 90;
     public List<Weapon> weapons = new List<Weapon>();
     private Dictionary<Weapon, int> invSlots = new Dictionary<Weapon, int>();
+    List <GameObject> weaponObjs = new List<GameObject>();
     private void Start()
     {
         InitializeInv();
@@ -19,6 +20,8 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < weapons.Count; i++)
         {
             invSlots.Add(weapons[i], i);
+            weaponObjs.Add(Instantiate(weapons[i].weaponPrefab));
+            weaponObjs[i].SetActive(false);
         }
 
     }
