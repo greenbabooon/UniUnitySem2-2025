@@ -11,7 +11,7 @@ public class RangedHitScan : WeaponType, IAttackable
     {
        
     }
-    public void AttackPressed()
+    public override void AttackPressed()
     {
         if (weapon.isAutomatic == false)
         {
@@ -22,14 +22,14 @@ public class RangedHitScan : WeaponType, IAttackable
             StartFiring();
         }
     }
-    public void AttackReleased()
+    public override void AttackReleased()
     {
         if(weapon.isAutomatic == true)
         {
             StopFiring();
         }
     }
-    public void Reload()
+    public override void Reload()
     {
 
     }

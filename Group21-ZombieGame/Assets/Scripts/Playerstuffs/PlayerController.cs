@@ -45,13 +45,13 @@ public class PlayerController : MonoBehaviour
 
     //inputs handling below
 
-    private void Awake()
+    private void OnEnable()
     {
         controller = GetComponent<CharacterController>();
         inv = GetComponent<Inventory>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Equip(inv.GetItem(0)); // Equip the first weapon in the inventory by default
+        currentIndex = 0;
         UpdateAmmoUI();
         UpdateHotbarUI();
 
@@ -105,50 +105,25 @@ public class PlayerController : MonoBehaviour
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.started && equippedWeapon.isAutomatic == false)
+        if (equippedWeapon != null)
         {
-            fireProjectile();
-        }
-        if (context.performed && equippedWeapon.isAutomatic == true)
-        {
-            StartFiring();
-        }
-        if (context.canceled && equippedWeapon.isAutomatic == true)
-        {
-            StopFiring();
+            if (context.performed)
+            {
+                equippedWeapon.weaponType.AttackPressed();
+            }
+            if (context.canceled)
+            {
+                equippedWeapon.weaponType.AttackReleased();
+            }
         }
     }
     public void OnReload(InputAction.CallbackContext context)
     {
-        if (context.performed && !isReloading && equippedWeapon.currentAmmo < equippedWeapon.magazineCapacity)
-        {
-            Invoke("ReloadWeapon", equippedWeapon.reloadTime);
-            isReloading = true;
-            reloadText.enabled = true;
-        }
-    }
-    private void ReloadWeapon()
-    {
-        if (equippedWeapon.currentAmmo < equippedWeapon.magazineCapacity && inv.GetAmmoCount(equippedWeapon.ammoType) > 0)
-        {
-            int ammoNeeded = equippedWeapon.magazineCapacity - equippedWeapon.currentAmmo;
-            int ammoAvailable = inv.GetAmmoCount(equippedWeapon.ammoType);
-            int ammoToReload = Mathf.Min(ammoNeeded, ammoAvailable);
-            equippedWeapon.currentAmmo += ammoToReload;
-            inv.SetAmmoCount(equippedWeapon.ammoType, ammoAvailable - ammoToReload);
-            UpdateAmmoUI();
-            isReloading = false;
-            reloadText.enabled = false;
-        }
+        equippedWeapon.weaponType.Reload();
     }
     private void CancelReload()
     {
-        if (isReloading)
-        {
-            CancelInvoke("ReloadWeapon");
-            isReloading = false;
-            reloadText.enabled = false;
-        }
+        //cancel reload in weapon type script
     }
     public void UpdateAmmoUI()
     {
@@ -174,10 +149,7 @@ public class PlayerController : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
-    private void enableShooting()
-    {
-        canShoot = true;
-    }
+
     public void HandleLook()
     {
         float mouseX = lookInput.x * lookSensitivity/4;
@@ -190,33 +162,6 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
     }
 
-    public void fireProjectile()
-    {
-
-        if (equippedWeapon.projectilePrefab != null && canShoot && equippedWeapon.currentAmmo > 0 && isReloading == false)
-        {
-            GameObject newProjectile = Instantiate(equippedWeapon.projectilePrefab, cameraTransform.position + cameraTransform.forward, cameraTransform.rotation);
-            newProjectile.GetComponent<projectileScript>().SetDamage(equippedWeapon.damage);
-            Rigidbody rb = newProjectile.GetComponent<Rigidbody>();
-
-            if (rb != null)
-            {
-                rb.AddForce(cameraTransform.forward * equippedWeapon.force);
-            }
-            equippedWeapon.currentAmmo--;
-            UpdateAmmoUI();
-            canShoot = false;
-            Invoke("enableShooting", equippedWeapon.fireRate);
-        }
-    }
-    public void StartFiring()
-    {
-        InvokeRepeating("fireProjectile", 0f, 0.01f);
-    }
-    public void StopFiring()
-    {
-        CancelInvoke("fireProjectile");
-    }
     public void OnHotBarChange(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -230,9 +175,10 @@ public class PlayerController : MonoBehaviour
             if (index >= 0 && index < inv.weapons.Count)
             {
                 Weapon selectedWeapon = inv.GetItem(index);
-                if (selectedWeapon != null)
+                GameObject selectedWeaponObj = inv.GetWeaponObject(index);
+                if (selectedWeapon != null&& selectedWeapon != equippedWeapon)
                 {
-                    Equip(selectedWeapon);
+                    Equip(index);
                 }
             }
             else
@@ -241,15 +187,19 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    private void Equip(Weapon weaponEquip)
+    private void Equip(int index)
     {
         // Logic to equip the weapon
-        if (equippedWeapon != null)
+        if (equippedObj != null)
         {
-            Destroy(equippedObj); // Destroy the currently equipped weapon
+            equippedObj.SetActive(false);
+
         }
-        equippedObj = Instantiate(weaponEquip.weaponPrefab, hand.transform.position, hand.transform.rotation); // Instantiate the new weapon
-        equippedWeapon = weaponEquip;
+        equippedObj = inv.GetWeaponObject(index);
+        equippedWeapon = inv.GetItem(index);
+        equippedWeapon.weaponType.SetFirePoint(cameraTransform.gameObject);
+        equippedWeapon.weaponType.SetPlayerOwned(true);
+        equippedObj.SetActive(true);
         equippedObj.transform.SetParent(hand.transform);
         equippedObj.transform.localPosition = Vector3.zero;
         equippedObj.transform.localRotation = Quaternion.Euler(0, 90f, 0f);
@@ -266,7 +216,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         UpdateAmmoUI();
-        Debug.Log("Equipped weapon: " + weaponEquip.weaponName);
+        Debug.Log("Equipped weapon: " + equippedWeapon.weaponName);
     }
 
 

@@ -21,20 +21,26 @@ public class Weapon : ScriptableObject
     public GameObject weaponPrefab;//game Object with weapon model
     public WeaponType weaponType;//reference to weapon type script
     public int WeaponTypeIndex;//0:melee,1:ranged hitscan,2:ranged projectile
-    void OnAwake()
+    private GameObject Owner;
+    public void SetOwner(GameObject obj)
     {
-        if (WeaponTypeIndex == 0)
+        Owner = obj;
+       if (WeaponTypeIndex == 0)
         {
-            weaponType = new Melee();
+            weaponType = Owner.AddComponent<Melee>();
         }
         else if (WeaponTypeIndex == 1)
         {
-            weaponType = new RangedHitScan();
+            weaponType = Owner.AddComponent<RangedHitScan>();
         }
         else if (WeaponTypeIndex == 2)
         {
-            weaponType = new RangedProjectile();
+            weaponType = Owner.AddComponent<RangedProjectile>();
         }
         weaponType.SetWeapon(this);
+    }
+    void OnStart()
+    {
+ 
     }
 }

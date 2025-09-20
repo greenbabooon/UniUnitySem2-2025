@@ -22,8 +22,19 @@ public class Inventory : MonoBehaviour
             invSlots.Add(weapons[i], i);
             weaponObjs.Add(Instantiate(weapons[i].weaponPrefab));
             weaponObjs[i].SetActive(false);
+            weapons[i].SetOwner(weaponObjs[i]);
         }
 
+    }
+    public GameObject GetWeaponObject(int index)
+    {
+        if (index < 0 || index >= weaponObjs.Count)
+        {
+            Debug.LogError("Index out of range");
+            return null;
+        }
+
+        return weaponObjs[index];
     }
     public Weapon GetItem(int index)
     {

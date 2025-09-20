@@ -6,12 +6,7 @@ public class ObjPool
 {
     GameObject pooledObj;
     public int pooledCount = 5;
-    private List<GameObject> pool = new List<GameObject>();
-
-    void Start()
-    {
-        initialize();
-    }
+    private List<GameObject> pool=new List<GameObject>();
     public GameObject GetPooledObj()
     {
         for (int i = 0; i < pool.Count; i++)
@@ -19,17 +14,13 @@ public class ObjPool
             if (!pool[i].activeInHierarchy)
             {
                 pool[i].SetActive(true);
-                return pool[i];
+                print("Reusing pooled object: " + pool[i].name+"pool item "+i+" of "+pool.Count);
+                return pool[i]; 
             }
-        }
-        for (int i = 0; i < pooledCount; i++)
-        {
-            pooledObj = Instantiate(pooledObj);
-            pooledObj.SetActive(false);
-            pool.Add(pooledObj);
         }
         var obj = pool[0];
         obj.SetActive(true);
+        print("Pool exhausted");
         return obj;
     }
     // this is used to pool many of the same object at once
@@ -49,9 +40,10 @@ public class ObjPool
     {
         for (int i = 0; i < pooledCount; i++)
         {
-            pooledObj = Instantiate(pooledObj);
-            pooledObj.SetActive(false);
-            pool.Add(pooledObj);
+            var obj = Instantiate(pooledObj);
+            obj.SetActive(false);
+            pool.Add(obj);
+            print("pooled " + obj.name);
+        }
         }
     }
-}
