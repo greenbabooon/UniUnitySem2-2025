@@ -11,7 +11,7 @@ public class projectileScript : MonoBehaviour
         foreach (projectileScript proj in GameObject.FindObjectsByType<projectileScript>(FindObjectsSortMode.None))
         {
             Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), proj.GetComponent<Collider>());
-        }  
+        }
     }
     private void OnEnable()
     {
@@ -29,7 +29,7 @@ public class projectileScript : MonoBehaviour
             if (collision.gameObject.GetComponent<ZombieScript>() != null)
             {
                 collision.gameObject.GetComponent<ZombieScript>().dmgUpdate();
-            }  
+            }
             hasDealtDamage = true;
         }
         GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
@@ -45,4 +45,5 @@ public class projectileScript : MonoBehaviour
     {
         gunDamage = damage;
     }
+
 }

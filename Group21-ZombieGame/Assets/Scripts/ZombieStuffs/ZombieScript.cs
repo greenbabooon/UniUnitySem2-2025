@@ -2,7 +2,7 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ZombieScript : MonoBehaviour
+public class ZombieScript : MonoBehaviour, IDamageable
 {
     public HealthScript health;
     public Canvas healthCanvas;
@@ -19,7 +19,11 @@ public class ZombieScript : MonoBehaviour
     public float attackRange = 2f;
     public float spottingRange = 10f;
 
-
+    public void damage(float damageAmount)
+    {
+        health.currentHealth -= damageAmount;
+        dmgUpdate();
+    }   
 
     public void dmgUpdate()
     {
@@ -61,11 +65,11 @@ public class ZombieScript : MonoBehaviour
         if (healthCanvas.enabled == true)
         {
             canvasRotation.LookAt(Camera.main.transform.position);
-           
+
         }
         if (TargetInSpottingRange)
         {
-            
+
         }
         agent.SetDestination(GameObject.FindFirstObjectByType<PlayerController>().transform.position);
 
@@ -74,7 +78,14 @@ public class ZombieScript : MonoBehaviour
     {//will update just testing
         TargetInSpottingRange = true;
         TargetDetected = true;
-        
+
     }
+    void OnCollision(Collision col)
+    {
+
+    }
+
+
+    
     
 }

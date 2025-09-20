@@ -123,7 +123,7 @@ public class RangedProjectile : WeaponType, IAttackable
             }
         }
     }
-    public void CancelReload()
+    public override void CancelReload()
     {
         if (isReloading)
         {

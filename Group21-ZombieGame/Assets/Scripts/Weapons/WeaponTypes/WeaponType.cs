@@ -40,4 +40,5 @@ public class WeaponType : MonoBehaviour, IAttackable
             player = FindFirstObjectByType<PlayerController>().gameObject;
         }
     }
+    public virtual void CancelReload() { print("cancel reload"); }
 }
