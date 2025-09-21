@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class Carry : MonoBehaviour
+public class Carry : MonoBehaviour, IInteractable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Interact()
     {
-        
+        // Logic for picking up the object
     }
-
-    // Update is called once per frame
-    void Update()
+    public string InteractionPrompt()
     {
-        
+        return "Press E to pick up " + gameObject.name;
     }
 }

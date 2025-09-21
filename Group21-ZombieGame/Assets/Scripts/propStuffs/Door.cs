@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour,IInteractable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Interact()
     {
-        
+        // Logic for opening the doors
     }
-
-    // Update is called once per frame
-    void Update()
+    public string InteractionPrompt()
     {
-        
+        return "Press E to open the door";
     }
 }

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public interface IInteractable
 {
     void Interact();
+    string InteractionPrompt();
 }
 public class PlayerController : MonoBehaviour
 {
@@ -35,7 +36,9 @@ public class PlayerController : MonoBehaviour
     public GameObject hand;
     public Image[] HotBarImages;
     public TextMeshProUGUI ammoText;
+    public TextMeshProUGUI interactText;
     public TextMeshProUGUI reloadText;//temporary until we implement a reload animation
+    public TextMeshProUGUI equippedText;
     int CurMag = 0;
     int CurSpare = 0;
     bool isReloading = false;
@@ -207,7 +210,8 @@ public class PlayerController : MonoBehaviour
         }
     }
     private void Equip(int index)
-    {
+    {   
+        CancelInvoke("DisableEquippedText");
         // Logic to equip the weapon
         if (equippedObj != null)
         {
@@ -235,7 +239,20 @@ public class PlayerController : MonoBehaviour
             }
         }
         UpdateAmmoUI();
+        if (equippedWeapon != null)
+        {
+            equippedText.text = "Equipped: " + equippedWeapon.weaponName;
+        }else
+        {
+            equippedText.text = "Equipped: None";
+        }
+        equippedText.enabled = true;
+        Invoke("DisableEquippedText", 2f);
         Debug.Log("Equipped weapon: " + equippedWeapon.weaponName);
+    }
+    private void DisableEquippedText()
+    {
+        equippedText.enabled = false;
     }
 
 
@@ -289,7 +306,9 @@ public class PlayerController : MonoBehaviour
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                // Show interaction prompt
+
+                interactText.text = interactable.InteractionPrompt();
+                interactText.enabled = true;
                 if (interacting)
                 {
                     interactable.Interact();
@@ -298,12 +317,12 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                // Hide interaction prompt
+                interactText.enabled = false;
             }
         }
         else
         {
-            // Hide interaction prompt
+            interactText.enabled = false;
         }
     }
     public void PauseGame()

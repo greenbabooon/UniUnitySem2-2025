@@ -16,7 +16,9 @@ public class Inventory : MonoBehaviour
         InitializeInv();
     }
     private void InitializeInv()
-    {
+    {   
+        invSlots.Clear();
+        weaponObjs.Clear();
         for (int i = 0; i < weapons.Count; i++)
         {
             invSlots.Add(weapons[i], i);
@@ -24,6 +26,8 @@ public class Inventory : MonoBehaviour
             weaponObjs[i].SetActive(false);
             weapons[i].SetOwner(weaponObjs[i]);
         }
+        PlayerController player = FindFirstObjectByType<PlayerController>();
+        player.UpdateHotbarUI();
 
     }
     public GameObject GetWeaponObject(int index)
@@ -66,5 +70,28 @@ public class Inventory : MonoBehaviour
         return GetAmmoCount(ammoType);
     }
 
-
+    public void addItem(Weapon item)
+    {
+        if (curItems < maxItems)
+        {
+            if (weapons.Contains(item))
+            {
+                print("testing duplicate prevention");
+                Weapon newWeapon = ScriptableObject.Instantiate(item);
+                int count = 1;
+                while (weapons.Exists(w=>w.name==item.name+"("+count+")"))
+                {
+                    count++;
+                }
+                newWeapon.name = item.name + " (" + count + ")";
+                weapons.Add(newWeapon);
+            }else
+            {
+                print("adding new weapon");
+                weapons.Add(item);
+            }
+            curItems++;
+            InitializeInv();
+        }
+    }
 }

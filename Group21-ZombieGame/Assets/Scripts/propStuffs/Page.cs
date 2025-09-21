@@ -6,6 +6,7 @@ public class Page : MonoBehaviour, IInteractable
     PlayerController player;
     public Canvas pageCanvas;
     public Sprite pageContent;
+    public string pageTitle;
     void Awake()
     {
         player = FindFirstObjectByType<PlayerController>();
@@ -27,6 +28,10 @@ public class Page : MonoBehaviour, IInteractable
         player.ResumeGame();
         player.ShowHUD();
         // add logic to add page to inventory
+    }
+    public string InteractionPrompt()
+    {
+        return "Press E to read the page: " + pageTitle;
     }
     
 }
