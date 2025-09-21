@@ -108,12 +108,12 @@ public class RangedProjectile : WeaponType, IAttackable
             if (CurSpare >= neededAmmo)
             {
                 weapon.currentAmmo += neededAmmo;
-                player.GetComponent<Inventory>().SetAmmoCount(weapon.ammoType, 0);
+                player.GetComponent<Inventory>().SetAmmoCount(weapon.ammoType, CurSpare - neededAmmo);
             }
             else
             {
                 weapon.currentAmmo += CurSpare;
-                player.GetComponent<Inventory>().SetAmmoCount(weapon.ammoType, CurSpare);
+                player.GetComponent<Inventory>().SetAmmoCount(weapon.ammoType, 0);
             }
             isReloading = false;
             if (playerOwned)

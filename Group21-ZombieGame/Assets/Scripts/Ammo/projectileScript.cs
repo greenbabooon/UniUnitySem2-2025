@@ -32,6 +32,7 @@ public class projectileScript : MonoBehaviour
             }
             hasDealtDamage = true;
         }
+        if(!hasDealtDamage)print("Projectile hit " + collision.gameObject.name + "! No damage dealt.");
         GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         Invoke("KillProjectile", 0.1f);
     }
