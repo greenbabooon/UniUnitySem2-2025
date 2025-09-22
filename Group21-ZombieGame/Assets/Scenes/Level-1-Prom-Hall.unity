@@ -169,6 +169,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!136 &1085742
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -740,8 +743,12 @@ MonoBehaviour:
   - {fileID: 1287837743}
   - {fileID: 256916025}
   ammoText: {fileID: 2116172195}
+  interactText: {fileID: 0}
   reloadText: {fileID: 2140355296}
+  equippedText: {fileID: 0}
   slotEmpty: {fileID: 21300000, guid: 4f24c5140d4777c45a34e70ae508a5a4, type: 3}
+  HUD: {fileID: 0}
+  inMenu: 0
 --- !u!114 &14969209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7063,6 +7070,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!4 &162911118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3092162716923719465, guid: 1430922765727254c9094b92a0f01360, type: 3}
@@ -13659,6 +13669,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!1 &279219387
 GameObject:
   m_ObjectHideFlags: 0
@@ -15163,6 +15176,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!43 &306651349
 Mesh:
   m_ObjectHideFlags: 0
@@ -21814,6 +21830,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!1 &409727794
 GameObject:
   m_ObjectHideFlags: 0
@@ -22659,6 +22678,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!43 &424927326
 Mesh:
   m_ObjectHideFlags: 0
@@ -27026,6 +27048,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!43 &556766432
 Mesh:
   m_ObjectHideFlags: 0
@@ -30638,6 +30663,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!1001 &629602162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33696,6 +33724,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!1 &678396459
 GameObject:
   m_ObjectHideFlags: 0
@@ -44830,6 +44861,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!1 &890618537
 GameObject:
   m_ObjectHideFlags: 0
@@ -46807,6 +46841,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!1 &937275542
 GameObject:
   m_ObjectHideFlags: 0
@@ -47509,6 +47546,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!1 &957182655
 GameObject:
   m_ObjectHideFlags: 0
@@ -53437,6 +53477,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!1001 &1102130250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67196,7 +67239,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ec694f990796a984d899f5883b389f01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.69
+      value: 3.2168672
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec694f990796a984d899f5883b389f01, type: 3}
       propertyPath: m_LocalPosition.y
@@ -67204,11 +67247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec694f990796a984d899f5883b389f01, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 50.58
+      value: 50.507027
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec694f990796a984d899f5883b389f01, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.019746935
+      value: 0.39238274
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec694f990796a984d899f5883b389f01, type: 3}
       propertyPath: m_LocalRotation.x
@@ -67216,7 +67259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec694f990796a984d899f5883b389f01, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.99980503
+      value: -0.91980207
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec694f990796a984d899f5883b389f01, type: 3}
       propertyPath: m_LocalRotation.z
@@ -67228,7 +67271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec694f990796a984d899f5883b389f01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -177.737
+      value: -133.794
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec694f990796a984d899f5883b389f01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -76011,6 +76054,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!43 &1609506763
 Mesh:
   m_ObjectHideFlags: 0
@@ -78180,6 +78226,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!43 &1655138018
 Mesh:
   m_ObjectHideFlags: 0
@@ -80001,6 +80050,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!43 &1705268554
 Mesh:
   m_ObjectHideFlags: 0
@@ -80873,6 +80925,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!1 &1755234308
 GameObject:
   m_ObjectHideFlags: 0
@@ -83708,6 +83763,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!43 &1808569118
 Mesh:
   m_ObjectHideFlags: 0
@@ -86696,6 +86754,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!43 &1825396169
 Mesh:
   m_ObjectHideFlags: 0
@@ -90656,6 +90717,9 @@ MonoBehaviour:
   health: {fileID: 0}
   healthCanvas: {fileID: 0}
   healthIcons: []
+  cooldownTime: 1
+  attackRange: 2
+  spottingRange: 10
 --- !u!43 &1904385328
 Mesh:
   m_ObjectHideFlags: 0
