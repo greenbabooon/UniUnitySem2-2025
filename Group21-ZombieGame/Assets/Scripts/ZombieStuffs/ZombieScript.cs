@@ -14,16 +14,16 @@ public class ZombieScript : MonoBehaviour, IDamageable
     bool TargetInSpottingRange = false;
     bool TargetDetected = false;
     bool TargetInAttackRange = false;
-    float currentCoolDownTime;
     public float cooldownTime = 1f;
     public float attackRange = 2f;
     public float spottingRange = 10f;
+    bool canAttack = true;
 
     public void damage(float damageAmount)
     {
         health.currentHealth -= damageAmount;
         dmgUpdate();
-    }   
+    }
 
     public void dmgUpdate()
     {
@@ -69,9 +69,27 @@ public class ZombieScript : MonoBehaviour, IDamageable
         }
         if (TargetInSpottingRange)
         {
-
+            agent.SetDestination(GameObject.FindFirstObjectByType<PlayerController>().transform.position);
         }
-        agent.SetDestination(GameObject.FindFirstObjectByType<PlayerController>().transform.position);
+        if (Vector3.Distance(transform.position, GameObject.FindFirstObjectByType<PlayerController>().transform.position) < spottingRange)
+        {
+            TargetSpotted();
+        }
+        else
+        {
+            TargetInSpottingRange = false;
+            TargetDetected = false;
+        }
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, GameObject.FindFirstObjectByType<PlayerController>().transform.position - transform.position, out hit, 2f))
+        {
+            if (hit.collider.gameObject.GetComponent<PlayerController>() != null && canAttack)
+            {
+                hit.collider.gameObject.GetComponent<PlayerController>().damage(10f);
+                canAttack = false;
+                Invoke("CanAttack", cooldownTime);
+            }
+        }
 
     }
     private void TargetSpotted()
@@ -80,10 +98,11 @@ public class ZombieScript : MonoBehaviour, IDamageable
         TargetDetected = true;
 
     }
-    void OnCollision(Collision col)
-    {
 
-    }
+    void CanAttack()
+    {
+        canAttack = true;
+    }   
 
 
     
