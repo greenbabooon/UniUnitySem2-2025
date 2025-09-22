@@ -449,8 +449,12 @@ MonoBehaviour:
   - {fileID: 1287837743}
   - {fileID: 256916025}
   ammoText: {fileID: 2116172195}
+  interactText: {fileID: 0}
   reloadText: {fileID: 2140355296}
+  equippedText: {fileID: 0}
   slotEmpty: {fileID: 21300000, guid: 4f24c5140d4777c45a34e70ae508a5a4, type: 3}
+  HUD: {fileID: 0}
+  inMenu: 0
 --- !u!114 &14969209
 MonoBehaviour:
   m_ObjectHideFlags: 0
