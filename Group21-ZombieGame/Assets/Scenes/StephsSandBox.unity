@@ -66440,9 +66440,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7535518}
     m_Modifications:
+    - target: {fileID: 2064509037953026741, guid: da784130b4def7f4c897c712bb749fd6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f5b00d45d84386b499eaec7769714027, type: 2}
     - target: {fileID: 5033278268670315271, guid: da784130b4def7f4c897c712bb749fd6, type: 3}
       propertyPath: m_Name
       value: ZombieDummy (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033278268670315271, guid: da784130b4def7f4c897c712bb749fd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8455697551956757362, guid: da784130b4def7f4c897c712bb749fd6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -79550,6 +79558,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 232861251}
+    - target: {fileID: 6507024834171375202, guid: 57fe35590e65917469303992710876b8, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507024834171375202, guid: 57fe35590e65917469303992710876b8, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
     - target: {fileID: 6632269177986656034, guid: 57fe35590e65917469303992710876b8, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -92878,6 +92894,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3378063542650348819, guid: 8277cdc2936002f4c9b722ccc2497b7f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a65318e18fd0864db28331fc1a7066b, type: 2}
     - target: {fileID: 6888431813643096997, guid: 8277cdc2936002f4c9b722ccc2497b7f, type: 3}
       propertyPath: m_Name
       value: PlayerStuffs
@@ -92920,6 +92940,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7788843755792511769, guid: 8277cdc2936002f4c9b722ccc2497b7f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928487412055577128, guid: 8277cdc2936002f4c9b722ccc2497b7f, type: 3}
+      propertyPath: weapons.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
