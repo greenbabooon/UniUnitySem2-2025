@@ -10,17 +10,35 @@ public class Inventory : MonoBehaviour
     public int ammoType3Count = 90;
     public List<Weapon> weapons = new List<Weapon>();
     private Dictionary<Weapon, int> invSlots = new Dictionary<Weapon, int>();
+    List <GameObject> weaponObjs = new List<GameObject>();
     private void Start()
     {
         InitializeInv();
     }
     private void InitializeInv()
-    {
+    {   
+        invSlots.Clear();
+        weaponObjs.Clear();
         for (int i = 0; i < weapons.Count; i++)
         {
             invSlots.Add(weapons[i], i);
+            weaponObjs.Add(Instantiate(weapons[i].weaponPrefab));
+            weaponObjs[i].SetActive(false);
+            weapons[i].SetOwner(weaponObjs[i]);
+        }
+        PlayerController player = FindFirstObjectByType<PlayerController>();
+        player.UpdateHotbarUI();
+
+    }
+    public GameObject GetWeaponObject(int index)
+    {
+        if (index < 0 || index >= weaponObjs.Count)
+        {
+            Debug.LogError("Index out of range");
+            return null;
         }
 
+        return weaponObjs[index];
     }
     public Weapon GetItem(int index)
     {
@@ -52,5 +70,28 @@ public class Inventory : MonoBehaviour
         return GetAmmoCount(ammoType);
     }
 
-
+    public void addItem(Weapon item)
+    {
+        if (curItems < maxItems)
+        {
+            if (weapons.Contains(item))
+            {
+                print("testing duplicate prevention");
+                Weapon newWeapon = ScriptableObject.Instantiate(item);
+                int count = 1;
+                while (weapons.Exists(w=>w.name==item.name+"("+count+")"))
+                {
+                    count++;
+                }
+                newWeapon.name = item.name + " (" + count + ")";
+                weapons.Add(newWeapon);
+            }else
+            {
+                print("adding new weapon");
+                weapons.Add(item);
+            }
+            curItems++;
+            InitializeInv();
+        }
+    }
 }
