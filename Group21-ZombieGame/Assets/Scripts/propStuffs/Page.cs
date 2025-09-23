@@ -7,13 +7,15 @@ public class Page : MonoBehaviour, IInteractable
     public Canvas pageCanvas;
     public Sprite pageContent;
     public string pageTitle;
-        public Material highlightMat;
+        //public Material highlightMat;
     Material defaultMat;
 
     void Awake()
     {
-        defaultMat = GetComponent<Renderer>().material;
+        //defaultMat = GetComponent<Renderer>().material;
         player = FindFirstObjectByType<PlayerController>();
+        pageCanvas.gameObject.SetActive(false);
+
     }
     public void Interact()
     {

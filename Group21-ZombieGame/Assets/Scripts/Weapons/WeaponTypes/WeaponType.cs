@@ -35,10 +35,6 @@ public class WeaponType : MonoBehaviour, IAttackable
     public void SetPlayerOwned(bool val)
     {
         playerOwned = val;
-        if (playerOwned)
-        {
-            player = FindFirstObjectByType<PlayerController>().gameObject;
-        }
     }
     public virtual void CancelReload() { print("cancel reload"); }
 }

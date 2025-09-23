@@ -63,7 +63,11 @@ public class RangedProjectile : WeaponType, IAttackable
         {
             GameObject curProj = objPooler.GetPooledObj();
             curProj.GetComponent<projectileScript>().SetDamage(weapon.damage);
-            curProj.transform.position = firePoint.transform.position + firePoint.transform.forward * 0.75f;
+            foreach (projectileScript proj in GameObject.FindObjectsByType<projectileScript>(FindObjectsSortMode.None))
+            {
+                Physics.IgnoreCollision(curProj.GetComponent<Collider>(), proj.GetComponent<Collider>());
+            }
+            curProj.transform.position = firePoint.transform.position + firePoint.transform.forward * 0.5f;
             curProj.transform.rotation = firePoint.transform.rotation;
             Rigidbody rb = curProj.GetComponent<Rigidbody>();
             if (rb != null)

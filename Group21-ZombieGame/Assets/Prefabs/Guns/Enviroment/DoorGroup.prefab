@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 1991039543051045821}
   - component: {fileID: 6094032133275645489}
   - component: {fileID: 2178667078836982771}
+  - component: {fileID: 6043043806400000872}
   m_Layer: 0
   m_Name: DoorGroup
   m_TagString: Untagged
@@ -135,6 +136,32 @@ MonoBehaviour:
   isOpen: 0
   hingeAngle1: {fileID: 6512559828882499356}
   hingeAngle2: {fileID: 2456002818339227135}
+  navMeshLink: {fileID: 6043043806400000872}
+--- !u!114 &6043043806400000872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916808617638932252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 1
+  m_AgentTypeID: 0
+  m_StartPoint: {x: 0, y: 0, z: -3.04}
+  m_EndPoint: {x: 0, y: 0, z: 1.04}
+  m_StartTransform: {fileID: 0}
+  m_EndTransform: {fileID: 0}
+  m_Activated: 0
+  m_Width: 1.3201351
+  m_CostModifier: 1
+  m_IsOverridingCost: 0
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
 --- !u!1001 &2318242018681028348
 PrefabInstance:
   m_ObjectHideFlags: 0

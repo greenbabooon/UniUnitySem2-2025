@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class nextleveldoor : MonoBehaviour, IInteractable
 {
-    public Material highlightMat;
-    Material defaultMat;
-    void Akawe()
+    //public Material highlightMat;
+   // Material defaultMat;
+    void Awake()
     {
-        defaultMat = GetComponent<Renderer>().material;
+       // defaultMat = GetComponent<Renderer>().material;
     }
     public void Interact()
     {

@@ -8,10 +8,7 @@ public class projectileScript : MonoBehaviour
     bool hasDealtDamage = false;
     void Awake()
     {
-        foreach (projectileScript proj in GameObject.FindObjectsByType<projectileScript>(FindObjectsSortMode.None))
-        {
-            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), proj.GetComponent<Collider>());
-        }
+
     }
     private void OnEnable()
     {
