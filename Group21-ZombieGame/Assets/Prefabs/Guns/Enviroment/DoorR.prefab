@@ -72,6 +72,8 @@ MonoBehaviour:
   hingeAngle1: {fileID: 7368026928007194632}
   hingeAngle2: {fileID: 0}
   navMeshLink: {fileID: 6949726484320785108}
+  rend1: {fileID: 5157322185437572616}
+  rend2: {fileID: 0}
 --- !u!114 &6949726484320785108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +179,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1806680513116206669, guid: 52ca25be45625c249bbd47e2ceadc22d, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1806680513116206669, guid: 52ca25be45625c249bbd47e2ceadc22d, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b224dcf12b76be41b18d399ef416ae1, type: 2}
     - target: {fileID: 919132149155446097, guid: 52ca25be45625c249bbd47e2ceadc22d, type: 3}
       propertyPath: m_Name
       value: Single School Door L
@@ -222,3 +232,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25, y: 3.92, z: 2.04}
   m_Center: {x: 0, y: 2, z: -1.9}
+--- !u!23 &5157322185437572616 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1806680513116206669, guid: 52ca25be45625c249bbd47e2ceadc22d, type: 3}
+  m_PrefabInstance: {fileID: 2413679358920746939}
+  m_PrefabAsset: {fileID: 0}

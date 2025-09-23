@@ -19,10 +19,27 @@ public class Door : MonoBehaviour, IInteractable
     float targetAngle2;
     float startingAngle;
     public NavMeshLink navMeshLink;
-    //public Material highlightMat;
-    //Material defaultMat;
+    public Renderer rend1;
+    public Renderer rend2;
+    Renderer OriginalRend1=new Renderer();
+    Renderer OriginalRend2=new Renderer();
+    bool isGlowing = false;
     void Awake()
     {
+       /* OriginalRend1 = rend1;
+        if (rend2 != null)OriginalRend2 = rend2;
+                OriginalRend1 = rend1;
+        OriginalRend2 = rend2;
+        Material[] ogMats = new Material[rend1.materials.Length + 1];
+        rend1.materials.CopyTo(ogMats, 0);
+        OriginalRend1.materials = gameObject.AddComponent<Renderer>().materials;
+        if (rend2 != null)
+        {
+            Material[] ogMats2 = new Material[rend2.materials.Length + 1];
+            rend2.materials.CopyTo(ogMats2, 0);
+            OriginalRend2.materials = gameObject.AddComponent<Renderer>().materials;
+        }*/
+
         if (hingeAngle1 != null && hingeAngle2 != null)
         {
             isDoubleDoor = true;
@@ -93,7 +110,7 @@ public class Door : MonoBehaviour, IInteractable
             }
             if (navMeshLink != null)
             {
-            navMeshLink.activated = isOpen; // Set the NavMeshLink's activated state based on the door's state
+                navMeshLink.activated = isOpen; // Set the NavMeshLink's activated state based on the door's state
             }
         }
     }
@@ -131,6 +148,31 @@ public class Door : MonoBehaviour, IInteractable
         }
         moving = true;
     }
-    
+    public void MakeGlow(Material glowMat)
+    {
+       /* if (isGlowing) return;
+        Material[] newMats = new Material[rend1.materials.Length + 1];
+        rend1.materials.CopyTo(newMats, 0);
+        newMats[newMats.Length - 1] = glowMat;
+        rend1.materials = newMats;
+        if (isDoubleDoor)
+        {
+            Material[] newMats2 = new Material[rend2.materials.Length + 1];
+            rend2.materials.CopyTo(newMats2, 0);
+            newMats2[newMats2.Length - 1] = glowMat;
+            rend2.materials = newMats2;
+        }
+        isGlowing = true;*/
+    }
+    public void StopGlow()
+    {
+       /* if (!isGlowing) return;
+        rend1.materials = OriginalRend1.materials;
+        if (isDoubleDoor)
+        {
+            rend2.materials = OriginalRend2.materials;
+        }
+        isGlowing = false;*/
+    }
     
 }

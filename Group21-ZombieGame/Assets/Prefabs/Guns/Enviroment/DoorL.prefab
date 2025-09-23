@@ -104,6 +104,8 @@ MonoBehaviour:
   hingeAngle1: {fileID: 1126067637559164692}
   hingeAngle2: {fileID: 0}
   navMeshLink: {fileID: 0}
+  rend1: {fileID: 6148683482502335585}
+  rend2: {fileID: 0}
 --- !u!114 &8006481074170357256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,3 +224,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25, y: 3.5, z: 1.7}
   m_Center: {x: 0, y: 2, z: -1.9}
+--- !u!23 &6148683482502335585 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1806680513116206669, guid: 52ca25be45625c249bbd47e2ceadc22d, type: 3}
+  m_PrefabInstance: {fileID: 3727259384716953042}
+  m_PrefabAsset: {fileID: 0}

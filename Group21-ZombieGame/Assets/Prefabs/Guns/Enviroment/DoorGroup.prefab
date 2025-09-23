@@ -137,6 +137,8 @@ MonoBehaviour:
   hingeAngle1: {fileID: 6512559828882499356}
   hingeAngle2: {fileID: 2456002818339227135}
   navMeshLink: {fileID: 6043043806400000872}
+  rend1: {fileID: 5098476581430196047}
+  rend2: {fileID: 5772535099457080926}
 --- !u!114 &6043043806400000872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +257,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25, y: 3.5, z: 1.7}
   m_Center: {x: 0, y: 2, z: -1.9}
+--- !u!23 &5098476581430196047 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1806680513116206669, guid: 52ca25be45625c249bbd47e2ceadc22d, type: 3}
+  m_PrefabInstance: {fileID: 2318242018681028348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8006390246903928977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -321,6 +328,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5542019441999805260}
   m_SourcePrefab: {fileID: 100100000, guid: 608f998db8b8bb54f8c1271df4bb3877, type: 3}
+--- !u!23 &5772535099457080926 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 608f998db8b8bb54f8c1271df4bb3877, type: 3}
+  m_PrefabInstance: {fileID: 8006390246903928977}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7195908137764873664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 608f998db8b8bb54f8c1271df4bb3877, type: 3}

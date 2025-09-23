@@ -81,7 +81,7 @@ public class ZombieScript : MonoBehaviour, IDamageable
             TargetDetected = false;
         }
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, GameObject.FindFirstObjectByType<PlayerController>().transform.position - transform.position, out hit, 2f))
+        if (Physics.Raycast(transform.position, GameObject.FindFirstObjectByType<PlayerController>().transform.position - transform.position, out hit, 2f)&&TargetInSpottingRange)
         {
             if (hit.collider.gameObject.GetComponent<PlayerController>() != null && canAttack)
             {

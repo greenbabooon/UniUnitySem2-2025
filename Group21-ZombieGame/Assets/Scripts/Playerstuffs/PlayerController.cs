@@ -10,13 +10,15 @@ public interface IInteractable
 {
     void Interact();
     string InteractionPrompt();
+    //void MakeGlow(Material glowMaterial);
+    //void StopGlow();
+
 }
 public class PlayerController : MonoBehaviour, IDamageable
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float gravity = -9.81f;
-
     [Header("Look Settings")]
     public Transform cameraTransform;
     public float lookSensitivity = 2f;
@@ -57,10 +59,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     public HealthScript healthScript;
     bool damageAlert = false;
     public TextMeshProUGUI HealthText;
+    //Material highlightMat;
 
 
     //inputs handling below
-
+    void Awake()
+    {
+       // highlightMat = Resources.Load<Material>("Mats/Glow");
+    }
     private void OnEnable()
     {
         controller = GetComponent<CharacterController>();
@@ -303,6 +309,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             interacting = false;
         }
     }
+    private IInteractable LastInteractable;
     void HandleInteraction()
     {
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
@@ -312,7 +319,16 @@ public class PlayerController : MonoBehaviour, IDamageable
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-
+                if (LastInteractable != interactable)
+                {
+                    if (LastInteractable != null)
+                    {
+                       // LastInteractable.StopGlow();
+                    }
+                   // interactable.MakeGlow(highlightMat);
+                    print("Made glow");
+                    LastInteractable = interactable;
+                }
                 interactText.text = interactable.InteractionPrompt();
                 interactText.enabled = true;
                 if (interacting)
@@ -323,12 +339,25 @@ public class PlayerController : MonoBehaviour, IDamageable
             }
             else
             {
+                if (LastInteractable != null)
+                {
+                   // LastInteractable.StopGlow();
+                    LastInteractable = null;
+                }
                 interactText.enabled = false;
             }
         }
         else
         {
+            
+
+            if (LastInteractable != null)
+            {
+               // LastInteractable.StopGlow();
+                LastInteractable = null;
+            }
             interactText.enabled = false;
+            
         }
     }
     public void PauseGame()

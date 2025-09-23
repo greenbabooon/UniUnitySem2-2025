@@ -173,6 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd24bd21430136438f3b20f6d767c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rend: {fileID: 8852765996407698534}
+  OriginalRend: {fileID: 0}
   weapon: {fileID: 11400000, guid: 27a35ae996691ef499c7dcd99c144dd3, type: 2}
 --- !u!54 &2998837440517555972
 Rigidbody:
@@ -222,3 +224,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6825583, y: 0.33179975, z: 0.12}
   m_Center: {x: -0.15872085, y: -0.08090782, z: 0}
+--- !u!23 &8852765996407698534 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -678588488315902003, guid: a0e2b505afcb8da458cf114e8baf0d00, type: 3}
+  m_PrefabInstance: {fileID: 886783170841367467}
+  m_PrefabAsset: {fileID: 0}
