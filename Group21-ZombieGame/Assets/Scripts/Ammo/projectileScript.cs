@@ -8,7 +8,7 @@ public class projectileScript : MonoBehaviour
     bool hasDealtDamage = false;
     void Awake()
     {
-
+        
     }
     private void OnEnable()
     {

@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
     public void OnReload(InputAction.CallbackContext context)
     {
-        if (isPaused) return;
+        if (isPaused||equippedWeapon == null) return;
         equippedWeapon.weaponType.Reload();
     }
     private void CancelReload()

@@ -15,6 +15,7 @@ public class RangedProjectile : WeaponType, IAttackable
         objPooler = gameObject.AddComponent<ObjPool>();
         objPooler.SetPooled(weapon.projectilePrefab, weapon.magazineCapacity);
 
+
     }
     void OnEnable()
     {
@@ -66,6 +67,10 @@ public class RangedProjectile : WeaponType, IAttackable
             foreach (projectileScript proj in GameObject.FindObjectsByType<projectileScript>(FindObjectsSortMode.None))
             {
                 Physics.IgnoreCollision(curProj.GetComponent<Collider>(), proj.GetComponent<Collider>());
+            }
+            if (playerOwned)
+            {
+                Physics.IgnoreCollision(curProj.GetComponent<Collider>(), player.GetComponent<Collider>());
             }
             curProj.transform.position = firePoint.transform.position + firePoint.transform.forward * 0.5f;
             curProj.transform.rotation = firePoint.transform.rotation;
