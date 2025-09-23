@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
     public void OnReload(InputAction.CallbackContext context)
     {
-        if (isPaused) return;
+        if (isPaused||equippedWeapon == null) return;
         equippedWeapon.weaponType.Reload();
     }
     private void CancelReload()
@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             }
             int index = Mathf.Clamp((int)context.ReadValue<float>() + currentIndex, 0, inv.weapons.Count - 1);
             currentIndex = index;
-            if (index >= 0 && index < inv.weapons.Count)
+            if (index >= 0 && index < inv.weapons.Count&& inv.weapons.Count > 0)
             {
                 Weapon selectedWeapon = inv.GetItem(index);
                 GameObject selectedWeaponObj = inv.GetWeaponObject(index);
@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             }
             else
             {
-                Debug.LogError("Invalid weapon index: " + index);
+                Debug.Log("Invalid weapon index: " + index);
             }
         }
     }

@@ -35,7 +35,7 @@ public class WeaponType : MonoBehaviour, IAttackable
     public void SetPlayerOwned(bool val)
     {
         playerOwned = val;
-        if (playerOwned)
+        if (val)
         {
             player = FindFirstObjectByType<PlayerController>().gameObject;
         }

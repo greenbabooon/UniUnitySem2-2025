@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7601215506118043524}
   - component: {fileID: 355961372004180781}
   - component: {fileID: 5974654601037682218}
+  - component: {fileID: 8006481074170357256}
   m_Layer: 0
   m_Name: DoorL
   m_TagString: Untagged
@@ -102,6 +103,32 @@ MonoBehaviour:
   isOpen: 0
   hingeAngle1: {fileID: 1126067637559164692}
   hingeAngle2: {fileID: 0}
+  navMeshLink: {fileID: 0}
+--- !u!114 &8006481074170357256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121387598645328418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 1
+  m_AgentTypeID: 0
+  m_StartPoint: {x: 0, y: 0, z: -3.14}
+  m_EndPoint: {x: 0, y: 0, z: -1.1}
+  m_StartTransform: {fileID: 0}
+  m_EndTransform: {fileID: 0}
+  m_Activated: 1
+  m_Width: 0.80459785
+  m_CostModifier: 1
+  m_IsOverridingCost: 0
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
 --- !u!1001 &3727259384716953042
 PrefabInstance:
   m_ObjectHideFlags: 0

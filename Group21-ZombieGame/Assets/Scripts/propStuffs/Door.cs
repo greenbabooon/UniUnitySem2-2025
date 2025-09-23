@@ -1,5 +1,7 @@
+using Unity.AI.Navigation;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Door : MonoBehaviour, IInteractable
 {
@@ -16,11 +18,11 @@ public class Door : MonoBehaviour, IInteractable
     float targetAngle1;
     float targetAngle2;
     float startingAngle;
-    public Material highlightMat;
-    Material defaultMat;
+    public NavMeshLink navMeshLink;
+    //public Material highlightMat;
+    //Material defaultMat;
     void Awake()
     {
-        defaultMat = GetComponent<Renderer>().material;
         if (hingeAngle1 != null && hingeAngle2 != null)
         {
             isDoubleDoor = true;
@@ -88,6 +90,10 @@ public class Door : MonoBehaviour, IInteractable
             if (Mathf.Approximately(currentAngle1, targetAngle1) && (!isDoubleDoor || Mathf.Approximately(currentAngle2, targetAngle2)))
             {
                 moving = false;
+            }
+            if (navMeshLink != null)
+            {
+            navMeshLink.activated = isOpen; // Set the NavMeshLink's activated state based on the door's state
             }
         }
     }
