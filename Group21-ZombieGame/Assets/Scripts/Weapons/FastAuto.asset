@@ -18,12 +18,12 @@ MonoBehaviour:
   fireRate: 0.2
   force: 10
   magazineCapacity: 30
-  currentAmmo: 7
+  currentAmmo: 12
   reloadTime: 3
   WeaponIcon: {fileID: 21300000, guid: 92ce73ebe12e5764b9f56cff9cded579, type: 3}
   isAutomatic: 1
   ammoType: 1
   projectilePrefab: {fileID: 3374121350557076204, guid: d6ecc3dee822675409028006daa2d031, type: 3}
-  weaponPrefab: {fileID: 4401797746055758562, guid: 5a00403985f6253418473b7bf30e6c30, type: 3}
+  weaponPrefab: {fileID: 40274327476006650, guid: 69249b67eb192af43a2c958c119f1edd, type: 3}
   weaponType: {fileID: 0}
   WeaponTypeIndex: 2

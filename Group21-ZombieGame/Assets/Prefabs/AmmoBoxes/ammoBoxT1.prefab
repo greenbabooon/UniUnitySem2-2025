@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 969108290816409052}
   - component: {fileID: 3384050017786640753}
   - component: {fileID: 6200693688968531086}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4109669024118274871}
   - component: {fileID: 3193595676124415075}
   - component: {fileID: 3295963670227188925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ammoTextCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 932009540357425367}
   - component: {fileID: 1019323107102715092}
   - component: {fileID: -3460157602179782228}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ammoBoxT1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
