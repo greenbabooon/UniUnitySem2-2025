@@ -7,12 +7,8 @@ public class Page : MonoBehaviour, IInteractable
     public Canvas pageCanvas;
     public Sprite pageContent;
     public string pageTitle;
-        public Material highlightMat;
-    Material defaultMat;
-
     void Awake()
     {
-        defaultMat = GetComponent<Renderer>().material;
         player = FindFirstObjectByType<PlayerController>();
     }
     public void Interact()

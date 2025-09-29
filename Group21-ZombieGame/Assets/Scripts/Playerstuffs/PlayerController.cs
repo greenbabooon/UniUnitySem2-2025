@@ -3,7 +3,6 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public interface IInteractable
@@ -11,7 +10,7 @@ public interface IInteractable
     void Interact();
     string InteractionPrompt();
 }
-public class PlayerController : MonoBehaviour, IDamageable
+public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
@@ -54,10 +53,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     public GameObject HUD;
     bool isPaused = false;
     public bool inMenu = false;
-    public HealthScript healthScript;
-    bool damageAlert = false;
-    public TextMeshProUGUI HealthText;
-
 
     //inputs handling below
 
@@ -70,7 +65,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         currentIndex = 0;
         UpdateAmmoUI();
         UpdateHotbarUI();
-        UpdateHealthUI();
+
     }
     private void Start()
     {
@@ -215,7 +210,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
     private void Equip(int index)
-    {
+    {   
         CancelInvoke("DisableEquippedText");
         // Logic to equip the weapon
         if (equippedObj != null)
@@ -247,8 +242,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (equippedWeapon != null)
         {
             equippedText.text = "Equipped: " + equippedWeapon.weaponName;
-        }
-        else
+        }else
         {
             equippedText.text = "Equipped: None";
         }
@@ -353,27 +347,5 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         HUD.SetActive(true);
     }
-    public void damage(float damageAmount)
-    {
-        healthScript.currentHealth -= damageAmount;
-        UpdateHealthUI();
-        if (!damageAlert)Invoke("damageAlertCancel", 1f);
-        damageAlert = true;
-        HealthText.color = Color.red;
-        if (healthScript.currentHealth <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-    }
-    void damageAlertCancel()
-    {
-        damageAlert = false;
-        HealthText.color = Color.black;
-    }
-    void UpdateHealthUI()
-    {
-        HealthText.text = "Health: " + healthScript.currentHealth + " / " + healthScript.maxHealth;
-  
-    }   
 
 }

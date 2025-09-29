@@ -16,11 +16,9 @@ public class Door : MonoBehaviour, IInteractable
     float targetAngle1;
     float targetAngle2;
     float startingAngle;
-    public Material highlightMat;
-    Material defaultMat;
+
     void Awake()
     {
-        defaultMat = GetComponent<Renderer>().material;
         if (hingeAngle1 != null && hingeAngle2 != null)
         {
             isDoubleDoor = true;
@@ -41,15 +39,14 @@ public class Door : MonoBehaviour, IInteractable
             if (isDoubleDoor)
             {
                 ToggleDoor(OpenAngle1, OpenAngle2, CloseAngle);
-
+                
             }
             else
             {
                 ToggleDoor(OpenAngle1, CloseAngle);
-
+                
             }
-        }
-        else
+        }else
         {
             if (isDoubleDoor)
             {
@@ -58,7 +55,7 @@ public class Door : MonoBehaviour, IInteractable
             else
             {
                 ToggleDoor(OpenAngle1, CloseAngle);
-
+                
             }
         }
     }
@@ -77,13 +74,13 @@ public class Door : MonoBehaviour, IInteractable
     {
         if (moving)
         {
-            currentAngle1 = Mathf.MoveTowards(currentAngle1, targetAngle1, Time.fixedDeltaTime * 100);
-            hingeAngle1.localEulerAngles = new Vector3(0, currentAngle1, 0);
-
+                currentAngle1 = Mathf.MoveTowards(currentAngle1, targetAngle1, Time.fixedDeltaTime * 100);
+                hingeAngle1.localEulerAngles = new Vector3(0, currentAngle1, 0);
+            
             if (isDoubleDoor)
             {
-                currentAngle2 = Mathf.MoveTowards(currentAngle2, targetAngle2, Time.fixedDeltaTime * 100);
-                hingeAngle2.localEulerAngles = new Vector3(0, currentAngle2, 0);
+                    currentAngle2 = Mathf.MoveTowards(currentAngle2, targetAngle2, Time.fixedDeltaTime * 100);
+                    hingeAngle2.localEulerAngles = new Vector3(0, currentAngle2, 0); 
             }
             if (Mathf.Approximately(currentAngle1, targetAngle1) && (!isDoubleDoor || Mathf.Approximately(currentAngle2, targetAngle2)))
             {
@@ -125,6 +122,5 @@ public class Door : MonoBehaviour, IInteractable
         }
         moving = true;
     }
-    
     
 }

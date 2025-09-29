@@ -24,6 +24,6 @@ MonoBehaviour:
   isAutomatic: 1
   ammoType: 2
   projectilePrefab: {fileID: 3374121350557076204, guid: d6ecc3dee822675409028006daa2d031, type: 3}
-  weaponPrefab: {fileID: 40274327476006650, guid: d2ecb59b96628274298e0dda025ed82f, type: 3}
+  weaponPrefab: {fileID: 4401797746055758562, guid: af8153b96479488489c530f5a695ad1d, type: 3}
   weaponType: {fileID: 0}
   WeaponTypeIndex: 2
