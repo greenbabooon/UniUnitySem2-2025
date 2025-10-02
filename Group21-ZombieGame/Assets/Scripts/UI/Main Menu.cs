@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,6 +9,16 @@ public class MainMenu : MonoBehaviour
     private bool isRotating = false;
     public GameObject[] UIElements;
     public GameObject initialButton;
+
+    public void StartGame()
+    {
+        SceneManager.LoadSceneAsync("Level-1-Prom-Hall");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
     public void RotateCameraLeftBy90Degrees()
     {
