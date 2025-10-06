@@ -2,44 +2,51 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
+    public Canvas pauseMenu;
     public bool isPaused;
+
+    private void Awake()
+    {
+        pauseMenu.enabled = false;
+    }
 
     void Start()
     {
-        pauseMenu.SetActive(false);
+        pauseMenu.enabled = false;
     }
 
-    void Update()
+    public void OnPause(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (isPaused && context.performed)
         {
-            if (isPaused)
-            {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
-            }
+            ResumeGame();
+        }
+        else if (! isPaused && context.performed)
+        {
+            PauseGame();
         }
     }
 
     public void PauseGame()
     {
-        pauseMenu.SetActive(true);
+        pauseMenu.enabled = true;
         Time.timeScale = 0f;
         isPaused = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void ResumeGame()
     {
-        pauseMenu.SetActive(false);
+        pauseMenu.enabled = false;
         Time.timeScale = 1f;
         isPaused = false;
+        Cursor.visible = false;
+        Cursor.lockState= CursorLockMode.Locked;
     }
 
     public void QuitGame()

@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 14969208}
   - component: {fileID: 14969207}
   - component: {fileID: 14969209}
+  - component: {fileID: 14969210}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -417,6 +418,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 072ba37b-5689-4ed5-9fc0-5a6e2b06b345
     m_ActionName: Player/WeaponSelect
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 14969210}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9a769630-6752-474f-af5b-4e6554330f2d
+    m_ActionName: 'Player/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -476,6 +493,20 @@ MonoBehaviour:
   - {fileID: 4401797746055758562, guid: 5a00403985f6253418473b7bf30e6c30, type: 3}
   - {fileID: 4401797746055758562, guid: af8153b96479488489c530f5a695ad1d, type: 3}
   - {fileID: 4401797746055758562, guid: d34e6474c8796a54ab85effc4fbaee59, type: 3}
+--- !u!114 &14969210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14969200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3630f8654487aad45a29ba32d7300e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 669984978}
+  isPaused: 0
 --- !u!1 &47663333
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,7 +2996,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 351945132}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 14969210}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &351945132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3439,6 +3482,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 14969204}
+  - {fileID: 669984979}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &597364209 stripped
@@ -3683,7 +3727,7 @@ GameObject:
   - component: {fileID: 669984976}
   - component: {fileID: 669984975}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Pause Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3701,7 +3745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3630f8654487aad45a29ba32d7300e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 1020815403}
+  pauseMenu: {fileID: 669984978}
   isPaused: 0
 --- !u!114 &669984976
 MonoBehaviour:
@@ -3779,7 +3823,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1020815404}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 577312664}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8457,4 +8501,3 @@ SceneRoots:
   - {fileID: 577312664}
   - {fileID: 1053974005}
   - {fileID: 1355683852}
-  - {fileID: 669984979}
