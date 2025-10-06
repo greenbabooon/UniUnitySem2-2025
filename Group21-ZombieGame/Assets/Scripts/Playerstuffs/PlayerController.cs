@@ -59,13 +59,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     public HealthScript healthScript;
     bool damageAlert = false;
     public TextMeshProUGUI HealthText;
+    bool canChangeWeapon = true;
     //Material highlightMat;
 
 
     //inputs handling below
     void Awake()
     {
-       // highlightMat = Resources.Load<Material>("Mats/Glow");
+        // highlightMat = Resources.Load<Material>("Mats/Glow");
     }
     private void OnEnable()
     {
@@ -148,7 +149,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
     public void OnReload(InputAction.CallbackContext context)
     {
-        if (isPaused||equippedWeapon == null) return;
+        if (isPaused || equippedWeapon == null) return;
         equippedWeapon.weaponType.Reload();
     }
     private void CancelReload()
@@ -205,7 +206,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             }
             int index = Mathf.Clamp((int)context.ReadValue<float>() + currentIndex, 0, inv.weapons.Count - 1);
             currentIndex = index;
-            if (index >= 0 && index < inv.weapons.Count&& inv.weapons.Count > 0)
+            if (index >= 0 && index < inv.weapons.Count && inv.weapons.Count > 0)
             {
                 Weapon selectedWeapon = inv.GetItem(index);
                 GameObject selectedWeaponObj = inv.GetWeaponObject(index);
@@ -323,9 +324,9 @@ public class PlayerController : MonoBehaviour, IDamageable
                 {
                     if (LastInteractable != null)
                     {
-                       // LastInteractable.StopGlow();
+                        // LastInteractable.StopGlow();
                     }
-                   // interactable.MakeGlow(highlightMat);
+                    // interactable.MakeGlow(highlightMat);
                     print("Made glow");
                     LastInteractable = interactable;
                 }
@@ -341,7 +342,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             {
                 if (LastInteractable != null)
                 {
-                   // LastInteractable.StopGlow();
+                    // LastInteractable.StopGlow();
                     LastInteractable = null;
                 }
                 interactText.enabled = false;
@@ -349,15 +350,15 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         else
         {
-            
+
 
             if (LastInteractable != null)
             {
-               // LastInteractable.StopGlow();
+                // LastInteractable.StopGlow();
                 LastInteractable = null;
             }
             interactText.enabled = false;
-            
+
         }
     }
     public void PauseGame()
@@ -386,7 +387,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         healthScript.currentHealth -= damageAmount;
         UpdateHealthUI();
-        if (!damageAlert)Invoke("damageAlertCancel", 1f);
+        if (!damageAlert) Invoke("damageAlertCancel", 1f);
         damageAlert = true;
         HealthText.color = Color.red;
         if (healthScript.currentHealth <= 0)
@@ -402,7 +403,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     void UpdateHealthUI()
     {
         HealthText.text = "Health: " + healthScript.currentHealth + " / " + healthScript.maxHealth;
-  
+
     }   
+    public void setCanChangeWeapon(bool b)
+    {
+        canChangeWeapon = b;
+    }
 
 }
