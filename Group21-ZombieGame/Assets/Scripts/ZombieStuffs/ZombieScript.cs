@@ -18,6 +18,7 @@ public class ZombieScript : MonoBehaviour, IDamageable
     public float attackRange = 2f;
     public float spottingRange = 10f;
     bool canAttack = true;
+    int delayedUpdate = 0;
 
     public void damage(float damageAmount)
     {
@@ -60,8 +61,9 @@ public class ZombieScript : MonoBehaviour, IDamageable
         canvasRotation = healthCanvas.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
     }
-    void Update()
+    void FixedUpdate()
     {
+        delayedUpdate++;
         if (healthCanvas.enabled == true)
         {
             canvasRotation.LookAt(Camera.main.transform.position);
@@ -69,7 +71,12 @@ public class ZombieScript : MonoBehaviour, IDamageable
         }
         if (TargetInSpottingRange)
         {
+            if (delayedUpdate>15)
+            {
             agent.SetDestination(GameObject.FindFirstObjectByType<PlayerController>().transform.position);
+            delayedUpdate = 0;
+            }
+            
         }
         if (Vector3.Distance(transform.position, GameObject.FindFirstObjectByType<PlayerController>().transform.position) < spottingRange)
         {
