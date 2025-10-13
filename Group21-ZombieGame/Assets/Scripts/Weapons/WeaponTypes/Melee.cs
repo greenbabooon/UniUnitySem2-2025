@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class Melee : WeaponType, IAttackable
 {
-    TypeOfWeapon weaponType = TypeOfWeapon.melee;
+    float cooldownTimer = 0f;
+    float cooldownDuration = 1f;
+    Transform weapontip;
+    float meleeRange = 2f;
+    float meleeCharge;
+    float maxMeleeCharge = 2f;
+    float MinSwingTime = 0.5f;
+    bool isCharging = false;
 
+    TypeOfWeapon weaponType = TypeOfWeapon.melee;
     public override void AttackPressed()
     {
-        print("melee attack pressed");
+        StartMeleeCharge();
     }
 
     public override void AttackReleased()
@@ -16,6 +24,35 @@ public class Melee : WeaponType, IAttackable
 
     public override void Reload()
     {
-        print("melee reload pressed");
+        CancelMeleeAttack();
     }
+    void StartMeleeCharge()
+    {
+        isCharging = true;
+        if (player != null)
+        {
+            player.GetComponent<PlayerController>().setCanChangeWeapon(false);
+        }
+    }
+    void FixedUpdate()
+    {
+        if (isCharging)
+        {
+            meleeCharge += 0.02f;
+            if (meleeCharge >= maxMeleeCharge)
+            {
+                meleeCharge = maxMeleeCharge;
+            }
+        }
+    }
+    void CancelMeleeAttack()
+    {
+        isCharging = false;
+        meleeCharge = 0f;
+        if (player != null)
+        {
+            player.GetComponent<PlayerController>().setCanChangeWeapon(true);
+        }
+    }
+    
 }
