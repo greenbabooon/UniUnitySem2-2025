@@ -404,5 +404,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         HealthText.text = "Health: " + healthScript.currentHealth + " / " + healthScript.maxHealth;
   
     }   
-
+      public void OnPause(InputAction.CallbackContext context)
+    {
+        if(context.performed)GameManager.gameManager.Pause();
+    }
 }

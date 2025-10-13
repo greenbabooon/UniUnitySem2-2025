@@ -6,11 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
-    public Canvas pauseMenu;
+    private Canvas pauseMenu;
     public bool isPaused;
 
     private void Awake()
     {
+        pauseMenu =gameObject.GetComponentInParent<Canvas>();
         pauseMenu.enabled = false;
     }
 
@@ -19,23 +20,15 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.enabled = false;
     }
 
-    public void OnPause(InputAction.CallbackContext context)
-    {
-        if (isPaused && context.performed)
-        {
-            ResumeGame();
-        }
-        else if (! isPaused && context.performed)
-        {
-            PauseGame();
-        }
-    }
-
     public void PauseGame()
     {
         pauseMenu.enabled = true;
         Time.timeScale = 0f;
         isPaused = true;
+        if(GameManager.gameManager != null && GameManager.gameManager.isMainMenu)
+        {
+            return;
+        }
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -45,6 +38,10 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.enabled = false;
         Time.timeScale = 1f;
         isPaused = false;
+        if(GameManager.gameManager != null && GameManager.gameManager.isMainMenu)
+        {
+            return;
+        }
         Cursor.visible = false;
         Cursor.lockState= CursorLockMode.Locked;
     }

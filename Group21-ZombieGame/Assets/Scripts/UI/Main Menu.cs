@@ -19,16 +19,16 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
+/*
     public void RotateCameraLeftBy90Degrees()
     {
         if (!isRotating)
         {
             StartCoroutine(RotateCameraCoroutine(90f));
         }
-    }
+    }*/
 
-    private IEnumerator RotateCameraCoroutine(float angle)
+   /* private IEnumerator RotateCameraCoroutine(float angle)
     {
         isRotating = true;
 
@@ -50,5 +50,5 @@ public class MainMenu : MonoBehaviour
         {
             uiElement.SetActive(true);
         }
-    }
+    }*/
 }
