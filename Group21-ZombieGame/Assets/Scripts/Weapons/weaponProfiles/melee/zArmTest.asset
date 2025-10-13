@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 563dcfc0d7c407640a7a1f97a15bdef1, type: 3}
-  m_Name: New Weapon
+  m_Name: zArmTest
   m_EditorClassIdentifier: 
-  weaponName: hands
+  weaponName: zombieArm
   damage: 10
   isRanged: 0
   fireRate: 1
@@ -24,6 +24,6 @@ MonoBehaviour:
   isAutomatic: 0
   ammoType: 0
   projectilePrefab: {fileID: 0}
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 1895467252428606793, guid: 8143333a46443ce40955c9044c4a95ed, type: 3}
   weaponType: {fileID: 0}
   WeaponTypeIndex: 0
