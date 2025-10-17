@@ -58,11 +58,11 @@ public class Melee : WeaponType, IAttackable
             }
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("swing") && SwingTime > 0.5)//add improved stateMachine function look at yt saved
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("swing") && SwingTime > 0.5&&!isCharging)//add improved stateMachine function look at yt saved
         {
 
-            Physics.Raycast(weapontip.position, weapontip.forward, out RaycastHit hit, meleeRange);
-            Debug.DrawRay(weapontip.position, weapontip.forward * meleeRange, Color.red, meleeRange);
+            Physics.Raycast(player.transform.position, weapontip.position, out RaycastHit hit, meleeRange);
+            Debug.DrawRay(player.transform.position, weapontip.position * meleeRange, Color.red, meleeRange);
             if (hit.collider != null)
             {
 
@@ -76,10 +76,12 @@ public class Melee : WeaponType, IAttackable
 
             }
             SwingTime += 0.02f;
+            print("swing time" + SwingTime);
         }
         else
             isSwinging = false;
         animator.SetTrigger("idle");
+        SwingTime = 0;
         if (onCooldown)
         {
             cooldownTimer += 0.02f;
