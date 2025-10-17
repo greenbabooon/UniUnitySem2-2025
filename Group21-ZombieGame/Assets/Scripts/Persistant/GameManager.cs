@@ -70,7 +70,6 @@ public class GameManager : MonoBehaviour
     {
         if (optionsMenu.GetComponent<OptionsMenu>() != null)
         {
-            isPaused = true;
             optionsMenu.GetComponent<OptionsMenu>().OpenOptions();
             Debug.Log("Open Options");
         }
@@ -80,7 +79,6 @@ public class GameManager : MonoBehaviour
     {
         if (optionsMenu.GetComponent<OptionsMenu>() != null)
         {
-            isPaused = false;
             optionsMenu.GetComponent<OptionsMenu>().CloseOptions();
             Debug.Log("close test");
         }
