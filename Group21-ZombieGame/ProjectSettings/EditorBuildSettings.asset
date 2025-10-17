@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 5858da6891903a142b36bc51a2bf592f
+  - enabled: 1
     path: Assets/Scenes/Level-1-Prom-Hall.unity
     guid: fd20a01f6acf9aa43a232612eb3f006a
   - enabled: 1

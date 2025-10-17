@@ -410,4 +410,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         canChangeWeapon = b;
     }
 
+      public void OnPause(InputAction.CallbackContext context)
+    {
+        if(context.performed)GameManager.gameManager.Pause();
+    }
 }

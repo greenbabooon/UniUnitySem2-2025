@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 14969208}
   - component: {fileID: 14969207}
   - component: {fileID: 14969209}
+  - component: {fileID: 14969210}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -227,7 +228,7 @@ Transform:
   m_GameObject: {fileID: 14969200}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5504676, y: -1.26, z: 0.79657334}
+  m_LocalPosition: {x: 0.5504676, y: -1.78, z: 0.79657334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -417,6 +418,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 072ba37b-5689-4ed5-9fc0-5a6e2b06b345
     m_ActionName: Player/WeaponSelect
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 14969208}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9a769630-6752-474f-af5b-4e6554330f2d
+    m_ActionName: 'Player/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -455,6 +472,8 @@ MonoBehaviour:
   slotEmpty: {fileID: 21300000, guid: 4f24c5140d4777c45a34e70ae508a5a4, type: 3}
   HUD: {fileID: 0}
   inMenu: 0
+  healthScript: {fileID: 0}
+  HealthText: {fileID: 0}
 --- !u!114 &14969209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +493,19 @@ MonoBehaviour:
   - {fileID: 4401797746055758562, guid: 5a00403985f6253418473b7bf30e6c30, type: 3}
   - {fileID: 4401797746055758562, guid: af8153b96479488489c530f5a695ad1d, type: 3}
   - {fileID: 4401797746055758562, guid: d34e6474c8796a54ab85effc4fbaee59, type: 3}
+--- !u!114 &14969210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14969200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3630f8654487aad45a29ba32d7300e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPaused: 0
 --- !u!1 &47663333
 GameObject:
   m_ObjectHideFlags: 0
@@ -6217,6 +6249,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bd0fda586f77fb4f93c61a9f6f294fd, type: 3}
+--- !u!1001 &1815011823
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46.28054
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.696309
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.652096
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5315996319558157674, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc0ac8661f52e914daa846b794732726, type: 3}
 --- !u!1001 &1860464706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7231,6 +7320,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1815011823}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 47663336}
