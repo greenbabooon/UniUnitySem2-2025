@@ -1465,7 +1465,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1696600717}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenPauseMenu
+        m_MethodName: OpenOptionsMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1521,9 +1521,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4022352361885917356, guid: bc0ac8661f52e914daa846b794732726, type: 3}
-      propertyPath: isPaused
-      value: 0
+    - target: {fileID: 1097353293263202503, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: back
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892206800435769256, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892206800435769256, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 79
       objectReference: {fileID: 0}
     - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1568,6 +1576,50 @@ PrefabInstance:
     - target: {fileID: 5315996319558157674, guid: bc0ac8661f52e914daa846b794732726, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601189967251076434, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601189967251076434, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601189967251076434, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3937290446616180388, guid: 763f0f40de3b2284c9e33b7fe3a88260, type: 3}
+    - target: {fileID: 5601189967251076434, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3937290446616180388, guid: 763f0f40de3b2284c9e33b7fe3a88260, type: 3}
+    - target: {fileID: 5601189967251076434, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601189967251076434, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseOptions
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601189967251076434, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CloseOptions
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601189967251076434, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601189967251076434, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: OptionsMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601189967251076434, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400111828409524107, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
