@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance { get; private set; }
-
-
     [Header("Audio Source")] //what is used to play the audio
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
@@ -13,20 +10,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip background;
     public AudioClip death;
     public AudioClip pickup;
-
-    // for now I have assigned audio using game objects in Unity, but in the future we should try and assign sounds with scripts and the audio manager
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
 
     private void Start() //plays the 'background' clip on start
     {
