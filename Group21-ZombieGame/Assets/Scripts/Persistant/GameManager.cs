@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int maxLevels = 3;
     public Dictionary<int, GameObject> Pages = new Dictionary<int, GameObject>();
     public GameObject pauseMenu;
+    public GameObject optionsMenu;
     public GameObject player;
     public bool isPaused = false;
     public GameObject menuMusic;
@@ -71,6 +72,25 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.LogError("PauseMenu component not found on pauseMenu GameObject.");
+        }
+    }
+
+
+        public void OpenOptionsMenu()
+    {
+        if (optionsMenu.GetComponent<OptionsMenu>() != null)
+        {
+            optionsMenu.GetComponent<OptionsMenu>().OpenOptions();
+            Debug.Log("Open Options");
+        }
+    }
+
+    public void CloseOptionsMenu()
+    {
+        if (optionsMenu.GetComponent<OptionsMenu>() != null)
+        {
+            optionsMenu.GetComponent<OptionsMenu>().CloseOptions();
+            Debug.Log("close test");
         }
     }
     public void Pause()
