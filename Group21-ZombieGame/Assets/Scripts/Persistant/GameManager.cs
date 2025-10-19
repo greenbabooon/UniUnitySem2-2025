@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(pauseMenu);
             DontDestroyOnLoad(menuMusic);
+            DontDestroyOnLoad(optionsMenu);
             DontDestroyOnLoad(player);
            
         }

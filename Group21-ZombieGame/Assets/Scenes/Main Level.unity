@@ -26107,6 +26107,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1359739370}
     m_Modifications:
+    - target: {fileID: 138905851246090911, guid: 1e6005768a82902489fc1466987da3b5, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1271795197476397552, guid: 1e6005768a82902489fc1466987da3b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5781994
@@ -26150,6 +26154,10 @@ PrefabInstance:
     - target: {fileID: 1940350307293772618, guid: 1e6005768a82902489fc1466987da3b5, type: 3}
       propertyPath: m_Name
       value: Oildrum (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940350307293772618, guid: 1e6005768a82902489fc1466987da3b5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
