@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -11,31 +12,41 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject player;
     public bool isPaused = false;
-    public AudioClip menuMusic;
+    public GameObject menuMusic;
     public bool isMainMenu = false;
     
 
 
     void Awake()
-    {
+    {     
+        if (SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            isMainMenu = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            player.SetActive(false);
+        }
+        else
+        {
+            isMainMenu = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            player.SetActive(true);
+        }
         if (gameManager == null)
         {
             gameManager = this;
             DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(pauseMenu);
+            DontDestroyOnLoad(menuMusic);
+            DontDestroyOnLoad(player);
+           
         }
         else if (gameManager != this)
         {
             Destroy(gameObject);
         }
-        if (SceneManager.GetActiveScene().name == "Main Menu")
-        {
-            isMainMenu = true;
-        }
-        else
-        {
-            isMainMenu = false;
-        }
+
     }
     public void OpenPauseMenu()
     {
