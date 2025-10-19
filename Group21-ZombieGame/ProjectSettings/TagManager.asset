@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 3
   tags:
   - bullet
-  - Audio
   layers:
   - Default
   - TransparentFX
