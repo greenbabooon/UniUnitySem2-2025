@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class nextleveldoor : MonoBehaviour, IInteractable
 {
-
     //public Renderer rend1;
     // public Renderer rend2;
     // Renderer OriginalRend1=new Renderer();
@@ -27,7 +26,8 @@ public class nextleveldoor : MonoBehaviour, IInteractable
      }
     public void Interact()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        print("LoadNxtLvl");
+        GameManager.gameManager.NextLevel();
     }
     public string InteractionPrompt()
     {

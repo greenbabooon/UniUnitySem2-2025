@@ -13,31 +13,28 @@ public class GameManager : MonoBehaviour
     public Dictionary<int, GameObject> Pages = new Dictionary<int, GameObject>();
     public GameObject pauseMenu;
     public GameObject optionsMenu;
-    public GameObject player;
+    public PlayerPersistentData playerData;
     public bool isPaused = false;
     public GameObject menuMusic;
     public bool isMainMenu = false;
-    bool hasSpawned = false;
+    public bool isReload=false;
+   
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        hasSpawned = false;
+        
         if (SceneManager.GetActiveScene().name == "Main Menu")
         {
             isMainMenu = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            player.SetActive(false);
+           
         }
         else
         {
-            
-            player.transform.position = GameObject.Find("spawnPoint").transform.position+Vector3.up*2;
             isMainMenu = false;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            player.SetActive(true);
-            player.GetComponentInChildren<Inventory>().InitializeInv();
         }    
     }
     void Awake()
@@ -48,15 +45,12 @@ public class GameManager : MonoBehaviour
             isMainMenu = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            player.SetActive(false);
         }
         else
         {
             isMainMenu = false;
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            player.SetActive(true);
-            
+            Cursor.lockState = CursorLockMode.Locked;           
         }
         if (gameManager == null)
         {
@@ -129,12 +123,38 @@ public class GameManager : MonoBehaviour
     }
     public void MainMenu()
     {
-        GameManager.gameManager.player.transform.position = GameObject.Find("spawnPoint").transform.position+Vector3.up*2;
         SceneManager.LoadScene("Main Menu");
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("Level-1-Prom-Hall");
+        print("trying to load scene index:" + playerData.lastLevel);
+        SceneManager.LoadScene(playerData.lastLevel);
+    }
+    public void NextLevel()
+    {
+        print("test");
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName==playerData.lastLevel)
+        {
+            SceneManager.LoadScene(currentIndex+1);
+        }
+        else
+        {
+            SavePlayerData();
+          SceneManager.LoadScene(currentIndex+1);  
+        }
+        
+    }
+    public void LoadPlayerdata()
+    {
+        Inventory temp = GameObject.FindFirstObjectByType<PlayerController>().GetComponent<Inventory>();
+        temp = playerData.inv;
+    }
+    public void SavePlayerData()
+    {
+        Inventory temp = GameObject.FindFirstObjectByType<PlayerController>().GetComponent<Inventory>();
+        playerData.inv = temp;   
     }
 
 }

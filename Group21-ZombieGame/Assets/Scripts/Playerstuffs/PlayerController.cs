@@ -62,7 +62,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     public TextMeshProUGUI HealthText;
     playerAnimController anim;
     bool canChangeWeapon = true;
-    public LayerMask interactMask= 7;
+    public LayerMask interactMask = 7;
+    
     //Material highlightMat;
 
 
@@ -70,7 +71,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     void Awake()
     {
         // highlightMat = Resources.Load<Material>("Mats/Glow");
-       anim= GetComponentInChildren<playerAnimController>();
+        anim = GetComponentInChildren<playerAnimController>();
+        
+        
     }
     private void OnEnable()
     {
@@ -79,6 +82,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         currentIndex = 0;
+        GameManager.gameManager.LoadPlayerdata();
         UpdateAmmoUI();
         UpdateHotbarUI();
         UpdateHealthUI();
@@ -93,7 +97,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         HandleMovement();
         HandleLook();
         HandleInteraction();
-
     }
     public void OnMove(InputAction.CallbackContext context)
     {
