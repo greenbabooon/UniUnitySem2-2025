@@ -9,9 +9,12 @@ public class playerAnimController : MonoBehaviour
     bool anyEquiped = false;
     bool isCharged = false;
     bool isMoving = true;
+    AudioClip[] clips;
+    AudioSource source;
     void Awake()
     {
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
     }
     public void setWalkSpeed(float speed)
     {

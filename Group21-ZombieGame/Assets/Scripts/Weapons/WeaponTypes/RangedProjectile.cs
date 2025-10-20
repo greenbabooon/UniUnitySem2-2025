@@ -12,7 +12,7 @@ public class RangedProjectile : WeaponType, IAttackable
 
     void Awake()
     {
-        Initialize();
+        
     }
     public override void Initialize()
     {

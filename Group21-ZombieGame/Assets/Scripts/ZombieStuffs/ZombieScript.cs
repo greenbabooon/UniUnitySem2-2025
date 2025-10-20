@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,13 +20,14 @@ public class ZombieScript : MonoBehaviour, IDamageable
     public float spottingRange = 10f;
     bool canAttack = true;
     int delayedUpdate = 0;
+    Animator anim;
 
     public void damage(float damageAmount)
     {
         health.currentHealth -= damageAmount;
         dmgUpdate();
     }
-
+    
     public void dmgUpdate()
     {
         print("Health: " + health.currentHealth + " / " + health.maxHealth);
@@ -60,11 +62,22 @@ public class ZombieScript : MonoBehaviour, IDamageable
         healthCanvas.enabled = false;
         canvasRotation = healthCanvas.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
+        if (GetComponentInChildren<Animator>() != null)
+        {
+            anim = GetComponentInChildren<Animator>();
+        }
     }
     void FixedUpdate()
-    {
+    {   
+        if (TargetDetected==false&&anim!=null)
+        {
+            anim.SetBool("isWalking", false);
+        }else if (TargetDetected)
+        {
+            anim.SetBool("isWalking", true);   
+        }
         delayedUpdate++;
-        if (healthCanvas.enabled == true)
+        if (healthCanvas.enabled == true&&anim!=null)
         {
             canvasRotation.LookAt(Camera.main.transform.position);
 

@@ -10,11 +10,10 @@ public class Melee : WeaponType, IAttackable
     float maxMeleeCharge = 2f;
     float SwingTime = 0f;
     bool isCharging = false;
-    Animator animator;
     bool isSwinging = true;
     bool onCooldown = false;
 
-    TypeOfWeapon weaponType = TypeOfWeapon.melee;
+  /*  TypeOfWeapon weaponType = TypeOfWeapon.melee;
     public override void AttackPressed()
     {
         if (onCooldown) return;
@@ -26,7 +25,7 @@ public class Melee : WeaponType, IAttackable
     {
         if (isCharging)
         {   
-            animator.SetTrigger("swing");
+           // animator.SetTrigger("swing");
             Debug.Log("Swinging with charge: " + meleeCharge);
             isSwinging = true;
             isCharging = false;
@@ -44,7 +43,7 @@ public class Melee : WeaponType, IAttackable
         {
             player.GetComponent<PlayerController>().setCanChangeWeapon(false);
             Debug.Log("Charging melee attack");
-            animator.SetTrigger("charge");
+           // animator.SetTrigger("charge");
         }
     }
     void FixedUpdate()
@@ -80,7 +79,7 @@ public class Melee : WeaponType, IAttackable
         }
         else
             isSwinging = false;
-        animator.SetTrigger("idle");
+       // animator.SetTrigger("idle");
         SwingTime = 0;
         if (onCooldown)
         {
@@ -100,12 +99,12 @@ public class Melee : WeaponType, IAttackable
         {
             player.GetComponent<PlayerController>().setCanChangeWeapon(true);
         }
-        animator.SetTrigger("idle");
+        //animator.SetTrigger("idle");
     }
     void Awake()
     {
         weapontip = GetComponentInChildren<Transform>();
-        animator = GetComponent<Animator>();
-    }
+       // animator = GetComponent<Animator>();
+    }*/
 }
 
