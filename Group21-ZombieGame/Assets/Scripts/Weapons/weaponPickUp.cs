@@ -20,7 +20,7 @@ public class weaponPickUp : MonoBehaviour, IInteractable
     {
         Inventory inv = FindFirstObjectByType<Inventory>();
         inv.addItem(weapon);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     public string InteractionPrompt()
     {

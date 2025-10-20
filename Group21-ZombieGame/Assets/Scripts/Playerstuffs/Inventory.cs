@@ -1,31 +1,50 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private int maxItems = 5;//all items other than ammo
+    public int maxItems = 5;//all items other than ammo
     private int curItems = 0;
     public int ammoType1Count = 90;
     public int ammoType2Count = 90;
     public int ammoType3Count = 90;
     public List<Weapon> weapons = new List<Weapon>();
     private Dictionary<Weapon, int> invSlots = new Dictionary<Weapon, int>();
-    List <GameObject> weaponObjs = new List<GameObject>();
+    List<GameObject> weaponObjs = new List<GameObject>();
+    
     private void Start()
     {
         InitializeInv();
     }
-    private void InitializeInv()
+    public void InitializeInv()
     {   
         invSlots.Clear();
         weaponObjs.Clear();
         for (int i = 0; i < weapons.Count; i++)
         {
-            invSlots.Add(weapons[i], i);
-            weaponObjs.Add(Instantiate(weapons[i].weaponPrefab));
-            weaponObjs[i].SetActive(false);
-            weapons[i].SetOwner(weaponObjs[i]);
+            if (weapons[i] == null) continue;
+
+            invSlots[weapons[i]] = i;
+
+            if (i >= weaponObjs.Count || weaponObjs == null)
+            {
+                if (weapons[i].weaponPrefab != null)
+                {
+                    weaponObjs.Add(Instantiate(weapons[i].weaponPrefab));
+                }
+                else
+                {
+                    weaponObjs.Add(null);
+                }
+            }
+            if (weaponObjs[i] != null)
+            {
+                weaponObjs[i].SetActive(false);
+                weapons[i].SetOwner(GetComponentInParent<PlayerController>().gameObject);
+            }
         }
+        curItems = weapons.Count;
         PlayerController player = FindFirstObjectByType<PlayerController>();
         player.UpdateHotbarUI();
 
@@ -72,26 +91,13 @@ public class Inventory : MonoBehaviour
 
     public void addItem(Weapon item)
     {
-        if (curItems < maxItems)
-        {
-            if (weapons.Contains(item))
-            {
-                print("testing duplicate prevention");
-                Weapon newWeapon = ScriptableObject.Instantiate(item);
-                int count = 1;
-                while (weapons.Exists(w=>w.name==item.name+"("+count+")"))
-                {
-                    count++;
-                }
-                newWeapon.name = item.name + " (" + count + ")";
-                weapons.Add(newWeapon);
-            }else
-            {
-                print("adding new weapon");
-                weapons.Add(item);
-            }
-            curItems++;
+        if (curItems >= maxItems){ print("exeeds inv limit"); return;}
+        if (item == null) { print("item is null"); return; }
+        weapons.Add(item);
+        GameObject weaponObj = Instantiate(item.weaponPrefab);
+        weaponObjs.Add(weaponObj);
+        item.SetOwner(weaponObj);
+        weaponObj.SetActive(false);
             InitializeInv();
-        }
     }
 }

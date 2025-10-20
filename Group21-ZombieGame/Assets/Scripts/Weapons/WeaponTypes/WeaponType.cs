@@ -41,4 +41,5 @@ public class WeaponType : MonoBehaviour, IAttackable
         }
     }
     public virtual void CancelReload() { print("cancel reload"); }
+    public virtual void Initialize(){ print("Initialized weapon"); }
 }
