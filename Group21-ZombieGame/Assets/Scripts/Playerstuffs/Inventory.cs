@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private int maxItems = 5;//all items other than ammo
+    public int maxItems = 5;//all items other than ammo
     private int curItems = 0;
     public int ammoType1Count = 90;
     public int ammoType2Count = 90;
@@ -15,7 +16,7 @@ public class Inventory : MonoBehaviour
     {
         InitializeInv();
     }
-    private void InitializeInv()
+    public void InitializeInv()
     {   
         invSlots.Clear();
         weaponObjs.Clear();
@@ -25,6 +26,10 @@ public class Inventory : MonoBehaviour
             weaponObjs.Add(Instantiate(weapons[i].weaponPrefab));
             weaponObjs[i].SetActive(false);
             weapons[i].SetOwner(weaponObjs[i]);
+            if (weapons[i].GetComponent<ObjPool>() == null&&weapons[i].WeaponTypeIndex==2)
+            {
+                weapons[i].weaponType.Initialize();
+            }
         }
         PlayerController player = FindFirstObjectByType<PlayerController>();
         player.UpdateHotbarUI();

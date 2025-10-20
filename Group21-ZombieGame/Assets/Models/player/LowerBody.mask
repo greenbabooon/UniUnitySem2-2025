@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LowerBody
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/LegTargetLK.L
+    m_Weight: 0
+  - m_Path: Armature/LegTargetLK.R
+    m_Weight: 0
+  - m_Path: Armature/Main
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1
+    m_Weight: 1
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/MiddleFinger.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/MiddleFinger.L/MiddleFingerStub_1.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/MiddleFinger.L/MiddleFingerStub_1.L/MiddleFingerStub_2.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/Pinky.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/Pinky.L/PinkyStub_1.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/Pinky.L/PinkyStub_1.L/PinkyStub_2.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/PointFinger.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/PointFinger.L/PointFingerStub_1.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/PointFinger.L/PointFingerStub_1.L/PointFingerStub_2.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/RingFinger.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/RingFinger.L/RingFingerStub_1.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/RingFinger.L/RingFingerStub_1.L/RingFinerStub_2.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/Thumb.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/Thumb.L/ThumbStub_1.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.L/UpperArm.L/Forearm.L/Hand.L/Thumb.L/ThumbStub_1.L/ThumbStub_2.L
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/MiddleFinger.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/MiddleFinger.R/MiddleFingerStub_1.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/MiddleFinger.R/MiddleFingerStub_1.R/MiddleFingerStub_2.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/Pinky.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/Pinky.R/PinkyStub_1.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/Pinky.R/PinkyStub_1.R/PinkyStub_2.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/PointFinger.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/PointFinger.R/PointFingerStub_1.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/PointFinger.R/PointFingerStub_1.R/PointFingerStub_2.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/RingFinger.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/RingFinger.R/RingFingerStub_1.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/RingFinger.R/RingFingerStub_1.R/RingFinerStub_2.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/Thumb.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/Thumb.R/ThumbStub_1.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Clav.R/UpperArm.R/Forearm.R/Hand.R/Thumb.R/ThumbStub_1.R/ThumbStub_2.R
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Neck
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/Spin_1/Spin_2/Neck/Head
+    m_Weight: 0
+  - m_Path: Armature/Main/Hip/UpperLeg.L
+    m_Weight: 1
+  - m_Path: Armature/Main/Hip/UpperLeg.L/LowerLeg.L
+    m_Weight: 1
+  - m_Path: Armature/Main/Hip/UpperLeg.L/LowerLeg.L/Foot.L
+    m_Weight: 1
+  - m_Path: Armature/Main/Hip/UpperLeg.L/LowerLeg.L/Foot.L/Toe.L
+    m_Weight: 1
+  - m_Path: Armature/Main/Hip/UpperLeg.R
+    m_Weight: 1
+  - m_Path: Armature/Main/Hip/UpperLeg.R/LowerLeg.R
+    m_Weight: 1
+  - m_Path: Armature/Main/Hip/UpperLeg.R/LowerLeg.R/Foot.R
+    m_Weight: 1
+  - m_Path: Armature/Main/Hip/UpperLeg.R/LowerLeg.R/Foot.R/Toe.R
+    m_Weight: 1
+  - m_Path: LowPoly
+    m_Weight: 0

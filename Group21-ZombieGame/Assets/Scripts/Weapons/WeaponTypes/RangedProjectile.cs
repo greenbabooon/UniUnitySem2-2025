@@ -12,10 +12,12 @@ public class RangedProjectile : WeaponType, IAttackable
 
     void Awake()
     {
-        objPooler = gameObject.AddComponent<ObjPool>();
-        objPooler.SetPooled(weapon.projectilePrefab, weapon.magazineCapacity);
-
-
+        Initialize();
+    }
+    public override void Initialize()
+    {
+    objPooler = gameObject.AddComponent<ObjPool>();
+    objPooler.SetPooled(weapon.projectilePrefab, weapon.magazineCapacity);
     }
     void OnEnable()
     {

@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,12 +17,33 @@ public class GameManager : MonoBehaviour
     public bool isPaused = false;
     public GameObject menuMusic;
     public bool isMainMenu = false;
-    
+    bool hasSpawned = false;
 
-
-    void Awake()
-    {     
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        hasSpawned = false;
         if (SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            isMainMenu = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            player.SetActive(false);
+        }
+        else
+        {
+            
+            player.transform.position = GameObject.Find("spawnPoint").transform.position+Vector3.up*2;
+            isMainMenu = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            player.SetActive(true);
+            player.GetComponentInChildren<Inventory>().InitializeInv();
+        }    
+    }
+    void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+            if (SceneManager.GetActiveScene().name == "Main Menu")
         {
             isMainMenu = true;
             Cursor.visible = true;
@@ -33,19 +56,18 @@ public class GameManager : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             player.SetActive(true);
+            
         }
         if (gameManager == null)
         {
             gameManager = this;
-            DontDestroyOnLoad(gameObject);
-            DontDestroyOnLoad(pauseMenu);
-            DontDestroyOnLoad(menuMusic);
-            DontDestroyOnLoad(optionsMenu);
-            DontDestroyOnLoad(player);
-           
+           // gameManager.startPnt = transform.position;
+            //gameManager.gameObject.transform.position = transform.position;
+            DontDestroyOnLoad(gameObject);  
         }
         else if (gameManager != this)
         {
+           
             Destroy(gameObject);
         }
 
@@ -96,13 +118,23 @@ public class GameManager : MonoBehaviour
     }
     public void Pause()
     {
-     if (!isPaused)
+        if (!isPaused)
         {
             OpenPauseMenu();
         }
         else
         {
             ClosePauseMenu();
-        }   
+        }
     }
+    public void MainMenu()
+    {
+        GameManager.gameManager.player.transform.position = GameObject.Find("spawnPoint").transform.position+Vector3.up*2;
+        SceneManager.LoadScene("Main Menu");
+    }
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Level-1-Prom-Hall");
+    }
+
 }

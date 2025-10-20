@@ -3,6 +3,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public Sprite slotEmpty;
     int ammoType;
     int mkOrKeyboard;
-    float interactReach = 3f;
+    float interactReach = 5f;
     bool interacting = false;
     public GameObject HUD;
     bool isPaused = false;
@@ -59,7 +60,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     public HealthScript healthScript;
     bool damageAlert = false;
     public TextMeshProUGUI HealthText;
+    playerAnimController anim;
     bool canChangeWeapon = true;
+    public LayerMask interactMask= 7;
     //Material highlightMat;
 
 
@@ -67,6 +70,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     void Awake()
     {
         // highlightMat = Resources.Load<Material>("Mats/Glow");
+       anim= GetComponentInChildren<playerAnimController>();
     }
     private void OnEnable()
     {
@@ -118,6 +122,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (context.performed && controller.isGrounded)
         {
             velocity.y = Mathf.Sqrt(-2f * gravity * jumpHeight);
+            anim.SetIsJumping(true);
         }
     }
     public void OnSprint(InputAction.CallbackContext context)   //note: sprint is set to "hold" if you would prefer toggle use context.performed and only one if statement
@@ -175,12 +180,26 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         controller.Move(move * moveSpeed * Time.deltaTime * sprintMultiplier);
+        
 
         if (controller.isGrounded && velocity.y < 0)
             velocity.y = -2f;
-
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+        if (anim != null)
+        {
+            if (velocity.y < 0) anim.SetIsJumping(false);
+            if ((move * moveSpeed * Time.deltaTime * sprintMultiplier).z != 0 || (move * moveSpeed * Time.deltaTime * sprintMultiplier).x != 0)
+            {
+                anim.setWalkSpeed(Mathf.Abs((move * moveSpeed * Time.deltaTime * sprintMultiplier).z * 30) + Mathf.Abs((move * moveSpeed * Time.deltaTime * sprintMultiplier).x * 30));
+                anim.setIsMoving(true);
+            }
+            else
+            {
+                anim.setIsMoving(false);
+            }
+        }
+        
     }
 
     public void HandleLook()

@@ -40,7 +40,7 @@ public class ObjPool
     {
         for (int i = 0; i < pooledCount; i++)
         {
-            var obj = Instantiate(pooledObj, new Vector3(i, -100, 0), Quaternion.identity);
+            var obj = Instantiate(pooledObj);
             obj.SetActive(false);
             pool.Add(obj);
             print("pooled " + obj.name);
