@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         HandleMovement();
         HandleLook();
         HandleInteraction();
+        anim.SetIsGrounded(controller.isGrounded);
     }
     public void OnMove(InputAction.CallbackContext context)
     {

@@ -1,5 +1,7 @@
+using NUnit.Framework;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class playerAnimController : MonoBehaviour
 {
@@ -9,40 +11,77 @@ public class playerAnimController : MonoBehaviour
     bool anyEquiped = false;
     bool isCharged = false;
     bool isMoving = true;
-    AudioClip[] clips;
-    AudioSource source;
+    bool isGrounded = true;
+    [SerializeField] AudioSource SFXsource;
+    public AudioClip jump;
+    public AudioClip move;
+    public AudioClip meleeAttack;
+    public AudioClip shootAttack;
+    public AudioClip pickUp;
+    public AudioClip chargeUp;
+    public AudioSource source;
     void Awake()
     {
         anim = GetComponent<Animator>();
-        source = GetComponent<AudioSource>();
+        //source = GetComponent<AudioSource>();
     }
     public void setWalkSpeed(float speed)
     {
         walkSpeed = speed;
         anim.SetFloat("speed",walkSpeed);
+
     }
     public void SetIsJumping(bool b)
     {
         isJumping = b;
         anim.SetBool("IsJumping", isJumping);
+        if (isJumping)
+        {
+            PlaySFX(jump);
+        }
     }
     public void setAnyEquiped(bool b)
     {
         anyEquiped = b;
         anim.SetBool("anyEquiped", anyEquiped);
+        PlaySFX(pickUp);
     }
     public void setIsCharged(bool b)
     {
         isCharged = b;
         anim.SetBool("IsCharged", isCharged);
+        if (isCharged)
+        {
+            PlaySFX(chargeUp);
+        }
     }
     public void Swing()
     {
         anim.SetTrigger("Swing");
+        PlaySFX(meleeAttack);
     }
     public void setIsMoving(bool b)
     {
         isMoving = b;
         anim.SetBool("isMoving", isMoving);
+        if (isMoving && !SFXsource.isPlaying && isGrounded)
+        {
+            PlaySFX(move);
+        }
+    }
+
+    public void SetIsGrounded(bool b)
+    {
+        isGrounded = b;
+    }
+
+    public void isShooting()
+    {
+        PlaySFX(shootAttack);
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        SFXsource.PlayOneShot(clip);
     }
 }
