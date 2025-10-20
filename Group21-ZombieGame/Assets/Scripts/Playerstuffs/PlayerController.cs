@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             if (velocity.y < 0) anim.SetIsJumping(false);
             if ((move * moveSpeed * Time.deltaTime * sprintMultiplier).z != 0 || (move * moveSpeed * Time.deltaTime * sprintMultiplier).x != 0)
             {
-                anim.setWalkSpeed(Mathf.Abs((move * moveSpeed * Time.deltaTime * sprintMultiplier).z * 30) + Mathf.Abs((move * moveSpeed * Time.deltaTime * sprintMultiplier).x * 30));
+                anim.setWalkSpeed((Mathf.Abs((move * moveSpeed * sprintMultiplier).z ) + Mathf.Abs((move * moveSpeed* sprintMultiplier).x))*30*Time.deltaTime);
                 anim.setIsMoving(true);
             }
             else

@@ -55,8 +55,6 @@ public class GameManager : MonoBehaviour
         if (gameManager == null)
         {
             gameManager = this;
-           // gameManager.startPnt = transform.position;
-            //gameManager.gameObject.transform.position = transform.position;
             DontDestroyOnLoad(gameObject);  
         }
         else if (gameManager != this)
@@ -148,12 +146,12 @@ public class GameManager : MonoBehaviour
     }
     public void LoadPlayerdata()
     {
-        Inventory temp = GameObject.FindFirstObjectByType<PlayerController>().GetComponent<Inventory>();
+        Inventory temp = GameObject.FindFirstObjectByType<PlayerController>().gameObject.GetComponent<Inventory>();
         temp = playerData.inv;
     }
     public void SavePlayerData()
     {
-        Inventory temp = GameObject.FindFirstObjectByType<PlayerController>().GetComponent<Inventory>();
+        Inventory temp = GameObject.FindFirstObjectByType<PlayerController>().gameObject.GetComponent<Inventory>();
         playerData.inv = temp;   
     }
 

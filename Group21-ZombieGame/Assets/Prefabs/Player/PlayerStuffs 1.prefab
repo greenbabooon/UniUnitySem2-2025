@@ -3048,6 +3048,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc0a74db27a6914ab42d88cc57796da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXsource: {fileID: 8944377729265393093}
+  jump: {fileID: 8300000, guid: 2160a1ebe7d5edb429611d3dd47c0b39, type: 3}
+  move: {fileID: 8300000, guid: 1e6f71f517c498648942316269100710, type: 3}
+  meleeAttack: {fileID: 8300000, guid: 06e3851cb5bfeab4c9e12535bd582124, type: 3}
+  shootAttack: {fileID: 8300000, guid: 66376b78f30fdff43b0aefc1dccac168, type: 3}
+  pickUp: {fileID: 8300000, guid: 87594f05fa6acf54dac04050168fc6c3, type: 3}
+  chargeUp: {fileID: 8300000, guid: 23c5fa40655ad1b4bbc1a4440f775f7f, type: 3}
+  source: {fileID: 8944377729265393093}
 --- !u!82 &8944377729265393093
 AudioSource:
   m_ObjectHideFlags: 0
