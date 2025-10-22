@@ -25,8 +25,8 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubtractiveShadowColor: {r: 0.17392059, g: 0.08857956, b: 0.3283019, a: 1}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 0122cae3477befb43bd3971ca0d0b510, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -43427,8 +43427,12 @@ MonoBehaviour:
   - {fileID: 1311818861}
   - {fileID: 949404666}
   ammoText: {fileID: 1098628747}
+  interactText: {fileID: 0}
   reloadText: {fileID: 1644509677}
+  equippedText: {fileID: 0}
   slotEmpty: {fileID: 21300000, guid: 4f24c5140d4777c45a34e70ae508a5a4, type: 3}
+  HUD: {fileID: 0}
+  inMenu: 0
 --- !u!143 &1696859376
 CharacterController:
   m_ObjectHideFlags: 0
