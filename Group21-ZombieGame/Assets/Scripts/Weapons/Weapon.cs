@@ -38,6 +38,7 @@ public class Weapon : ScriptableObject
             weaponType = Owner.AddComponent<RangedProjectile>();
         }
         weaponType.SetWeapon(this);
+        weaponType.Initialize();
     }
     void OnStart()
     {

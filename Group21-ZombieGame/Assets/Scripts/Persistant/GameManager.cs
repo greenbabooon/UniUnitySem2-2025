@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,41 +13,53 @@ public class GameManager : MonoBehaviour
     public Dictionary<int, GameObject> Pages = new Dictionary<int, GameObject>();
     public GameObject pauseMenu;
     public GameObject optionsMenu;
-    public GameObject player;
+    public PlayerPersistentData playerData;
     public bool isPaused = false;
     public GameObject menuMusic;
     public bool isMainMenu = false;
-    
+    public bool isReload=false;
+   
 
-
-    void Awake()
-    {     
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        
         if (SceneManager.GetActiveScene().name == "Main Menu")
         {
             isMainMenu = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            player.SetActive(false);
+           
         }
         else
         {
             isMainMenu = false;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            player.SetActive(true);
+        }    
+    }
+    void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+            if (SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            isMainMenu = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            isMainMenu = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;           
         }
         if (gameManager == null)
         {
             gameManager = this;
-            DontDestroyOnLoad(gameObject);
-            DontDestroyOnLoad(pauseMenu);
-            DontDestroyOnLoad(menuMusic);
-            DontDestroyOnLoad(optionsMenu);
-            DontDestroyOnLoad(player);
-           
+            DontDestroyOnLoad(gameObject);  
         }
         else if (gameManager != this)
         {
+           
             Destroy(gameObject);
         }
 
@@ -96,13 +110,49 @@ public class GameManager : MonoBehaviour
     }
     public void Pause()
     {
-     if (!isPaused)
+        if (!isPaused)
         {
             OpenPauseMenu();
         }
         else
         {
             ClosePauseMenu();
-        }   
+        }
     }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+    public void StartGame()
+    {
+        print("trying to load scene index:" + playerData.lastLevel);
+        SceneManager.LoadScene(playerData.lastLevel);
+    }
+    public void NextLevel()
+    {
+        print("test");
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName==playerData.lastLevel)
+        {
+            SceneManager.LoadScene(currentIndex+1);
+        }
+        else
+        {
+            SavePlayerData();
+          SceneManager.LoadScene(currentIndex+1);  
+        }
+        
+    }
+    public void LoadPlayerdata()
+    {
+        Inventory temp = GameObject.FindFirstObjectByType<PlayerController>().gameObject.GetComponent<Inventory>();
+        temp = playerData.inv;
+    }
+    public void SavePlayerData()
+    {
+        Inventory temp = GameObject.FindFirstObjectByType<PlayerController>().gameObject.GetComponent<Inventory>();
+        playerData.inv = temp;   
+    }
+
 }

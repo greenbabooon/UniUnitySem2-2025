@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync("Level-1-Prom-Hall");
+        GameManager.gameManager.StartGame();
     }
 
     public void QuitGame()
