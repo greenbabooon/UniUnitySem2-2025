@@ -64,6 +64,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_Name
       value: MediKit
