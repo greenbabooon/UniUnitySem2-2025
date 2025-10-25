@@ -1,9 +1,11 @@
 
 using TMPro;
 using UnityEditor;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.ProBuilder;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -63,6 +65,18 @@ public class PlayerController : MonoBehaviour, IDamageable
     playerAnimController anim;
     bool canChangeWeapon = true;
     public LayerMask interactMask = 7;
+    public Image[] healthBar;
+    public Image[] staminaBar;
+    float colourMax=255;
+    float colourMin = 140;
+    int currentHBar = 0;
+    int HBarCurrentLength=20;
+    int currentSBar = 1;
+    int SBarCurrentLength = 20;
+    float stamina = 0;
+    float maxStamina = 100;
+    
+    
     
     //Material highlightMat;
 
@@ -72,7 +86,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         // highlightMat = Resources.Load<Material>("Mats/Glow");
         anim = GetComponentInChildren<playerAnimController>();
-        
+        stamina = 100;
         
     }
     private void OnEnable()
@@ -98,6 +112,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         HandleLook();
         HandleInteraction();
         anim.SetIsGrounded(controller.isGrounded);
+        HandleBarAnim();
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -409,32 +424,109 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void damage(float damageAmount)
     {
         healthScript.currentHealth -= damageAmount;
-        UpdateHealthUI();
+        
         if (!damageAlert) Invoke("damageAlertCancel", 1f);
         damageAlert = true;
-        HealthText.color = Color.red;
+        UpdateHealthUI();
         if (healthScript.currentHealth <= 0)
         {
+            //improve death logic
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
     void damageAlertCancel()
     {
         damageAlert = false;
-        HealthText.color = Color.black;
+        //end damage flash
     }
     void UpdateHealthUI()
     {
-        HealthText.text = "Health: " + healthScript.currentHealth + " / " + healthScript.maxHealth;
-
+        UpdateHealthBar();
+        //damage flash
+    
     }   
     public void setCanChangeWeapon(bool b)
     {
         canChangeWeapon = b;
     }
 
-      public void OnPause(InputAction.CallbackContext context)
+    public void OnPause(InputAction.CallbackContext context)
     {
-        if(context.performed)GameManager.gameManager.Pause();
+        if (context.performed) GameManager.gameManager.Pause();
     }
+    void UpdateHealthBar()
+    {
+
+        for (int i = 0; i < healthBar.Length; i++)
+        {
+            if (i < healthScript.currentHealth / (healthScript.maxHealth / (healthBar.Length)))
+            {
+                healthBar[i].enabled = true;
+                
+            }
+            else
+            {
+                healthBar[i].enabled = false;
+                HBarCurrentLength--;
+            }
+            currentHBar = 0;
+
+        }
+    }
+        void UpdateStaminaBar()
+    {
+
+        for (int i = 0; i < staminaBar.Length; i++)
+        {
+            if (i < stamina / (maxStamina / (staminaBar.Length)))
+            {
+                staminaBar[i].enabled = true;
+                SBarCurrentLength++;
+            }
+            else
+            {
+                healthBar[i].enabled = false;
+            }
+            currentSBar = 0;
+        }
+    }
+    //animation logic for health/stamina bar
+    void NextBar(int current,Image[] arr,int length)
+    {
+        if (current < length + 1)
+        {
+            current++;
+        }
+        else
+        {
+            current = 0;
+        }
+
+        arr[current].GetComponent<Animator>().SetTrigger("bounce");
+        ColourGChanger(arr,current , length);
+    }
+    void ColourGChanger(Image[] arr, int current, int length)
+    {
+        arr[current].color = new Color(255, 255, 255);
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (i != current)
+            {
+                arr[i].color = new Color(arr[current].color.r, colourMax - (Mathf.Abs(current - i) * 5), arr[current].color.b);
+            }
+        }
+    }
+    void ResetBarAnim()
+    {
+        
+    }
+    void HandleBarAnim()
+    {
+        if (healthBar[currentHBar].GetComponent<animationHandler>().GetAnimationState() == false)
+        {
+            NextBar(currentHBar,healthBar,HBarCurrentLength);
+        }
+    }
+    
+    //end of animation logic for health/stamina bar
 }
