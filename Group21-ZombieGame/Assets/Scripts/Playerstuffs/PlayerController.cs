@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public Transform cameraTransform;
     public float lookSensitivity = 2f;
     public float verticalLookLimit = 90f;
+    private const string SensitivityPrefKey = "PlayerSensitivity";
     public float jumpHeight = 1f;
     private CharacterController controller;
     private Vector2 moveInput;
@@ -90,6 +91,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void Start()
     {
         UpdateAmmoUI();
+        lookSensitivity = PlayerPrefs.GetFloat(SensitivityPrefKey, lookSensitivity);
     }
 
     private void Update()
@@ -216,6 +218,13 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+    }
+
+    public void SetLookSensitivity(float newSensitivity)
+    {
+        lookSensitivity = newSensitivity;
+        PlayerPrefs.SetFloat(SensitivityPrefKey, lookSensitivity);
+        PlayerPrefs.Save();
     }
 
     public void OnHotBarChange(InputAction.CallbackContext context)

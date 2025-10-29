@@ -34204,6 +34204,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1369443656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7787756765779855419, guid: 00e3f70a8e00fbd43a70e2722a0b0aeb, type: 3}
+  m_PrefabInstance: {fileID: 7430044095944462004}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7336d70588ed7464a89e576b8980edd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1373295895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44745,6 +44756,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2022167914553544245, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832532900065940256, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5233118223567679080, guid: bc0ac8661f52e914daa846b794732726, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -44788,6 +44807,30 @@ PrefabInstance:
     - target: {fileID: 5315996319558157674, guid: bc0ac8661f52e914daa846b794732726, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257242892187799394, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267292339959645612, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8086158304617290082, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: PlayerController
+      value: 
+      objectReference: {fileID: 1369443656}
+    - target: {fileID: 8926620299778005182, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_MaxValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926620299778005182, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1369443656}
+    - target: {fileID: 8926620299778005182, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetLookSensitivity
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
