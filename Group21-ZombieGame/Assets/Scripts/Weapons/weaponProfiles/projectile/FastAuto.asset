@@ -20,7 +20,7 @@ MonoBehaviour:
   magazineCapacity: 30
   currentAmmo: 29
   reloadTime: 3
-  WeaponIcon: {fileID: 21300000, guid: 92ce73ebe12e5764b9f56cff9cded579, type: 3}
+  WeaponIcon: {fileID: 492980060, guid: 69921a868074e2043a41f1dcced08bbd, type: 3}
   isAutomatic: 1
   ammoType: 1
   projectilePrefab: {fileID: 3374121350557076204, guid: d6ecc3dee822675409028006daa2d031, type: 3}

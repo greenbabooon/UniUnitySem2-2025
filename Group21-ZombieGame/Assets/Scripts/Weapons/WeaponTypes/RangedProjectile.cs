@@ -1,5 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RangedProjectile : WeaponType, IAttackable
 {
@@ -55,7 +56,8 @@ public class RangedProjectile : WeaponType, IAttackable
             isReloading = true;
             if (playerOwned)
             {
-                player.GetComponent<PlayerController>().reloadText.enabled = true;
+                 player.GetComponent<PlayerController>().reloadText.color= new Color(1,1,1,1);
+                 player.GetComponent<PlayerController>().reloadText.gameObject.GetComponentInChildren<Animator>().SetBool("isReloading",true);
             }
         }
     }
@@ -129,7 +131,8 @@ public class RangedProjectile : WeaponType, IAttackable
             isReloading = false;
             if (playerOwned)
             {
-                player.GetComponent<PlayerController>().reloadText.enabled = false;
+                player.GetComponent<PlayerController>().reloadText.color= new Color(1,1,1,0);
+                 player.GetComponent<PlayerController>().reloadText.GetComponentInChildren<Animator>().SetBool("isReloading",false);
                 player.GetComponent<PlayerController>().UpdateAmmoUI();
             }
         }
@@ -142,7 +145,8 @@ public class RangedProjectile : WeaponType, IAttackable
             isReloading = false;
             if (playerOwned)
             {
-                FindFirstObjectByType<PlayerController>().reloadText.enabled = false;
+                FindFirstObjectByType<PlayerController>().reloadText.color= new Color(1,1,1,0);
+                player.GetComponent<PlayerController>().reloadText.gameObject.GetComponentInChildren<Animator>().SetBool("isReloading",false);
             }
         }
     }

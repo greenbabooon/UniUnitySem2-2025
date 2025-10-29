@@ -1,5 +1,6 @@
 
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -41,15 +42,17 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Weapon equippedWeapon;
     public GameObject hand;
     public Image[] HotBarImages;
-    public TextMeshProUGUI ammoText;
+    public TextMeshProUGUI currentAmmoText;
+    public TextMeshProUGUI SpareAmmoText;
     public TextMeshProUGUI interactText;
-    public TextMeshProUGUI reloadText;//temporary until we implement a reload animation
+    public Image reloadText;
     public TextMeshProUGUI equippedText;
     int CurMag = 0;
     int CurSpare = 0;
     bool isReloading = false;
-    Color selected = Color.grey;
-    Color unselected = Color.white;
+    Color selected = Color.white;
+    Color unselected = Color.grey;
+    public Image damageFlash;
     private int currentIndex = 0;
     public Sprite slotEmpty;
     int ammoType;
@@ -67,15 +70,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     public LayerMask interactMask = 7;
     public Image[] healthBar;
     public Image[] staminaBar;
-    float colourMax=255;
-    float colourMin = 140;
+    float colourMin = 0.5f;
     int currentHBar = 0;
     int HBarCurrentLength=20;
     int currentSBar = 1;
     int SBarCurrentLength = 20;
     float stamina = 0;
     float maxStamina = 100;
-    
+    bool isLooping = false;
     
     
     //Material highlightMat;
@@ -87,7 +89,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         // highlightMat = Resources.Load<Material>("Mats/Glow");
         anim = GetComponentInChildren<playerAnimController>();
         stamina = 100;
-        
+        Invoke("delayedReset", 0.1f);
     }
     private void OnEnable()
     {
@@ -100,6 +102,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         UpdateAmmoUI();
         UpdateHotbarUI();
         UpdateHealthUI();
+        
     }
     private void Start()
     {
@@ -113,6 +116,14 @@ public class PlayerController : MonoBehaviour, IDamageable
         HandleInteraction();
         anim.SetIsGrounded(controller.isGrounded);
         HandleBarAnim();
+
+    }
+    void FixedUpdate()
+    {
+      if (damageAlert)
+      {
+            damageFlash.color = new Color(1, 1, 1, damageFlash.color.a -0.02f); 
+      }  
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -150,10 +161,12 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (context.started)
         {
             sprintMultiplier = sprintSpeed;
+            isSprinting = true;
         }
         if (context.canceled)
         {
             sprintMultiplier = 1f;
+            isSprinting = false;
         }
     }
     public void OnAttack(InputAction.CallbackContext context)
@@ -188,11 +201,13 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             CurMag = equippedWeapon.currentAmmo;
             CurSpare = inv.GetAmmoCount(equippedWeapon.ammoType);
-            ammoText.text = "Ammo: " + CurMag + " | Spare: " + CurSpare;
+            currentAmmoText.text = " " + CurMag;
+            SpareAmmoText.text = " " + CurSpare;
         }
         else
         {
-            ammoText.text = "∞";
+            currentAmmoText.text = "∞";
+            SpareAmmoText.text = "∞";
         }
     }
     public void HandleMovement()
@@ -200,7 +215,22 @@ public class PlayerController : MonoBehaviour, IDamageable
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         controller.Move(move * moveSpeed * Time.deltaTime * sprintMultiplier);
         
-
+        if (move.x>0||move.z>0)
+        {
+            if (isSprinting)
+            {
+                if (stamina > 0)
+                {
+                    stamina -= 7.5f*Time.deltaTime;
+                    print("stamina:"+ stamina);
+                }
+                else
+                {
+                    stamina = 0;
+                    print("stamina exsausted");
+                }
+            }   
+        }
         if (controller.isGrounded && velocity.y < 0)
             velocity.y = -2f;
         velocity.y += gravity * Time.deltaTime;
@@ -210,7 +240,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             if (velocity.y < 0) anim.SetIsJumping(false);
             if ((move * moveSpeed * Time.deltaTime * sprintMultiplier).z != 0 || (move * moveSpeed * Time.deltaTime * sprintMultiplier).x != 0)
             {
-                anim.setWalkSpeed((Mathf.Abs((move * moveSpeed * sprintMultiplier).z ) + Mathf.Abs((move * moveSpeed* sprintMultiplier).x))*30*Time.deltaTime);
+                anim.setWalkSpeed(1*sprintMultiplier);
                 anim.setIsMoving(true);
             }
             else
@@ -427,7 +457,9 @@ public class PlayerController : MonoBehaviour, IDamageable
         
         if (!damageAlert) Invoke("damageAlertCancel", 1f);
         damageAlert = true;
+        damageFlash.color = new Color(1, 1, 1, 1);
         UpdateHealthUI();
+        
         if (healthScript.currentHealth <= 0)
         {
             //improve death logic
@@ -437,12 +469,18 @@ public class PlayerController : MonoBehaviour, IDamageable
     void damageAlertCancel()
     {
         damageAlert = false;
+        if (isLooping!=true)delayedReset();
         //end damage flash
     }
     void UpdateHealthUI()
     {
         UpdateHealthBar();
         //damage flash
+        for (int i = 0; i < HBarCurrentLength; i++)
+        {
+         healthBar[i].color = Color.white;
+            healthBar[i].GetComponent<Animator>().SetBool("bounce", false);    
+        }
     
     }   
     public void setCanChangeWeapon(bool b)
@@ -462,18 +500,20 @@ public class PlayerController : MonoBehaviour, IDamageable
             if (i < healthScript.currentHealth / (healthScript.maxHealth / (healthBar.Length)))
             {
                 healthBar[i].enabled = true;
-                
+
             }
             else
             {
                 healthBar[i].enabled = false;
                 HBarCurrentLength--;
             }
-            currentHBar = 0;
+
 
         }
+        isLooping = false;
+        
     }
-        void UpdateStaminaBar()
+    void UpdateStaminaBar()
     {
 
         for (int i = 0; i < staminaBar.Length; i++)
@@ -490,42 +530,82 @@ public class PlayerController : MonoBehaviour, IDamageable
             currentSBar = 0;
         }
     }
+
     //animation logic for health/stamina bar
-    void NextBar(int current,Image[] arr,int length)
+    int direction = 1;
+int NextBar(Image[] arr, int current, int length)
     {
-        if (current < length + 1)
+    arr[current].GetComponent<Animator>().SetBool("bounce",false);
+    current += direction;
+
+        if (current >= length)
         {
-            current++;
+            current = length - 2;
+            direction = -1;
+        }
+        else if (current < 0)
+        {
+            current = 1;
+            direction = 1;
+        }
+        if (current<arr.Length)
+        {
+            arr[current].GetComponent<Animator>().SetBool("bounce", true);
+            ColourGChanger(arr, current, length);
         }
         else
         {
-            current = 0;
+            print("test bug catcher");
+            ResetBarAnim(arr, length);
+            return 0;
         }
 
-        arr[current].GetComponent<Animator>().SetTrigger("bounce");
-        ColourGChanger(arr,current , length);
-    }
+    return current;
+}
+    
     void ColourGChanger(Image[] arr, int current, int length)
     {
-        arr[current].color = new Color(255, 255, 255);
-        for (int i = 0; i < arr.Length; i++)
+        arr[current].color = new Color(1, 1, 1);
+        for (int i = 0; i < length; i++)
         {
             if (i != current)
             {
-                arr[i].color = new Color(arr[current].color.r, colourMax - (Mathf.Abs(current - i) * 5), arr[current].color.b);
+                arr[i].color = new Color(arr[current].color.r, 1f - Mathf.Abs(current - i) /30f, arr[current].color.b);
             }
         }
     }
-    void ResetBarAnim()
+    void ResetBarAnim(Image[] arr,int length)
     {
+        if (arr[0].GetComponent<Animator>().GetBool("bounce") == true)
+        {
+            isLooping = true;
+            return;
+        }
+        for (int i = 0; i < length; i++)
+        {
+            arr[i].GetComponent<Animator>().SetBool("bounce", false); 
+            arr[i].color = Color.white;  
+        }
+        direction = 1;
+        currentHBar = 0;
+        arr[0].GetComponent<Animator>().SetBool("bounce", true);
+        ColourGChanger(arr, 0, length);
+
+        isLooping = true;
         
     }
+    
     void HandleBarAnim()
     {
-        if (healthBar[currentHBar].GetComponent<animationHandler>().GetAnimationState() == false)
+        if (isLooping==true&&healthBar[currentHBar].GetComponent<animationHandler>().GetAnimationState() == false)
         {
-            NextBar(currentHBar,healthBar,HBarCurrentLength);
+            if(currentHBar<HBarCurrentLength||currentHBar>-1)
+            currentHBar = NextBar(healthBar, currentHBar, HBarCurrentLength);
         }
+    }
+    void delayedReset()
+    {
+        ResetBarAnim(healthBar,HBarCurrentLength);
     }
     
     //end of animation logic for health/stamina bar
