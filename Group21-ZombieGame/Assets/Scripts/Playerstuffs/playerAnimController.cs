@@ -12,6 +12,8 @@ public class playerAnimController : MonoBehaviour
     bool isCharged = false;
     bool isMoving = true;
     bool isGrounded = true;
+
+    [Header("Audio")]
     [SerializeField] AudioSource SFXsource;
     public AudioClip jump;
     public AudioClip move;
