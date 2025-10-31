@@ -73,8 +73,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         // highlightMat = Resources.Load<Material>("Mats/Glow");
         anim = GetComponentInChildren<playerAnimController>();
-        
-        
+
+        GameManager.gameManager.SetCurrentPlayerController(this);
     }
     private void OnEnable()
     {
@@ -112,13 +112,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (isPaused) return;
         if (context.control.device is Gamepad)
         {
-            lookSensitivity = 8;
             lookInput = context.ReadValue<Vector2>();
 
         }
         if (context.control.device is Mouse)
         {
-            lookSensitivity = 0.4f;
             lookInput = context.ReadValue<Vector2>();
         }
     }

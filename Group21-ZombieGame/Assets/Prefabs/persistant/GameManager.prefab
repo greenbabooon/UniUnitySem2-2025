@@ -186,6 +186,7 @@ MonoBehaviour:
   menuMusic: {fileID: 699516703625105155}
   isMainMenu: 0
   isReload: 0
+  currentPlayerController: {fileID: 0}
 --- !u!114 &4592256852046460567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,6 +749,18 @@ PrefabInstance:
       value: optionsCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 6988014071367352988, guid: 345969e7c832ff84fac62db86acd8ff9, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988014071367352988, guid: 345969e7c832ff84fac62db86acd8ff9, type: 3}
+      propertyPath: m_MaxValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988014071367352988, guid: 345969e7c832ff84fac62db86acd8ff9, type: 3}
+      propertyPath: m_MinValue
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988014071367352988, guid: 345969e7c832ff84fac62db86acd8ff9, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 4
       objectReference: {fileID: 0}
@@ -798,6 +811,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5233118223567679080}
     m_Modifications:
+    - target: {fileID: 4591771097682908188, guid: 917a5a3bc328a3c429eca6b83ddc7a47, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591771097682908188, guid: 917a5a3bc328a3c429eca6b83ddc7a47, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5240965840799569481, guid: 917a5a3bc328a3c429eca6b83ddc7a47, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -842,6 +863,18 @@ PrefabInstance:
       propertyPath: source
       value: 
       objectReference: {fileID: 6399522140029472610}
+    - target: {fileID: 7473134256989028980, guid: 917a5a3bc328a3c429eca6b83ddc7a47, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473134256989028980, guid: 917a5a3bc328a3c429eca6b83ddc7a47, type: 3}
+      propertyPath: 'audioClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 166240cbd31565249823a9f10eaa4921, type: 3}
+    - target: {fileID: 7473134256989028980, guid: 917a5a3bc328a3c429eca6b83ddc7a47, type: 3}
+      propertyPath: 'audioClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 401184859a800604e952f164fbf74a34, type: 3}
     - target: {fileID: 7981428274905027709, guid: 917a5a3bc328a3c429eca6b83ddc7a47, type: 3}
       propertyPath: m_Name
       value: Music
