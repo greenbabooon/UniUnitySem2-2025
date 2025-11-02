@@ -51,6 +51,10 @@ public class MenuMusic : MonoBehaviour
                 setMusicClip(2);
                 break;
 
+            case "Death Screen":
+                setMusicClip(3);
+                break;
+
             default:
                 setMusicClip(0);
                     break;
