@@ -24,6 +24,7 @@ public class playerAnimController : MonoBehaviour
     public AudioClip reload;
     public AudioClip death;
     public AudioClip takeDamage;
+    public AudioClip interact;
     public AudioSource source;
     void Awake()
     {
@@ -80,7 +81,7 @@ public class playerAnimController : MonoBehaviour
         isGrounded = b;
     }
 
-    public void isShooting()
+    public void shootSFX()
     {
         PlaySFX(shootAttack);
     }
@@ -100,8 +101,17 @@ public class playerAnimController : MonoBehaviour
         PlaySFX(death);
     }
 
+    public void interactSFX()
+    {
+        PlaySFX(interact);
+    }
+
     public void PlaySFX(AudioClip clip)
     {
-        SFXsource.PlayOneShot(clip);
+        if (clip != null && SFXsource != null)
+        {
+            SFXsource.pitch = Random.Range(0.95f, 1.05f);
+            SFXsource.PlayOneShot(clip);
+        }
     }
 }

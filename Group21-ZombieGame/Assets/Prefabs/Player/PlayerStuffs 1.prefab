@@ -1869,6 +1869,7 @@ MonoBehaviour:
   interactMask:
     serializedVersion: 2
     m_Bits: 128
+  playerAnimController: {fileID: 5685424320872788796}
 --- !u!114 &2033505788107803951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3058,6 +3059,7 @@ MonoBehaviour:
   reload: {fileID: 8300000, guid: 14f1f947988a21d4dad39d9859295d17, type: 3}
   death: {fileID: 8300000, guid: 2f98dc183c5ab314cbc99c5d877b7450, type: 3}
   takeDamage: {fileID: 8300000, guid: b080be81204453749a782084dc20d595, type: 3}
+  interact: {fileID: 0}
   source: {fileID: 8944377729265393093}
 --- !u!82 &8944377729265393093
 AudioSource:

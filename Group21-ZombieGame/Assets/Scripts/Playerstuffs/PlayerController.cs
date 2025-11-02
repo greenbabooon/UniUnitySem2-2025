@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     playerAnimController anim;
     bool canChangeWeapon = true;
     public LayerMask interactMask = 7;
+    public playerAnimController playerAnimController;
     
     //Material highlightMat;
 
@@ -149,6 +150,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             if (context.performed)
             {
                 equippedWeapon.weaponType.AttackPressed();
+                playerAnimController.shootSFX();
             }
             if (context.canceled)
             {
@@ -160,6 +162,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         if (isPaused || equippedWeapon == null) return;
         equippedWeapon.weaponType.Reload();
+        playerAnimController.reloadSFX();
     }
     private void CancelReload()
     {
@@ -365,6 +368,7 @@ public class PlayerController : MonoBehaviour, IDamageable
                 if (interacting)
                 {
                     interactable.Interact();
+                    playerAnimController.interactSFX();
                     interacting = false;
                 }
             }
@@ -417,11 +421,13 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         healthScript.currentHealth -= damageAmount;
         UpdateHealthUI();
+        playerAnimController.takeDamageSFX();
         if (!damageAlert) Invoke("damageAlertCancel", 1f);
         damageAlert = true;
         HealthText.color = Color.red;
         if (healthScript.currentHealth <= 0)
         {
+            playerAnimController.deathSFX();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
