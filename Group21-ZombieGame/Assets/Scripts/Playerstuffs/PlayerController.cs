@@ -231,7 +231,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             {
                 if (stamina > 0)
                 {
-                    stamina -= 7.5f * Time.deltaTime;
+                    stamina -= 10f* Time.deltaTime;
                     UpdateStaminaBar();
                 }
                 else
@@ -247,7 +247,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             if (isResting == false)
             {
-                stamina+=5f * Time.deltaTime;
+                stamina += 5f * Time.deltaTime;
+                UpdateStaminaBar();
             }
             else
             {

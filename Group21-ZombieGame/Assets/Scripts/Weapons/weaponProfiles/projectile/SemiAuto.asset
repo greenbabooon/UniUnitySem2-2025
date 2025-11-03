@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 50
   isRanged: 1
   fireRate: 0.8
-  force: 15
+  force: 3
   magazineCapacity: 10
   currentAmmo: 0
   reloadTime: 3

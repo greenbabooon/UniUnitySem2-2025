@@ -16,9 +16,9 @@ MonoBehaviour:
   damage: 20
   isRanged: 1
   fireRate: 0.2
-  force: 7
+  force: 1
   magazineCapacity: 30
-  currentAmmo: 29
+  currentAmmo: 30
   reloadTime: 3
   WeaponIcon: {fileID: 492980060, guid: 69921a868074e2043a41f1dcced08bbd, type: 3}
   isAutomatic: 1
