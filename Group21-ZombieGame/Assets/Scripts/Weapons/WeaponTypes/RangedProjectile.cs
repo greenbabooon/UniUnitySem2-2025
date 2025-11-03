@@ -76,7 +76,7 @@ public class RangedProjectile : WeaponType, IAttackable
             {
                 Physics.IgnoreCollision(curProj.GetComponent<Collider>(), player.GetComponent<Collider>());
             }
-            curProj.transform.position = firePoint.transform.position + firePoint.transform.forward * 0.5f;
+            curProj.transform.position = firePoint.transform.position + firePoint.transform.forward;
             curProj.transform.rotation = firePoint.transform.rotation;
             Rigidbody rb = curProj.GetComponent<Rigidbody>();
             if (rb != null)

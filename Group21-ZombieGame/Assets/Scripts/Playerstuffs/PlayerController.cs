@@ -1,5 +1,7 @@
 
+
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Rendering;
@@ -78,6 +80,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     float stamina = 0;
     float maxStamina = 100;
     bool isLooping = false;
+    bool isResting = false;
+    public Transform shoulder;
+    
     
     
     //Material highlightMat;
@@ -155,10 +160,10 @@ public class PlayerController : MonoBehaviour, IDamageable
             anim.SetIsJumping(true);
         }
     }
-    public void OnSprint(InputAction.CallbackContext context)   //note: sprint is set to "hold" if you would prefer toggle use context.performed and only one if statement
+    public void OnSprint(InputAction.CallbackContext context)   
     {
         if (isPaused) return;
-        if (context.started)
+        if (context.started&&stamina>0)
         {
             sprintMultiplier = sprintSpeed;
             isSprinting = true;
@@ -221,15 +226,28 @@ public class PlayerController : MonoBehaviour, IDamageable
             {
                 if (stamina > 0)
                 {
-                    stamina -= 7.5f*Time.deltaTime;
-                    print("stamina:"+ stamina);
+                    stamina -= 7.5f * Time.deltaTime;
+                    UpdateStaminaBar();
                 }
                 else
                 {
                     stamina = 0;
-                    print("stamina exsausted");
+                    sprintMultiplier = 1;
+                    UpdateStaminaBar();
+                    StaminaDepleted();
                 }
-            }   
+            }
+        }
+        else
+        {
+            if (isResting == false)
+            {
+                stamina+=5f * Time.deltaTime;
+            }
+            else
+            {
+                //Any out of stamina functionallity goes here 
+            }
         }
         if (controller.isGrounded && velocity.y < 0)
             velocity.y = -2f;
@@ -250,7 +268,15 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         
     }
-
+    void StaminaDepleted()
+    {
+        Invoke("StaminaRestore", 3f);
+        isResting = true;
+    }
+    void StaminaRestore()
+    {
+        isResting = false;  
+    }
     public void HandleLook()
     {
         float mouseX = lookInput.x * lookSensitivity / 4;
@@ -258,8 +284,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
-
         cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+       // shoulder.localRotation=Quaternion.Euler(verticalRotation,0f,0f );
         transform.Rotate(Vector3.up * mouseX);
     }
 
@@ -322,10 +348,12 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (equippedWeapon != null)
         {
             equippedText.text = "Equipped: " + equippedWeapon.weaponName;
+            anim.setAnyEquiped(true);
         }
         else
         {
             equippedText.text = "Equipped: None";
+            anim.setAnyEquiped(false);
         }
         equippedText.enabled = true;
         Invoke("DisableEquippedText", 2f);
@@ -497,9 +525,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         for (int i = 0; i < healthBar.Length; i++)
         {
-            if (i < healthScript.currentHealth / (healthScript.maxHealth / (healthBar.Length)))
+            if (i < healthScript.currentHealth / (healthScript.maxHealth / healthBar.Length))
             {
                 healthBar[i].enabled = true;
+                HBarCurrentLength++;
 
             }
             else
@@ -510,7 +539,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 
         }
-        isLooping = false;
         
     }
     void UpdateStaminaBar()
@@ -518,14 +546,15 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         for (int i = 0; i < staminaBar.Length; i++)
         {
-            if (i < stamina / (maxStamina / (staminaBar.Length)))
+            if (i < stamina / (maxStamina / staminaBar.Length))
             {
                 staminaBar[i].enabled = true;
                 SBarCurrentLength++;
             }
             else
             {
-                healthBar[i].enabled = false;
+                staminaBar[i].enabled = false;
+                SBarCurrentLength--;
             }
             currentSBar = 0;
         }
