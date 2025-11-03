@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject menuMusic;
     public bool isMainMenu = false;
     public bool isReload=false;
+    public PlayerController currentPlayerController;
    
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -153,6 +154,12 @@ public class GameManager : MonoBehaviour
     {
         Inventory temp = GameObject.FindFirstObjectByType<PlayerController>().gameObject.GetComponent<Inventory>();
         playerData.inv = temp;   
+    }
+
+    public void SetCurrentPlayerController(PlayerController temp)
+    {
+        currentPlayerController = temp;
+        gameObject.GetComponentInChildren <SensHandle>().Initialise(temp);
     }
 
 }

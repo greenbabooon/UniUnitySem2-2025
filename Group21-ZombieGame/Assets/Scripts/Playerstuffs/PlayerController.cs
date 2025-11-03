@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public Transform cameraTransform;
     public float lookSensitivity = 2f;
     public float verticalLookLimit = 90f;
+    private const string SensitivityPrefKey = "PlayerSensitivity";
     public float jumpHeight = 1f;
     private CharacterController controller;
     private Vector2 moveInput;
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public Transform shoulder;
     
     
+    public playerAnimController playerAnimController;
     
     //Material highlightMat;
 
@@ -95,6 +97,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         anim = GetComponentInChildren<playerAnimController>();
         stamina = 100;
         Invoke("delayedReset", 0.1f);
+
+        GameManager.gameManager.SetCurrentPlayerController(this);
     }
     private void OnEnable()
     {
@@ -112,6 +116,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void Start()
     {
         UpdateAmmoUI();
+        lookSensitivity = PlayerPrefs.GetFloat(SensitivityPrefKey, lookSensitivity);
     }
 
     private void Update()
@@ -141,13 +146,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (isPaused) return;
         if (context.control.device is Gamepad)
         {
-            lookSensitivity = 8;
             lookInput = context.ReadValue<Vector2>();
 
         }
         if (context.control.device is Mouse)
         {
-            lookSensitivity = 0.4f;
             lookInput = context.ReadValue<Vector2>();
         }
     }
@@ -182,6 +185,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             if (context.performed)
             {
                 equippedWeapon.weaponType.AttackPressed();
+                playerAnimController.shootSFX();
             }
             if (context.canceled)
             {
@@ -193,6 +197,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         if (isPaused || equippedWeapon == null) return;
         equippedWeapon.weaponType.Reload();
+        playerAnimController.reloadSFX();
     }
     private void CancelReload()
     {
@@ -287,6 +292,13 @@ public class PlayerController : MonoBehaviour, IDamageable
         cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
        // shoulder.localRotation=Quaternion.Euler(verticalRotation,0f,0f );
         transform.Rotate(Vector3.up * mouseX);
+    }
+
+    public void SetLookSensitivity(float newSensitivity)
+    {
+        lookSensitivity = newSensitivity;
+        PlayerPrefs.SetFloat(SensitivityPrefKey, lookSensitivity);
+        PlayerPrefs.Save();
     }
 
     public void OnHotBarChange(InputAction.CallbackContext context)
@@ -431,6 +443,7 @@ public class PlayerController : MonoBehaviour, IDamageable
                 if (interacting)
                 {
                     interactable.Interact();
+                    playerAnimController.interactSFX();
                     interacting = false;
                 }
             }
@@ -483,6 +496,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         healthScript.currentHealth -= damageAmount;
         
+        UpdateHealthUI();
+        playerAnimController.takeDamageSFX();
         if (!damageAlert) Invoke("damageAlertCancel", 1f);
         damageAlert = true;
         damageFlash.color = new Color(1, 1, 1, 1);
@@ -491,6 +506,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (healthScript.currentHealth <= 0)
         {
             //improve death logic
+            playerAnimController.deathSFX();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

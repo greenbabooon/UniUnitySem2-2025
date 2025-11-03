@@ -12,6 +12,8 @@ public class playerAnimController : MonoBehaviour
     bool isCharged = false;
     bool isMoving = true;
     bool isGrounded = true;
+
+    [Header("Audio")]
     [SerializeField] AudioSource SFXsource;
     public AudioClip jump;
     public AudioClip move;
@@ -19,6 +21,10 @@ public class playerAnimController : MonoBehaviour
     public AudioClip shootAttack;
     public AudioClip pickUp;
     public AudioClip chargeUp;
+    public AudioClip reload;
+    public AudioClip death;
+    public AudioClip takeDamage;
+    public AudioClip interact;
     public AudioSource source;
     void Awake()
     {
@@ -75,13 +81,37 @@ public class playerAnimController : MonoBehaviour
         isGrounded = b;
     }
 
-    public void isShooting()
+    public void shootSFX()
     {
         PlaySFX(shootAttack);
     }
 
+    public void reloadSFX()
+    {
+        PlaySFX(reload);
+    }
+
+    public void takeDamageSFX()
+    {
+        PlaySFX(takeDamage);
+    }
+
+    public void deathSFX()
+    {
+        PlaySFX(death);
+    }
+
+    public void interactSFX()
+    {
+        PlaySFX(interact);
+    }
+
     public void PlaySFX(AudioClip clip)
     {
-        SFXsource.PlayOneShot(clip);
+        if (clip != null && SFXsource != null)
+        {
+            SFXsource.pitch = Random.Range(0.95f, 1.05f);
+            SFXsource.PlayOneShot(clip);
+        }
     }
 }
