@@ -4,7 +4,6 @@ using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.ProBuilder;
