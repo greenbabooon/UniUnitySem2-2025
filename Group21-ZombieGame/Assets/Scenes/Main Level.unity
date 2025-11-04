@@ -14,16 +14,16 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.023
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.3
+  m_AmbientIntensity: 0.1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.40510786, g: 0.2149875, b: 0.6226415, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 65c5f21992910944fb958d5a6f80f906, type: 2}
@@ -35,7 +35,7 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0.3
+  m_ReflectionIntensity: 0.2
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_UseRadianceAmbientProbe: 0
@@ -87101,6 +87101,22 @@ PrefabInstance:
     - target: {fileID: 6750599338231487218, guid: 00e3f70a8e00fbd43a70e2722a0b0aeb, type: 3}
       propertyPath: m_Name
       value: PlayerStuffs 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820855065156314213, guid: 00e3f70a8e00fbd43a70e2722a0b0aeb, type: 3}
+      propertyPath: m_RotationOffsets.Array.data[0].x
+      value: 47.905327
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820855065156314213, guid: 00e3f70a8e00fbd43a70e2722a0b0aeb, type: 3}
+      propertyPath: m_RotationOffsets.Array.data[0].z
+      value: 37.529083
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820855065156314213, guid: 00e3f70a8e00fbd43a70e2722a0b0aeb, type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].x
+      value: -0.073898315
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820855065156314213, guid: 00e3f70a8e00fbd43a70e2722a0b0aeb, type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].z
+      value: -0.70326996
       objectReference: {fileID: 0}
     - target: {fileID: 8743436853439200078, guid: 00e3f70a8e00fbd43a70e2722a0b0aeb, type: 3}
       propertyPath: m_LocalPosition.x
