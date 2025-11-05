@@ -184,7 +184,6 @@ public class PlayerController : MonoBehaviour, IDamageable
             if (context.performed)
             {
                 equippedWeapon.weaponType.AttackPressed();
-                playerAnimController.shootSFX();
             }
             if (context.canceled)
             {

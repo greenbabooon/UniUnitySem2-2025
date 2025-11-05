@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class RangedProjectile : WeaponType, IAttackable
 {
     int CurSpare = 0;
+    public AudioClip shootNoise;
     private playerAnimController playerAnim;
     bool isReloading = false;
     bool canShoot = true;
@@ -23,7 +24,7 @@ public class RangedProjectile : WeaponType, IAttackable
 
         if (playerOwned && player != null)
         {
-            playerAnim = player.GetComponent<playerAnimController>();
+            playerAnim = GameObject.FindFirstObjectByType<playerAnimController>().gameObject.GetComponent<playerAnimController>();
         }
 
     }
@@ -86,6 +87,11 @@ public class RangedProjectile : WeaponType, IAttackable
             curProj.transform.position = firePoint.transform.position + firePoint.transform.forward;
             curProj.transform.rotation = firePoint.transform.rotation;
             Rigidbody rb = curProj.GetComponent<Rigidbody>();
+
+            GetComponent<AudioSource>().Play();
+            if (playerAnim != null)
+            playerAnim.shootSFX();
+
             if (rb != null)
             {
                 rb.AddForce(firePoint.transform.forward * weapon.force, ForceMode.Impulse);
@@ -97,8 +103,6 @@ public class RangedProjectile : WeaponType, IAttackable
                 weapon.currentAmmo--;
                 player.GetComponent<PlayerController>().UpdateAmmoUI();
 
-                if (playerAnim != null)
-                    playerAnim.shootSFX();
             }
 
 
