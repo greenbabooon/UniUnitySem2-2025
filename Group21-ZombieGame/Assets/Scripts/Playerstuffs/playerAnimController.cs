@@ -108,6 +108,8 @@ public class playerAnimController : MonoBehaviour
 
     public void PlaySFX(AudioClip clip)
     {
+        if (Time.timeScale == 0) return;
+
         if (clip != null && SFXsource != null)
         {
             SFXsource.pitch = Random.Range(0.95f, 1.05f);

@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46531438a98ad814480b43cbdd775c6e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7697449
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46531438a98ad814480b43cbdd775c6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.582829
+      value: -11.58
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46531438a98ad814480b43cbdd775c6e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.782509
+      value: 19.71
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46531438a98ad814480b43cbdd775c6e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 46531438a98ad814480b43cbdd775c6e, type: 3}
       propertyPath: m_Name
       value: Car_Supra
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46531438a98ad814480b43cbdd775c6e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

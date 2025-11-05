@@ -6848,8 +6848,29 @@ MonoBehaviour:
   - {fileID: 7254020237234683411}
   - {fileID: 1512044095727640384}
   - {fileID: 8074857321572718732}
-  staminaBar: []
+  staminaBar:
+  - {fileID: 3757306059174571170}
+  - {fileID: 926280945752769924}
+  - {fileID: 3128090302965826229}
+  - {fileID: 2178259554129953428}
+  - {fileID: 6745421903609251319}
+  - {fileID: 558178316227924719}
+  - {fileID: 6470155133220683453}
+  - {fileID: 7114480936736219582}
+  - {fileID: 4924637312638062765}
+  - {fileID: 9182307746548080405}
+  - {fileID: 7601369401828801563}
+  - {fileID: 6094485787400175371}
+  - {fileID: 8650615793884417380}
+  - {fileID: 4786970796426610489}
+  - {fileID: 4725401609282242997}
+  - {fileID: 950042406308804015}
+  - {fileID: 3112142149457146951}
+  - {fileID: 4667721100914708438}
+  - {fileID: 2328710015606806539}
+  - {fileID: 9066778580765571694}
   shoulder: {fileID: 774350456237341432}
+  playerAnimController: {fileID: 5685424320872788796}
 --- !u!114 &2033505788107803951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8160,6 +8181,10 @@ MonoBehaviour:
   shootAttack: {fileID: 8300000, guid: 66376b78f30fdff43b0aefc1dccac168, type: 3}
   pickUp: {fileID: 8300000, guid: 87594f05fa6acf54dac04050168fc6c3, type: 3}
   chargeUp: {fileID: 8300000, guid: 23c5fa40655ad1b4bbc1a4440f775f7f, type: 3}
+  reload: {fileID: 8300000, guid: 14f1f947988a21d4dad39d9859295d17, type: 3}
+  death: {fileID: 8300000, guid: 2f98dc183c5ab314cbc99c5d877b7450, type: 3}
+  takeDamage: {fileID: 8300000, guid: b080be81204453749a782084dc20d595, type: 3}
+  interact: {fileID: 8300000, guid: b7d9faec79f397b448ddc3d408e3c8f6, type: 3}
   source: {fileID: 8944377729265393093}
 --- !u!82 &8944377729265393093
 AudioSource:
