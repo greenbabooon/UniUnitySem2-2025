@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class RangedProjectile : WeaponType, IAttackable
 {
     int CurSpare = 0;
+    private playerAnimController playerAnim;
     bool isReloading = false;
     bool canShoot = true;
     TypeOfWeapon weaponType = TypeOfWeapon.rangedProjectile;
@@ -17,8 +18,14 @@ public class RangedProjectile : WeaponType, IAttackable
     }
     public override void Initialize()
     {
-    objPooler = gameObject.AddComponent<ObjPool>();
-    objPooler.SetPooled(weapon.projectilePrefab, weapon.magazineCapacity);
+        objPooler = gameObject.AddComponent<ObjPool>();
+        objPooler.SetPooled(weapon.projectilePrefab, weapon.magazineCapacity);
+
+        if (playerOwned && player != null)
+        {
+            playerAnim = player.GetComponent<playerAnimController>();
+        }
+
     }
     void OnEnable()
     {
@@ -89,7 +96,11 @@ public class RangedProjectile : WeaponType, IAttackable
                 //maybe change this later to not take from ammo pool rather
                 weapon.currentAmmo--;
                 player.GetComponent<PlayerController>().UpdateAmmoUI();
+
+                if (playerAnim != null)
+                    playerAnim.shootSFX();
             }
+
 
             canShoot = false;
             Invoke("enableShooting", weapon.fireRate);
