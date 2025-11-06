@@ -471,6 +471,13 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         }
     }
+    public void ToggleJournal(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameManager.gameManager.journal.Toggle();   
+        }   
+    }
     public void PauseGame()
     {
         Time.timeScale = 0;

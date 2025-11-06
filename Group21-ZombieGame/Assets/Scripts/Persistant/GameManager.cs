@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public bool isMainMenu = false;
     public bool isReload=false;
     public PlayerController currentPlayerController;
-   
+   public JournalScript journal;
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
