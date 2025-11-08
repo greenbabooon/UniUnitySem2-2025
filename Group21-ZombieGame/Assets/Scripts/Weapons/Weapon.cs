@@ -25,19 +25,15 @@ public class Weapon : ScriptableObject
     public void SetOwner(GameObject obj)
     {
         Owner = obj;
-       if (WeaponTypeIndex == 0)
+        switch (WeaponTypeIndex)
         {
-            weaponType = Owner.AddComponent<Melee>();
-        }
-        else if (WeaponTypeIndex == 1)
-        {
-            weaponType = Owner.AddComponent<RangedHitScan>();
-        }
-        else if (WeaponTypeIndex == 2)
-        {
-            weaponType = Owner.AddComponent<RangedProjectile>();
+            case 0: weaponType = obj.GetComponent<Melee>();break;
+            case 1: weaponType = obj.GetComponent<RangedHitScan>();break;
+            case 2: weaponType = obj.GetComponent<RangedProjectile>();break;
+            default:weaponType = obj.GetComponent<RangedProjectile>();break;
         }
         weaponType.SetWeapon(this);
+        if(Owner==GameObject.FindFirstObjectByType<PlayerController>().gameObject)weaponType.SetPlayerOwned(true);
         weaponType.Initialize();
     }
     void OnStart()

@@ -83,7 +83,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -725,7 +725,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -4964,7 +4964,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.30000004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalScale.y
@@ -4972,35 +4972,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.30000004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.85361
+      value: -15.52811
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7504959
+      value: 3.485518
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.491873
+      value: 8.470457
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.36812454
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0.9297765
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5008,7 +5008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 136.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -5048,6 +5048,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7495183372804268287}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2793589299702428871}
   m_SourcePrefab: {fileID: 100100000, guid: 2607efd1a8e829245bca1658b9ca250a, type: 3}
 --- !u!4 &6271561455331792485 stripped
 Transform:
@@ -5080,3 +5083,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.2953675, y: 1.8444526, z: 3.6396942}
   m_Center: {x: -0.042715907, y: 0.4222263, z: -0.003742218}
+--- !u!114 &2793589299702428871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508478958574770106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ddf13da5affb44d9c1183e58727e77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  used: 0
+  healAmount: 25

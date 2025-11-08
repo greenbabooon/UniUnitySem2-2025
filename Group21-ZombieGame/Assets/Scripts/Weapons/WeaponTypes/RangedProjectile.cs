@@ -5,30 +5,30 @@ using UnityEngine.UI;
 public class RangedProjectile : WeaponType, IAttackable
 {
     int CurSpare = 0;
+    public AudioClip shootNoise;
+    private playerAnimController playerAnim;
     bool isReloading = false;
     bool canShoot = true;
     TypeOfWeapon weaponType = TypeOfWeapon.rangedProjectile;
     ObjPool objPooler;
-
-
-    void Awake()
-    {
-        
-    }
     public override void Initialize()
     {
-    objPooler = gameObject.AddComponent<ObjPool>();
-    objPooler.SetPooled(weapon.projectilePrefab, weapon.magazineCapacity);
+    if (objPooler==null)objPooler = gameObject.AddComponent<ObjPool>();
+    objPooler.SetPooled(weapon.projectilePrefab);
+        objPooler = gameObject.AddComponent<ObjPool>();
+        objPooler.SetPooled(weapon.projectilePrefab, weapon.magazineCapacity);
+
+        if (playerOwned && player != null)
+        {
+            playerAnim = GameObject.FindFirstObjectByType<playerAnimController>().gameObject.GetComponent<playerAnimController>();
+        }
+
     }
     void OnEnable()
     {
 
     }
-    void OnDisable()
-    {
-        StopFiring();
-        CancelReload();
-    }
+
 
     public override void AttackPressed()
     {
@@ -68,31 +68,33 @@ public class RangedProjectile : WeaponType, IAttackable
         {
             GameObject curProj = objPooler.GetPooledObj();
             curProj.GetComponent<projectileScript>().SetDamage(weapon.damage);
-            foreach (projectileScript proj in GameObject.FindObjectsByType<projectileScript>(FindObjectsSortMode.None))
-            {
-                Physics.IgnoreCollision(curProj.GetComponent<Collider>(), proj.GetComponent<Collider>());
-            }
-            if (playerOwned)
-            {
-                Physics.IgnoreCollision(curProj.GetComponent<Collider>(), player.GetComponent<Collider>());
-            }
-            curProj.transform.position = firePoint.transform.position + firePoint.transform.forward;
+            curProj.transform.position = firePoint.transform.position;
             curProj.transform.rotation = firePoint.transform.rotation;
+            curProj.SetActive(true);
             Rigidbody rb = curProj.GetComponent<Rigidbody>();
+
+            GetComponent<AudioSource>().Play();
+            if (playerAnim != null)
+            playerAnim.shootSFX();
+
             if (rb != null)
             {
-                rb.AddForce(firePoint.transform.forward * weapon.force, ForceMode.Impulse);
+                rb.AddForce(firePoint.transform.forward * 3f * weapon.force, ForceMode.Impulse);
             }
+            
             if (playerOwned)
             {
                 //if the weapon is player owned minus one from the current ammo count else do nothing (ie enemy owned projectiles have infinite ammo)
                 //maybe change this later to not take from ammo pool rather
                 weapon.currentAmmo--;
                 player.GetComponent<PlayerController>().UpdateAmmoUI();
+
             }
+
 
             canShoot = false;
             Invoke("enableShooting", weapon.fireRate);
+
         }
     }
     void StartFiring()
@@ -139,15 +141,11 @@ public class RangedProjectile : WeaponType, IAttackable
     }
     public override void CancelReload()
     {
-        if (isReloading)
-        {
             CancelInvoke("ReloadWeapon");
-            isReloading = false;
-            if (playerOwned)
-            {
+            
                 FindFirstObjectByType<PlayerController>().reloadText.color= new Color(1,1,1,0);
-                player.GetComponent<PlayerController>().reloadText.gameObject.GetComponentInChildren<Animator>().SetBool("isReloading",false);
-            }
-        }
+                player.GetComponent<PlayerController>().reloadText.gameObject.GetComponentInChildren<Animator>().SetBool("isReloading", false);
+                player.GetComponent<PlayerController>().UpdateAmmoUI();
+                isReloading = false;
     }
 }

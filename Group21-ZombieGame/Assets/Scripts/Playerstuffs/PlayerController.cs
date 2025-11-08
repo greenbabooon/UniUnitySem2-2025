@@ -82,8 +82,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     bool isLooping = false;
     bool isResting = false;
     public Transform shoulder;
-    
-    
     public playerAnimController playerAnimController;
     
     //Material highlightMat;
@@ -124,8 +122,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         HandleLook();
         HandleInteraction();
         anim.SetIsGrounded(controller.isGrounded);
-        HandleBarAnim();
-
     }
     void FixedUpdate()
     {
@@ -184,7 +180,6 @@ public class PlayerController : MonoBehaviour, IDamageable
             if (context.performed)
             {
                 equippedWeapon.weaponType.AttackPressed();
-                playerAnimController.shootSFX();
             }
             if (context.canceled)
             {
@@ -244,7 +239,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         else
         {
-            if (isResting == false)
+            if (isResting == false&&stamina<=100)
             {
                 stamina += 5f * Time.deltaTime;
                 UpdateStaminaBar();
@@ -306,7 +301,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (isPaused) return;
         if (context.performed)
         {
-            if (isReloading)
+            if (equippedWeapon != null)
             {
                 CancelReload();
             }
@@ -338,8 +333,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         equippedObj = inv.GetWeaponObject(index);
         equippedWeapon = inv.GetItem(index);
+        equippedWeapon.SetOwner(gameObject);
         equippedWeapon.weaponType.SetFirePoint(cameraTransform.gameObject);
-        equippedWeapon.weaponType.SetPlayerOwned(true);
         equippedObj.SetActive(true);
         equippedObj.transform.SetParent(hand.transform);
         equippedObj.transform.localPosition = Vector3.zero;
@@ -470,6 +465,13 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         }
     }
+    public void ToggleJournal(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameManager.gameManager.journal.Toggle();   
+        }   
+    }
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -513,19 +515,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     void damageAlertCancel()
     {
         damageAlert = false;
-        if (isLooping!=true)delayedReset();
         //end damage flash
     }
-    void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
-        UpdateHealthBar();
-        //damage flash
-        for (int i = 0; i < HBarCurrentLength; i++)
-        {
-         healthBar[i].color = Color.white;
-            healthBar[i].GetComponent<Animator>().SetBool("bounce", false);    
-        }
-    
+        UpdateHealthBar(); 
     }   
     public void setCanChangeWeapon(bool b)
     {
@@ -572,86 +566,8 @@ public class PlayerController : MonoBehaviour, IDamageable
                 staminaBar[i].enabled = false;
                 SBarCurrentLength--;
             }
-            currentSBar = 0;
         }
     }
 
-    //animation logic for health/stamina bar
-    int direction = 1;
-int NextBar(Image[] arr, int current, int length)
-    {
-    arr[current].GetComponent<Animator>().SetBool("bounce",false);
-    current += direction;
-
-        if (current >= length)
-        {
-            current = length - 2;
-            direction = -1;
-        }
-        else if (current < 0)
-        {
-            current = 1;
-            direction = 1;
-        }
-        if (current<arr.Length)
-        {
-            arr[current].GetComponent<Animator>().SetBool("bounce", true);
-            ColourGChanger(arr, current, length);
-        }
-        else
-        {
-            print("test bug catcher");
-            ResetBarAnim(arr, length);
-            return 0;
-        }
-
-    return current;
-}
-    
-    void ColourGChanger(Image[] arr, int current, int length)
-    {
-        arr[current].color = new Color(1, 1, 1);
-        for (int i = 0; i < length; i++)
-        {
-            if (i != current)
-            {
-                arr[i].color = new Color(arr[current].color.r, 1f - Mathf.Abs(current - i) /30f, arr[current].color.b);
-            }
-        }
-    }
-    void ResetBarAnim(Image[] arr,int length)
-    {
-        if (arr[0].GetComponent<Animator>().GetBool("bounce") == true)
-        {
-            isLooping = true;
-            return;
-        }
-        for (int i = 0; i < length; i++)
-        {
-            arr[i].GetComponent<Animator>().SetBool("bounce", false); 
-            arr[i].color = Color.white;  
-        }
-        direction = 1;
-        currentHBar = 0;
-        arr[0].GetComponent<Animator>().SetBool("bounce", true);
-        ColourGChanger(arr, 0, length);
-
-        isLooping = true;
-        
-    }
-    
-    void HandleBarAnim()
-    {
-        if (isLooping==true&&healthBar[currentHBar].GetComponent<animationHandler>().GetAnimationState() == false)
-        {
-            if(currentHBar<HBarCurrentLength||currentHBar>-1)
-            currentHBar = NextBar(healthBar, currentHBar, HBarCurrentLength);
-        }
-    }
-    void delayedReset()
-    {
-        ResetBarAnim(healthBar,HBarCurrentLength);
-    }
-    
-    //end of animation logic for health/stamina bar
+ 
 }

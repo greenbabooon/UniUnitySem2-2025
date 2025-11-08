@@ -9,6 +9,7 @@ public class Page : MonoBehaviour, IInteractable
     public Canvas pageCanvas;
     public Sprite pageContent;
     public string pageTitle;
+    public int pageNum;
     //public Renderer rend;
     //Renderer OriginalRend=new Renderer();
     //bool isGlowing = false;
@@ -39,8 +40,10 @@ public class Page : MonoBehaviour, IInteractable
     public void OnPageViewExit()
     {
         pageCanvas.gameObject.SetActive(false);
+        GameObject.FindAnyObjectByType<JournalScript>().SetUnlocked(pageNum);
         player.ResumeGame();
         player.ShowHUD();
+        gameObject.SetActive(false);
         // add logic to add page to inventory
     }
     public string InteractionPrompt()

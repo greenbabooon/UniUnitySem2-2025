@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public int maxItems = 5;//all items other than ammo
+    public int maxItems = 2;//all items other than ammo
     private int curItems = 0;
     public int ammoType1Count = 90;
     public int ammoType2Count = 90;
@@ -15,43 +15,28 @@ public class Inventory : MonoBehaviour
     
     private void Start()
     {
+        if(weapons!=null){
+            for (int i = 0; i < weapons.Count; i++)
+            {
+                GameObject temp = Instantiate(weapons[i].weaponPrefab);
+                weaponObjs.Add(temp);
+                temp.SetActive(false);
+            }
+        }
         InitializeInv();
     }
     public void InitializeInv()
-    {   
+    {
         invSlots.Clear();
-        weaponObjs.Clear();
         for (int i = 0; i < weapons.Count; i++)
         {
-            if (weapons[i] == null) continue;
-
-            invSlots[weapons[i]] = i;
-
-            if (i >= weaponObjs.Count || weaponObjs == null)
-            {
-                if (weapons[i].weaponPrefab != null)
-                {
-                    weaponObjs.Add(Instantiate(weapons[i].weaponPrefab));
-                }
-                else
-                {
-                    weaponObjs.Add(null);
-                }
-            }
-            if (weaponObjs[i] != null)
-            {
-                weaponObjs[i].SetActive(false);
-                weapons[i].SetOwner(GetComponentInParent<PlayerController>().gameObject);
-            }
-        }
-        curItems = weapons.Count;
-        PlayerController player = FindFirstObjectByType<PlayerController>();
-        player.UpdateHotbarUI();
+            invSlots.Add(weapons[i], i);     
+        }       
 
     }
     public GameObject GetWeaponObject(int index)
     {
-        if (index < 0 || index >= weaponObjs.Count)
+        if (index < 0 || index >= maxItems)
         {
             Debug.LogError("Index out of range");
             return null;
@@ -96,7 +81,6 @@ public class Inventory : MonoBehaviour
         weapons.Add(item);
         GameObject weaponObj = Instantiate(item.weaponPrefab);
         weaponObjs.Add(weaponObj);
-        item.SetOwner(weaponObj);
         weaponObj.SetActive(false);
             InitializeInv();
     }

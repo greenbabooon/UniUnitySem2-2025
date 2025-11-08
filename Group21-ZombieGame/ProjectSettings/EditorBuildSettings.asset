@@ -11,8 +11,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level-1-Prom-Hall.unity
     guid: fd20a01f6acf9aa43a232612eb3f006a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Level.unity
     guid: 2ad67a143dff97b4a96ca4218498257f
+  - enabled: 1
+    path: Assets/Scenes/Main - Part1.unity
+    guid: c2ed441f5ee28ea4a80914ffaa0e7d4a
+  - enabled: 1
+    path: Assets/Scenes/Main - Part2.unity
+    guid: da2a75bd4d80c2e4c8eea4879822777f
+  - enabled: 1
+    path: Assets/Scenes/Death Screen.unity
+    guid: bbe09a3c053a81e4fa7e8e78f417bf59
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
