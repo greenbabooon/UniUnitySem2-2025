@@ -662,6 +662,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5565769573858068399, guid: 345969e7c832ff84fac62db86acd8ff9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565769573858068399, guid: 345969e7c832ff84fac62db86acd8ff9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565769573858068399, guid: 345969e7c832ff84fac62db86acd8ff9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5583824547331102737, guid: 345969e7c832ff84fac62db86acd8ff9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -786,6 +798,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7400169397001996267, guid: 345969e7c832ff84fac62db86acd8ff9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 887501620, guid: 4e1e09dafe242ca468ab5e70bca5c7c7, type: 3}
     - target: {fileID: 8689585277648895583, guid: 345969e7c832ff84fac62db86acd8ff9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -798,6 +814,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8810329885206417366, guid: 345969e7c832ff84fac62db86acd8ff9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 887501620, guid: 4e1e09dafe242ca468ab5e70bca5c7c7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

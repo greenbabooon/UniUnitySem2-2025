@@ -4,7 +4,6 @@ using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.ProBuilder;
@@ -181,7 +180,6 @@ public class PlayerController : MonoBehaviour, IDamageable
             if (context.performed)
             {
                 equippedWeapon.weaponType.AttackPressed();
-                playerAnimController.shootSFX();
             }
             if (context.canceled)
             {

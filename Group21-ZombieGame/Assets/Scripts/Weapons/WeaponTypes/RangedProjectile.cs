@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class RangedProjectile : WeaponType, IAttackable
 {
     int CurSpare = 0;
+    public AudioClip shootNoise;
+    private playerAnimController playerAnim;
     bool isReloading = false;
     bool canShoot = true;
     TypeOfWeapon weaponType = TypeOfWeapon.rangedProjectile;
@@ -13,6 +15,14 @@ public class RangedProjectile : WeaponType, IAttackable
     {
     if (objPooler==null)objPooler = gameObject.AddComponent<ObjPool>();
     objPooler.SetPooled(weapon.projectilePrefab);
+        objPooler = gameObject.AddComponent<ObjPool>();
+        objPooler.SetPooled(weapon.projectilePrefab, weapon.magazineCapacity);
+
+        if (playerOwned && player != null)
+        {
+            playerAnim = GameObject.FindFirstObjectByType<playerAnimController>().gameObject.GetComponent<playerAnimController>();
+        }
+
     }
     void OnEnable()
     {
@@ -62,6 +72,11 @@ public class RangedProjectile : WeaponType, IAttackable
             curProj.transform.rotation = firePoint.transform.rotation;
             curProj.SetActive(true);
             Rigidbody rb = curProj.GetComponent<Rigidbody>();
+
+            GetComponent<AudioSource>().Play();
+            if (playerAnim != null)
+            playerAnim.shootSFX();
+
             if (rb != null)
             {
                 rb.AddForce(firePoint.transform.forward * 3f * weapon.force, ForceMode.Impulse);
@@ -73,7 +88,9 @@ public class RangedProjectile : WeaponType, IAttackable
                 //maybe change this later to not take from ammo pool rather
                 weapon.currentAmmo--;
                 player.GetComponent<PlayerController>().UpdateAmmoUI();
+
             }
+
 
             canShoot = false;
             Invoke("enableShooting", weapon.fireRate);
