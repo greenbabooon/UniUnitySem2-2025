@@ -5007,19 +5007,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a707335f705b5114db440a0153d769ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.465
+      value: 55.016632
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a707335f705b5114db440a0153d769ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.523
+      value: -26.211357
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a707335f705b5114db440a0153d769ff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.67
+      value: 17.886639
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a707335f705b5114db440a0153d769ff, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.73988336
+      value: 0.6122173
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a707335f705b5114db440a0153d769ff, type: 3}
       propertyPath: m_LocalRotation.x
@@ -5027,7 +5027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a707335f705b5114db440a0153d769ff, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6727352
+      value: -0.7906896
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a707335f705b5114db440a0153d769ff, type: 3}
       propertyPath: m_LocalRotation.z
@@ -5039,7 +5039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a707335f705b5114db440a0153d769ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 84.557
+      value: -104.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a707335f705b5114db440a0153d769ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -5137,11 +5137,11 @@ AudioSource:
   m_GameObject: {fileID: 1865571458294466619}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 0bb300cf661b1234383f4e72997f2be5, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: e84354ec779268d4ab2c130a6acc69f9, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.749
+  m_Resource: {fileID: 8300000, guid: 26fc919b756c6684fa7ab0cefdbda901, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5152,7 +5152,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 10
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -5185,7 +5185,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5215,7 +5215,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
