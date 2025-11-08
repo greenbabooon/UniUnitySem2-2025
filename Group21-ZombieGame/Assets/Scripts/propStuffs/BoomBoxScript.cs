@@ -10,8 +10,8 @@ public class BoomBoxScript : MonoBehaviour, IInteractable
     PlayerController playerController;
     void Start()
     {
-        inventory = gameObject.GetComponentInParent<Inventory>();
-        playerController = gameObject.GetComponentInParent<PlayerController>();
+        playerController = GameObject.FindAnyObjectByType<PlayerController>();
+        inventory = playerController.GetComponent<Inventory>();
     }
 
     public void Interact()
@@ -19,6 +19,7 @@ public class BoomBoxScript : MonoBehaviour, IInteractable
         if (used == false)
         {
             inventory.SetAmmoCount(ammoType, ammoAmount + inventory.GetAmmoCount(ammoType));
+            playerController.UpdateAmmoUI();
             prompt = "no more ammo here";
         }
         else

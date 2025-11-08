@@ -3772,7 +3772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10.3}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 133.10794, y: -184.402}
+  m_AnchoredPosition: {x: 701.7512, y: -287.74203}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3890662657879157527
@@ -3837,7 +3837,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -6523,6 +6523,7 @@ GameObject:
   - component: {fileID: 8494661613907075820}
   - component: {fileID: 8016961273778400191}
   - component: {fileID: 4564058256190370912}
+  - component: {fileID: 3368258195976227847}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -6672,9 +6673,6 @@ MonoBehaviour:
   HotBarImages:
   - {fileID: 6834021631801685178}
   - {fileID: 3637795919869242727}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   currentAmmoText: {fileID: 3993874414304757139}
   SpareAmmoText: {fileID: 8892169419020575196}
   interactText: {fileID: 8412151721705331231}
@@ -6971,6 +6969,104 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d134665d274cfc4fb8d1be16c17713d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootNoise: {fileID: 0}
+--- !u!82 &3368258195976227847
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9212992514842188578}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 0bb300cf661b1234383f4e72997f2be5, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 66376b78f30fdff43b0aefc1dccac168, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &265694871827350159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8074,10 +8170,10 @@ MonoBehaviour:
   shootAttack: {fileID: 8300000, guid: 66376b78f30fdff43b0aefc1dccac168, type: 3}
   pickUp: {fileID: 8300000, guid: 87594f05fa6acf54dac04050168fc6c3, type: 3}
   chargeUp: {fileID: 8300000, guid: 23c5fa40655ad1b4bbc1a4440f775f7f, type: 3}
-  reload: {fileID: 0}
-  death: {fileID: 0}
-  takeDamage: {fileID: 0}
-  interact: {fileID: 0}
+  reload: {fileID: 8300000, guid: 14f1f947988a21d4dad39d9859295d17, type: 3}
+  death: {fileID: 8300000, guid: 2f98dc183c5ab314cbc99c5d877b7450, type: 3}
+  takeDamage: {fileID: 8300000, guid: b080be81204453749a782084dc20d595, type: 3}
+  interact: {fileID: 8300000, guid: b7d9faec79f397b448ddc3d408e3c8f6, type: 3}
   source: {fileID: 8944377729265393093}
 --- !u!82 &8944377729265393093
 AudioSource:
