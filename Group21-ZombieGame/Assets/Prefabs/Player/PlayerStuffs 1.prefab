@@ -582,6 +582,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f934940d8c6ebc43a0897f147518220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1309891998886466692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 225695822927941095}
+  m_Layer: 7
+  m_Name: foreArmRelative
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &225695822927941095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309891998886466692}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.07514002, y: -0.07514002, z: 0.7031031, w: 0.7031031}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 774350456237341432}
+  m_LocalEulerAnglesHint: {x: 12.2, y: 0, z: 90}
 --- !u!1 &1528103452810430524
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +868,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 574307897722959746}
+  - {fileID: 5719654251380477293}
   m_Father: {fileID: 8895592166346915546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1987598727717801643
@@ -2928,6 +2960,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2325038069731502560}
+  - component: {fileID: 1628866151834198334}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -2975,6 +3008,18 @@ RectTransform:
   m_AnchoredPosition: {x: -577, y: 394}
   m_SizeDelta: {x: 504.4946, y: 146.3058}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1628866151834198334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3860255470930975192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef632db540709e4b895bc076b79e3ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4044741507765461529
 GameObject:
   m_ObjectHideFlags: 0
@@ -3206,6 +3251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6869166506968780669}
+  - component: {fileID: 4848303661464826399}
   m_Layer: 5
   m_Name: StaminaBar
   m_TagString: Untagged
@@ -3253,6 +3299,18 @@ RectTransform:
   m_AnchoredPosition: {x: -577, y: 280.30005}
   m_SizeDelta: {x: 504.4946, y: 146.3058}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4848303661464826399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197194118412840851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef632db540709e4b895bc076b79e3ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4774292069429085579
 GameObject:
   m_ObjectHideFlags: 0
@@ -3942,7 +4000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10.3}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95.838425, y: -163.96796}
+  m_AnchoredPosition: {x: 133.10794, y: -184.402}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3890662657879157527
@@ -4853,6 +4911,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b5bbf4e95687c40a027050a59de847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7572111760006565927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5719654251380477293}
+  m_Layer: 7
+  m_Name: emptyOffset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5719654251380477293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7572111760006565927}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: 0.223, y: -0.1, z: 0.187}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6707945622780597376}
+  m_LocalEulerAnglesHint: {x: 180, y: 180, z: 0}
 --- !u!1 &7691433940232970522
 GameObject:
   m_ObjectHideFlags: 0
@@ -6661,6 +6750,7 @@ GameObject:
   - component: {fileID: 2033505788107803951}
   - component: {fileID: 8494661613907075820}
   - component: {fileID: 8016961273778400191}
+  - component: {fileID: 4564058256190370912}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -6848,8 +6938,29 @@ MonoBehaviour:
   - {fileID: 7254020237234683411}
   - {fileID: 1512044095727640384}
   - {fileID: 8074857321572718732}
-  staminaBar: []
+  staminaBar:
+  - {fileID: 3757306059174571170}
+  - {fileID: 926280945752769924}
+  - {fileID: 3128090302965826229}
+  - {fileID: 2178259554129953428}
+  - {fileID: 6745421903609251319}
+  - {fileID: 558178316227924719}
+  - {fileID: 6470155133220683453}
+  - {fileID: 7114480936736219582}
+  - {fileID: 4924637312638062765}
+  - {fileID: 9182307746548080405}
+  - {fileID: 7601369401828801563}
+  - {fileID: 6094485787400175371}
+  - {fileID: 8650615793884417380}
+  - {fileID: 4786970796426610489}
+  - {fileID: 4725401609282242997}
+  - {fileID: 950042406308804015}
+  - {fileID: 3112142149457146951}
+  - {fileID: 4667721100914708438}
+  - {fileID: 2328710015606806539}
+  - {fileID: 9066778580765571694}
   shoulder: {fileID: 774350456237341432}
+  playerAnimController: {fileID: 5685424320872788796}
 --- !u!114 &2033505788107803951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7023,6 +7134,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9a769630-6752-474f-af5b-4e6554330f2d
     m_ActionName: 'Player/Pause[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7787756765779855419}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: ToggleJournal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4da7ca52-66af-4705-9d8c-78fdb478651b
+    m_ActionName: 'Player/ToggleJournal[/Keyboard/j]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -7060,6 +7187,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+--- !u!114 &4564058256190370912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9212992514842188578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d134665d274cfc4fb8d1be16c17713d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &265694871827350159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8105,6 +8244,9 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8570073326845052809, guid: 343c63da90ee6394ba38495fb82b475c, type: 3}
       insertIndex: 0
+      addedObject: {fileID: 225695822927941095}
+    - targetCorrespondingSourceObject: {fileID: -8570073326845052809, guid: 343c63da90ee6394ba38495fb82b475c, type: 3}
+      insertIndex: 1
       addedObject: {fileID: 5668926912514221185}
     - targetCorrespondingSourceObject: {fileID: 8939093657828206977, guid: 343c63da90ee6394ba38495fb82b475c, type: 3}
       insertIndex: 0
@@ -8118,13 +8260,13 @@ PrefabInstance:
       addedObject: {fileID: 8944377729265393093}
     - targetCorrespondingSourceObject: {fileID: 1829827667084073321, guid: 343c63da90ee6394ba38495fb82b475c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6820855065156314213}
+      addedObject: {fileID: 5066078202152360654}
     - targetCorrespondingSourceObject: {fileID: -6642577198241486110, guid: 343c63da90ee6394ba38495fb82b475c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8365913022130504552}
+      addedObject: {fileID: 5180452581511455584}
     - targetCorrespondingSourceObject: {fileID: -6642577198241486110, guid: 343c63da90ee6394ba38495fb82b475c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2302065444791009472}
+      addedObject: {fileID: 8447514563280303368}
   m_SourcePrefab: {fileID: 100100000, guid: 343c63da90ee6394ba38495fb82b475c, type: 3}
 --- !u!4 &298725667679561060 stripped
 Transform:
@@ -8160,6 +8302,10 @@ MonoBehaviour:
   shootAttack: {fileID: 8300000, guid: 66376b78f30fdff43b0aefc1dccac168, type: 3}
   pickUp: {fileID: 8300000, guid: 87594f05fa6acf54dac04050168fc6c3, type: 3}
   chargeUp: {fileID: 8300000, guid: 23c5fa40655ad1b4bbc1a4440f775f7f, type: 3}
+  reload: {fileID: 0}
+  death: {fileID: 0}
+  takeDamage: {fileID: 0}
+  interact: {fileID: 0}
   source: {fileID: 8944377729265393093}
 --- !u!82 &8944377729265393093
 AudioSource:
@@ -8263,7 +8409,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1829827667084073321, guid: 343c63da90ee6394ba38495fb82b475c, type: 3}
   m_PrefabInstance: {fileID: 265694871827350159}
   m_PrefabAsset: {fileID: 0}
---- !u!1773428102 &6820855065156314213
+--- !u!1773428102 &5066078202152360654
 ParentConstraint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8288,14 +8434,14 @@ ParentConstraint:
   m_Active: 1
   m_IsLocked: 0
   m_Sources:
-  - sourceTransform: {fileID: 574307897722959746}
+  - sourceTransform: {fileID: 5719654251380477293}
     weight: 1
 --- !u!1 &2341629017844443245 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6642577198241486110, guid: 343c63da90ee6394ba38495fb82b475c, type: 3}
   m_PrefabInstance: {fileID: 265694871827350159}
   m_PrefabAsset: {fileID: 0}
---- !u!1818360609 &8365913022130504552
+--- !u!1818360609 &5180452581511455584
 RotationConstraint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8313,9 +8459,9 @@ RotationConstraint:
   m_Active: 0
   m_IsLocked: 0
   m_Sources:
-  - sourceTransform: {fileID: 5668926912514221185}
+  - sourceTransform: {fileID: 225695822927941095}
     weight: 1
---- !u!1183024399 &2302065444791009472
+--- !u!1183024399 &8447514563280303368
 LookAtConstraint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

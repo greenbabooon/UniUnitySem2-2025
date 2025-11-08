@@ -2,23 +2,16 @@ using UnityEngine;
 
 public class weaponPickUp : MonoBehaviour, IInteractable
 {
-    //bool beingLookedAt = false;
-    //public Renderer rend;
-   // Renderer OriginalRend;
     public Weapon weapon; // Reference to the weapon scriptable object
-    //bool isGlowing = false;
+    GameObject player;
     void Awake()
     {
-      /*  if (rend == null) print("no rend assigned to " + gameObject.name);
-        OriginalRend = rend;
-        Material[] ogMats = new Material[rend.materials.Length + 1];
-        rend.materials.CopyTo(ogMats, 0);
-        OriginalRend.materials = gameObject.AddComponent<Renderer>().materials;*/
+        player = GameObject.FindFirstObjectByType<PlayerController>().gameObject.gameObject;
 
     }
     public void Interact()
     {
-        Inventory inv = FindFirstObjectByType<Inventory>();
+        Inventory inv = player.GetComponent<Inventory>();
         inv.addItem(weapon);
         gameObject.SetActive(false);
     }

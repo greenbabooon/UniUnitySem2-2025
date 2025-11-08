@@ -13,14 +13,14 @@ public class ObjPool
         {
             if (!pool[i].activeInHierarchy)
             {
-                pool[i].SetActive(true);
                 print("Reusing pooled object: " + pool[i].name+"pool item "+i+" of "+pool.Count);
                 return pool[i]; 
             }
         }
-        var obj = pool[0];
-        obj.SetActive(true);
-        print("Pool exhausted");
+        var obj = Instantiate(pooledObj);
+        pool.Add(pooledObj);
+        pooledCount++;
+        print("Pool exhausted new object made");
         return obj;
     }
     // this is used to pool many of the same object at once
@@ -38,6 +38,11 @@ public class ObjPool
     }
     void initialize()
     {
+        foreach (var item in pool)
+        {
+            Destroy(item);    
+        }
+        pool.Clear();
         for (int i = 0; i < pooledCount; i++)
         {
             var obj = Instantiate(pooledObj);

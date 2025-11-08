@@ -11,7 +11,6 @@ public class JournalScript : MonoBehaviour
     int curPage=0;
     public TextMeshProUGUI pageTxt;
     public Image img;
-    int unlockedPages = 5;
     bool isOpen = false;
     public List<bool> Unlocked;
 
@@ -46,7 +45,7 @@ public class JournalScript : MonoBehaviour
         if (Unlocked[pageNum] == false)
         {
             Unlocked[pageNum] = true;
-            unlockedPages++;
+            initialize();
         }
        
     }
@@ -62,7 +61,6 @@ public class JournalScript : MonoBehaviour
         isOpen = false;
         GetComponentInChildren<Canvas>().enabled = false;
         FindAnyObjectByType<PlayerController>().ResumeGame();
-        
     }
     public void Toggle()
     {
