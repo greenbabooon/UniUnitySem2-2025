@@ -96,6 +96,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         Invoke("delayedReset", 0.1f);
 
         GameManager.gameManager.SetCurrentPlayerController(this);
+        GameManager.gameManager.CurrentLevel();
     }
     private void OnEnable()
     {
@@ -507,9 +508,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         
         if (healthScript.currentHealth <= 0)
         {
-            //improve death logic
             playerAnimController.deathSFX();
-            SceneManager.LoadScene("Death Screen");
+            GameManager.gameManager.Death();
         }
     }
     void damageAlertCancel()
