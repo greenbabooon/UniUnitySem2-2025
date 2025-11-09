@@ -509,7 +509,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             //improve death logic
             playerAnimController.deathSFX();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene("Death Screen");
         }
     }
     void damageAlertCancel()
