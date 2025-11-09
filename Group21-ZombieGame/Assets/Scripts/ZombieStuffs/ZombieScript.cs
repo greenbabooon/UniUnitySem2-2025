@@ -6,22 +6,22 @@ using UnityEngine.AI;
 public class ZombieScript : MonoBehaviour, IDamageable
 {
     public HealthScript health;
+    protected int layerMask = 1 << 7;
     public Canvas healthCanvas;
     public UnityEngine.UI.Image[] healthIcons;
-    private Transform canvasRotation;
-    private NavMeshAgent agent;
-    bool idle = true;
-    bool patrolling = false;
-    bool TargetInSpottingRange = false;
-    bool TargetDetected = false;
-    bool TargetInAttackRange = false;
+    protected Transform canvasRotation;
+    protected NavMeshAgent agent;
+    protected bool TargetInSpottingRange = false;
+    protected bool TargetInAttackRange = false;
     public float cooldownTime = 1f;
     public float attackRange = 2f;
     public float spottingRange = 10f;
-    bool canAttack = true;
-    int delayedUpdate = 0;
-    Animator anim;
-
+    protected bool canAttack = true;
+    protected int delayedUpdate = 0;
+    protected Animator anim;
+    public float dmg = 10f;
+    protected float distance;
+    protected GameObject player;
     public void damage(float damageAmount)
     {
         health.currentHealth -= damageAmount;
@@ -66,18 +66,21 @@ public class ZombieScript : MonoBehaviour, IDamageable
         {
             anim = GetComponentInChildren<Animator>();
         }
+        GetComponent<Collider>();
+        player = FindAnyObjectByType<PlayerController>().gameObject;
     }
     void FixedUpdate()
-    {   
-        if (TargetDetected==false&&anim!=null)
+    {
+        distance = Vector3.Distance(transform.position, GameObject.FindFirstObjectByType<PlayerController>().transform.position);
+        if (TargetInSpottingRange==false)
         {
             anim.SetBool("isWalking", false);
-        }else if (TargetDetected)
+        }else if (TargetInSpottingRange)
         {
             anim.SetBool("isWalking", true);   
         }
         delayedUpdate++;
-        if (healthCanvas.enabled == true&&anim!=null)
+        if (healthCanvas.enabled == true)
         {
             canvasRotation.LookAt(Camera.main.transform.position);
 
@@ -91,40 +94,56 @@ public class ZombieScript : MonoBehaviour, IDamageable
             }
             
         }
-        if (Vector3.Distance(transform.position, GameObject.FindFirstObjectByType<PlayerController>().transform.position) < spottingRange)
+        if (distance < spottingRange)
         {
             TargetSpotted();
         }
-        else
+        if (distance>spottingRange+5)
         {
-            TargetInSpottingRange = false;
-            TargetDetected = false;
+            TargetLost();
         }
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, GameObject.FindFirstObjectByType<PlayerController>().transform.position - transform.position, out hit, 2f)&&TargetInSpottingRange)
+        if(distance<attackRange)
         {
-            if (hit.collider.gameObject.GetComponent<PlayerController>() != null && canAttack)
+            InAttackRange();   
+        }
+    }
+    private void TargetSpotted()
+    {
+        TargetInSpottingRange = true;
+    }
+    void TargetLost()
+    {
+        TargetInSpottingRange = false;
+        agent.SetDestination(transform.position);
+    }
+
+    public void CanAttack()
+    {
+        canAttack = true;
+    }
+    void InAttackRange()
+    {
+        transform.LookAt(player.transform);
+        if (canAttack) Attack();
+    }
+    protected virtual void Attack()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, attackRange,layerMask))
+        {
+            print(hit.collider.gameObject.name);
+            if (hit.collider.gameObject.GetComponent<PlayerController>() != null)
             {
-                hit.collider.gameObject.GetComponent<PlayerController>().damage(10f);
-                canAttack = false;
+                hit.collider.gameObject.GetComponent<PlayerController>().damage(dmg);
                 Invoke("CanAttack", cooldownTime);
+                canAttack = false;
             }
         }
 
     }
-    private void TargetSpotted()
-    {//will update just testing
-        TargetInSpottingRange = true;
-        TargetDetected = true;
-
-    }
-
-    void CanAttack()
+    void Alert()
     {
-        canAttack = true;
-    }   
-
-
-    
-    
+        
+    }
 }

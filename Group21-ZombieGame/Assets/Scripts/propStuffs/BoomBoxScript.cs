@@ -21,6 +21,7 @@ public class BoomBoxScript : MonoBehaviour, IInteractable
             inventory.SetAmmoCount(ammoType, ammoAmount + inventory.GetAmmoCount(ammoType));
             playerController.UpdateAmmoUI();
             prompt = "no more ammo here";
+            used = true;
         }
         else
         {

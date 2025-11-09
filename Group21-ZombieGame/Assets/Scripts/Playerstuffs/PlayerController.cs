@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         stamina = 100;
         Invoke("delayedReset", 0.1f);
 
-        GameManager.gameManager.SetCurrentPlayerController(this);
+       
     }
     private void OnEnable()
     {
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         UpdateAmmoUI();
         UpdateHotbarUI();
         UpdateHealthUI();
-        
+         GameManager.gameManager.SetCurrentPlayerController(this);
     }
     private void Start()
     {

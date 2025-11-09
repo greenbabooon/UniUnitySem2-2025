@@ -16,7 +16,7 @@ public class MedKit : MonoBehaviour,IInteractable
             if (temp.healthScript.currentHealth > 100) temp.healthScript.currentHealth = 100f;
             temp.UpdateHealthUI();
             prompt = "This Med Kit is used";
-
+            used = true;
         }
         else
         {
