@@ -144,6 +144,30 @@ public class GameManager : MonoBehaviour
           SceneManager.LoadScene(currentIndex+1);  
         }
         
+        
+    }
+
+    private string LastScene = null;
+    public void Death()
+    {
+        LastScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("Death Screen");
+    }
+    public void PlayLastLevel()
+    {
+        if (LastScene != null)
+        {
+            SceneManager.LoadScene(LastScene);
+        }
+        else
+        {
+            StartGame();
+        }
+    }
+
+    public void CurrentLevel()
+    {
+        LastScene = SceneManager.GetActiveScene().name;
     }
     public void LoadPlayerdata()
     {
