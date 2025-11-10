@@ -33,17 +33,19 @@ public class Page : MonoBehaviour, IInteractable
         PageViewEnter();
     }
     void PageViewEnter()
-    {
+    {   player.isViewingPage = true;
         pageCanvas.gameObject.SetActive(true);
         pageCanvas.GetComponentInChildren<Image>().sprite = pageContent;
+        
     }
     public void OnPageViewExit()
-    {
+    {   player.isViewingPage = false;
         pageCanvas.gameObject.SetActive(false);
         GameObject.FindAnyObjectByType<JournalScript>().SetUnlocked(pageNum);
         player.ResumeGame();
         player.ShowHUD();
         gameObject.SetActive(false);
+        
         // add logic to add page to inventory
     }
     public string InteractionPrompt()

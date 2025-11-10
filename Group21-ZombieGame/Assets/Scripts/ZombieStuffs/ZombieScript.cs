@@ -15,17 +15,19 @@ public class ZombieScript : MonoBehaviour, IDamageable
     protected bool TargetInAttackRange = false;
     public float cooldownTime = 1f;
     public float attackRange = 2f;
-    public float spottingRange = 10f;
+    public float spottingRange = 20f;
     protected bool canAttack = true;
     protected int delayedUpdate = 0;
     protected Animator anim;
     public float dmg = 10f;
     protected float distance;
     protected GameObject player;
+    protected bool isStopped = false;
     public void damage(float damageAmount)
     {
         health.currentHealth -= damageAmount;
         dmgUpdate();
+        TargetSpotted();
     }
     
     public void dmgUpdate()
@@ -71,6 +73,7 @@ public class ZombieScript : MonoBehaviour, IDamageable
     }
     void FixedUpdate()
     {
+        if (isStopped==true) return;
         distance = Vector3.Distance(transform.position, GameObject.FindFirstObjectByType<PlayerController>().transform.position);
         if (TargetInSpottingRange==false)
         {
@@ -98,7 +101,7 @@ public class ZombieScript : MonoBehaviour, IDamageable
         {
             TargetSpotted();
         }
-        if (distance>spottingRange+5)
+        if (distance>spottingRange+15f)
         {
             TargetLost();
         }
