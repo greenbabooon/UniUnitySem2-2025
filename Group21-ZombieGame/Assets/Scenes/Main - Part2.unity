@@ -2936,7 +2936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8745493521145838564, guid: 3ac9ce3921e87484880dd72b2bc284c9, type: 3}
       propertyPath: pageTitle
-      value: Page 5
+      value: Page 6
       objectReference: {fileID: 0}
     - target: {fileID: 8745493521145838564, guid: 3ac9ce3921e87484880dd72b2bc284c9, type: 3}
       propertyPath: pageContent
@@ -4168,6 +4168,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1768223155274276334, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1768223155274276334, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1768223155274276334, guid: bc0ac8661f52e914daa846b794732726, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 3187754157137695246, guid: bc0ac8661f52e914daa846b794732726, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -21533,7 +21545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8745493521145838564, guid: 3ac9ce3921e87484880dd72b2bc284c9, type: 3}
       propertyPath: pageTitle
-      value: Page 4
+      value: Page 5
       objectReference: {fileID: 0}
     - target: {fileID: 8745493521145838564, guid: 3ac9ce3921e87484880dd72b2bc284c9, type: 3}
       propertyPath: pageContent
