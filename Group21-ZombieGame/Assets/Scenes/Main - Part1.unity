@@ -10592,7 +10592,7 @@ PrefabInstance:
     - target: {fileID: 8494661613907075820, guid: 00e3f70a8e00fbd43a70e2722a0b0aeb, type: 3}
       propertyPath: 'weapons.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 27a35ae996691ef499c7dcd99c144dd3, type: 2}
     - target: {fileID: 8506759326950060046, guid: 00e3f70a8e00fbd43a70e2722a0b0aeb, type: 3}
       propertyPath: m_RotationOffsets.Array.data[0].x
       value: 47.905327
