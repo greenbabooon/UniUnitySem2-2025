@@ -28260,6 +28260,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2037097453}
+    - target: {fileID: 8624313356783814538, guid: 3ac9ce3921e87484880dd72b2bc284c9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 265e52132e1a2e1458114dba9ed1e5c9, type: 2}
     - target: {fileID: 8745493521145838564, guid: 3ac9ce3921e87484880dd72b2bc284c9, type: 3}
       propertyPath: pageNum
       value: 0
