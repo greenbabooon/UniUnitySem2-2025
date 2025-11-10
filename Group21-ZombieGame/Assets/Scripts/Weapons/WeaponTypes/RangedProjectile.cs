@@ -59,6 +59,7 @@ public class RangedProjectile : WeaponType, IAttackable
                  player.GetComponent<PlayerController>().reloadText.color= new Color(1,1,1,1);
                 player.GetComponent<PlayerController>().reloadText.gameObject.GetComponentInChildren<Animator>().SetBool("isReloading", true);
                 player.GetComponent<PlayerController>().playerAnimController.reloadSFX();
+                
             }
         }
     }
@@ -77,7 +78,7 @@ public class RangedProjectile : WeaponType, IAttackable
             GetComponent<AudioSource>().Play();
             if (playerAnim != null)
             playerAnim.shootSFX();
-
+            player.GetComponent<PlayerController>().muzzle.Play();
             if (rb != null)
             {
                 rb.AddForce(firePoint.transform.forward * 3f * weapon.force, ForceMode.Impulse);
