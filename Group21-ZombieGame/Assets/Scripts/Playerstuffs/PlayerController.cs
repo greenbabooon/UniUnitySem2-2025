@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     float  slow=0.25f;
     float slowMultiplier = 1;
     public bool isViewingPage = false;//dont assign 
+    public ParticleSystem muzzle;
     
     //Material highlightMat;
 
