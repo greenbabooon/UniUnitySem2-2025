@@ -47,12 +47,20 @@ public class MenuMusic : MonoBehaviour
                 setMusicClip(1);
                 break;
 
-            case "Main Level":
+            case "Main - Part1":
                 setMusicClip(2);
                 break;
 
+            case "Main - Part2":
+                setMusicClip(2);
+                break;
+
+            case "End Creds":
+                setMusicClip (3);
+                break;
+
             case "Death Screen":
-                setMusicClip(3);
+                setMusicClip(4);
                 break;
 
             default:
