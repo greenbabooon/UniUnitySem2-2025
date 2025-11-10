@@ -17,7 +17,7 @@ public class ScreecherTypeZombie : StandardZombie
     {
         if (isScreech&&distance<8f&&distance>attackRange)
         {
-            Invoke("DelayedScreech",5);
+            Invoke("DelayedScreech",3);
         }
     }
     void DelayedScreech()
