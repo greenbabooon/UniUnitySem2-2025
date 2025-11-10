@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563dcfc0d7c407640a7a1f97a15bdef1, type: 3}
   m_Name: FastAuto (1)
   m_EditorClassIdentifier: 
-  weaponName: FastAutoGun
+  weaponName: Cassette Gun
   damage: 20
   isRanged: 1
   fireRate: 0.2
   force: 1
   magazineCapacity: 30
-  currentAmmo: 30
+  currentAmmo: 29
   reloadTime: 3
   WeaponIcon: {fileID: 492980060, guid: 69921a868074e2043a41f1dcced08bbd, type: 3}
   isAutomatic: 1

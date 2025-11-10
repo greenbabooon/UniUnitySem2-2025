@@ -5238,7 +5238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   used: 0
-  ammoType: 3
+  ammoType: 1
   ammoAmount: 60
 --- !u!4 &7887498343937070769 stripped
 Transform:
