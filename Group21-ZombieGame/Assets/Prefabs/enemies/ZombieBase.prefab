@@ -351,7 +351,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 8
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -418,10 +418,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 2468349998880059960}
   healthCanvas: {fileID: 1795939674674499084}
-  healthIcons: []
+  healthIcons:
+  - {fileID: 104898298246436991}
+  - {fileID: 2837041319789543396}
+  - {fileID: 776900035463926254}
+  - {fileID: 6184991316852665942}
+  - {fileID: 8989188017960030414}
+  - {fileID: 5811124235240047034}
   cooldownTime: 1
   attackRange: 2
-  spottingRange: 10
+  spottingRange: 15
   dmg: 10
 --- !u!1 &5988855280945955020
 GameObject:

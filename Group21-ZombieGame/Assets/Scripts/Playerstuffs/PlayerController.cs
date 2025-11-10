@@ -83,6 +83,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     bool isResting = false;
     public Transform shoulder;
     public playerAnimController playerAnimController;
+    public  RawImage tVeffect;
+    float  slow=0.25f;
+    float slowMultiplier = 1;
+    public bool isViewingPage = false;//dont assign 
     
     //Material highlightMat;
 
@@ -127,10 +131,18 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
     void FixedUpdate()
     {
-      if (damageAlert)
-      {
-            damageFlash.color = new Color(1, 1, 1, damageFlash.color.a -0.02f); 
-      }  
+        if (damageAlert)
+        {
+            damageFlash.color = new Color(1, 1, 1, damageFlash.color.a - 0.02f);
+        }
+        if (tVeffect.color.a> 0)
+        {
+            tVeffect.color =new Color(1,1,1,tVeffect.color.a-0.01f);
+        }
+        if (slowMultiplier < 1)
+        {
+            slowMultiplier += 0.005f;
+        }
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -193,7 +205,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         if (isPaused || equippedWeapon == null) return;
         equippedWeapon.weaponType.Reload();
-        playerAnimController.reloadSFX();
+        
     }
     private void CancelReload()
     {
@@ -219,7 +231,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void HandleMovement()
     {
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
-        controller.Move(move * moveSpeed * Time.deltaTime * sprintMultiplier);
+        controller.Move(move * moveSpeed * Time.deltaTime * sprintMultiplier*slowMultiplier);
         
         if (move.x>0||move.z>0)
         {
@@ -483,6 +495,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
     public void ResumeGame()
     {
+        if (isViewingPage) return;
         Time.timeScale = 1;
         isPaused = false;
         Cursor.visible = false;
@@ -569,6 +582,10 @@ public class PlayerController : MonoBehaviour, IDamageable
             }
         }
     }
-
+    public void TVEffect()
+    {
+        tVeffect.color= new Color (1,1,1,0.5f);
+        slowMultiplier = slow;
+    }
  
 }

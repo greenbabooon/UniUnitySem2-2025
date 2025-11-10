@@ -57,7 +57,8 @@ public class RangedProjectile : WeaponType, IAttackable
             if (playerOwned)
             {
                  player.GetComponent<PlayerController>().reloadText.color= new Color(1,1,1,1);
-                 player.GetComponent<PlayerController>().reloadText.gameObject.GetComponentInChildren<Animator>().SetBool("isReloading",true);
+                player.GetComponent<PlayerController>().reloadText.gameObject.GetComponentInChildren<Animator>().SetBool("isReloading", true);
+                player.GetComponent<PlayerController>().playerAnimController.reloadSFX();
             }
         }
     }
